@@ -1,0 +1,76 @@
+
+
+
+    {
+    with gridDefault do
+    begin
+        Cells[0, 0 ] := '측정항목';    '단위';
+        Cells[0, 1 ] := '전압';        'U [V]';
+        Cells[0, 2 ] := '전류';        'I [A]';
+        Cells[0, 3 ] := '유효전력';    'P [W]';
+        Cells[0, 4 ] := '피상전력';    'S [VA]';
+        Cells[0, 5 ] := '무효전력';    'Q [var]';
+        Cells[0, 6 ] := '역률';        'λ';
+        Cells[0, 7 ] := '위상차';      'Φ [º]';
+        Cells[0, 8 ] := '전압주파수';  'fU [Hz]';
+        Cells[0, 9 ] := '전류주파수';  'fU [Hz]';
+        Cells[0, 10] := '전압최대값';  'U+pk [V]';
+        Cells[0, 11] := '전압최소값';  'U-pk [V]';
+        Cells[0, 12] := '전류최대값';  'I+pk [A]';
+        Cells[0, 13] := '전류최소값';  'I-pk [A]';
+        Cells[0, 14] := '전압 FU';     'CfU';
+        Cells[0, 15] := '전류 FI';     'CfI';
+
+        Cells[2, 0] := 'Element1';
+        Cells[3, 0] := 'Element2';
+        Cells[4, 0] := 'Element3';
+        Cells[5, 0] := 'Element4';
+        Cells[6, 0] := 'SigmaA';
+    end;
+
+    with gridMotor do
+    begin
+        Cells[0, 0 ] := '측정항목';       
+        Cells[0, 1 ] := 'SPEED';
+        Cells[0, 2 ] := 'TORQUE';
+        Cells[0, 3 ] := 'SYNCSP';
+        Cells[0, 4 ] := 'SLIP';
+        Cells[0, 5 ] := 'PM';       
+
+        Cells[1, 0] := 'Value';
+    end;
+    }
+
+
+:NUMERIC:NORMAL:NUMBER 90
+:NUM:NORMAL?
+:NUMERIC:NORMAL:NUMBER 90;
+
+ITEM1 U,1,TOTAL;       ITEM16 U,2,TOTAL;       ITEM31 U,3,TOTAL;       ITEM46 U,4,TOTAL;       ITEM61 U,SIGMA,TOTAL;
+ITEM2 I,1,TOTAL;       ITEM17 I,2,TOTAL;       ITEM32 I,3,TOTAL;       ITEM47 I,4,TOTAL;       ITEM62 I,SIGMA,TOTAL;
+ITEM3 P,1,TOTAL;       ITEM18 P,2,TOTAL;       ITEM33 P,3,TOTAL;       ITEM48 P,4,TOTAL;       ITEM63 P,SIGMA,TOTAL;
+ITEM4 S,1,TOTAL;       ITEM19 S,2,TOTAL;       ITEM34 S,3,TOTAL;       ITEM49 S,4,TOTAL;       ITEM64 S,SIGMA,TOTAL;
+ITEM5 Q,1,TOTAL;       ITEM20 Q,2,TOTAL;       ITEM35 Q,3,TOTAL;       ITEM50 Q,4,TOTAL;       ITEM65 Q,SIGMA,TOTAL;
+ITEM6 LAMBDA,1,TOTAL;  ITEM21 LAMBDA,2,TOTAL;  ITEM36 LAMBDA,3,TOTAL;  ITEM51 LAMBDA,4,TOTAL;  ITEM66 LAMBDA,SIGMA,TOTAL;
+ITEM7 PHI,1,TOTAL;     ITEM22 PHI,2,TOTAL;     ITEM37 PHI,3,TOTAL;     ITEM52 PHI,4,TOTAL;     ITEM67 PHI,SIGMA,TOTAL;
+ITEM8 FU,1;            ITEM23 FU,2;            ITEM38 FU,3;            ITEM53 FU,4;            ITEM68 FU,SIGMA;
+ITEM9 FI,1;            ITEM24 FI,2;            ITEM39 FI,3;            ITEM54 FI,4;            ITEM69 FI,SIGMA;
+ITEM10 UPPEAK,1;       ITEM25 UPPEAK,2;        ITEM40 UPPEAK,3;        ITEM55 UPPEAK,4;        ITEM70 UPPEAK,SIGMA;
+ITEM11 UMPEAK,1;       ITEM26 UMPEAK,2;        ITEM41 UMPEAK,3;        ITEM56 UMPEAK,4;        ITEM71 UMPEAK,SIGMA;
+ITEM12 IPPEAK,1;       ITEM27 IPPEAK,2;        ITEM42 IPPEAK,3;        ITEM57 IPPEAK,4;        ITEM72 IPPEAK,SIGMA;
+ITEM13 IMPEAK,1;       ITEM28 IMPEAK,2;        ITEM43 IMPEAK,3;        ITEM58 IMPEAK,4;        ITEM73 IMPEAK,SIGMA;
+ITEM14 CFU,1;          ITEM29 CFU,2;           ITEM44 CFU,3;           ITEM59 CFU,4;           ITEM74 CFU,SIGMA;
+ITEM15 CFI,1;          ITEM30 CFI,2;           ITEM45 CFI,3;           ITEM60 CFI,4;           ITEM75 CFI,SIGMA;
+
+
+
+:NUMERIC:FORMAT ASCII
+:NUMERIC:NORMAL:NUMBER 10
+:NUMERIC:NORMAL:ITEM1 U,1,Total;ITEM2 I,1,Total;ITEM3 P,1,Total;ITEM4 S,1,Total;ITEM5 Q,1,Total;ITEM6 LAMBDA,1,Total;ITEM7 PHI,1,Total;ITEM8 FU,1;ITEM9 FI,1;ITEM10 UPPEAK,1
+:NUMERIC:NORMAL:VALUE?
+
+:NUMERIC:FORMAT ASCII
+:NUMERIC:NORMAL:NUMBER 10
+:NUMERIC:NORMAL:ITEM1 SPEED;ITEM2 TORQUE;ITEM3 SYNCSP;ITEM4 SLIP;ITEM5 PM;ITEM6 LAMBDA,1,Total;ITEM7 PHI,1,Total;ITEM8 FU,1;ITEM9 FI,1;ITEM10 UPPEAK,1
+:NUMERIC:NORMAL:VALUE?
+

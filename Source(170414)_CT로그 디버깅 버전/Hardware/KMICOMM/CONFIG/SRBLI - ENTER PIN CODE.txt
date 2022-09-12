@@ -1,0 +1,19 @@
+message name = SRBLI - ENTER PIN CODE
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x12
+#7 ~ #9 PIN Code = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = 0x71 
+#6 Record Local Identifier = 0x12
+#7 PIN 1st byte = XX
+#8 PIN 2nd byte = XX
+#9 PIN 3rd byte = XX

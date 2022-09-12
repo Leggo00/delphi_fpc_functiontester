@@ -1,0 +1,50 @@
+RDBLI - SMK miscellaneous function status byte frame;
+2
+21
+Record Local  Identifier;
+3
+08
+10
+Local Identifier;
+5
+08
+ESCL retry counter during unlock operation;
+1
+ESCL retry counter during lock operation;
+1
+Warm reset counter;
+1
+BES SMK State;
+6
+9
+00
+UNDEFINED;
+01
+OFF LOCKED;
+02
+OFF UNLOCKED;
+03
+ACC;
+04
+IGN;
+05
+IGN_TO_START;
+06
+START;
+07
+ENGINE RUNNING;
+0F
+OFF ESCL Failure;
+Emergency Stop SSB Event Counter;
+1
+SSB Error Counter (0h ~ 10h);
+1
+Reserved;
+5
+0
+Reserved;
+5
+0
+Reserved;
+5
+0

@@ -1,0 +1,23 @@
+ReadDiagnosticTroubleCodesByStatus Service;
+4
+18
+StatusOfDTC;
+0
+2
+0
+Present failure (Active fault);
+1
+Memorized failure (Historic fault);
+GroupOfDTC (High byte);
+3
+80
+GroupOfDTC (Low byte);
+3
+00
+2
+numberOfDTC;
+1
+DTC High byte, Low byte, Status of DTC;
+4
+3
+

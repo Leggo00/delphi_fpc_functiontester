@@ -1,0 +1,28 @@
+message name = LFReadAntennaArea
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = A3 
+#6 Antenna area index = XX
+#7 Telegram index = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x10 
+#5 Request Id = 0xE3 
+#6 Antenna Area index = 0xXX
+#7 Telegram index = 0xXX
+#8 ~ #9 Output configuration = 0xXX
+#10 Data power = 0xXX
+#11 RSSI Power = 0xXX
+#12 Destroy bit Power = 0xXX
+#13 Data load state = 0xXX
+#14 RSSI Load state = 0xXX
+#15 ~ #16 RSSI key threshold = 0xXX
+#17 Antenna Area Type = 0xXX
+#18 Antenna Area Index = 0xXX
+#19 1 = 0xXX
+#20 1 = 0xXX

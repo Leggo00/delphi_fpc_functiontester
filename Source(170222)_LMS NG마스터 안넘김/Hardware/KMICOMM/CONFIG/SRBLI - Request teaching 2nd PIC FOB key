@@ -1,0 +1,24 @@
+SRBLI - Request teaching 2nd PIC FOB key;
+3
+31
+Routine Local Identifier;
+3
+14
+Teaching parameter;
+0
+2
+1
+Yes;
+2
+No;
+2
+Record Local Identifier;
+5
+14
+Teaching Status;
+6
+2
+f0
+Teaching procedure cancelled (finished);
+f1
+Teaching procedure automatically finished;

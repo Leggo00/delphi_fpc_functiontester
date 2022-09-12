@@ -1,0 +1,36 @@
+message name = LFStartTuneScenario
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = A7 
+#6 Antenna area No = XX
+#7 Key ID No = XX
+#8 Cycle gap time = XX
+#9 Request Type: 1-Start service, 0-request next response = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0B 
+#5 Request Id = 0xE7 
+#6 ID Key number = 0xXX
+#7 SumHi = 0xXX
+#8 SumLo = 0xXX
+#9 XmeasHi = 0xXX
+#10 XmeasLo = 0xXX
+#11 YmeasHi = 0xXX
+#12 YmeasLo = 0xXX
+#13 ZmeasHi = 0xXX
+#14 ZmeasLo = 0xXX
+#15 PASE LL status = XX
+  0x00 : PASE_LL_SRV_STATUS_IDLE
+  0x01 : PASE_LL_SRV_STATUS_RUNNING
+  0x02 : PASE_LL_SRV_STATUS_RUNNING_DATA_AVAILABLE
+  0x03 : PASE_LL_SRV_STATUS_SUCCESS
+  0x04 : PASE_LL_SRV_STATUS_NO_RF_ANSWER
+  0x05 : PASE_LL_SRV_STATUS_NORMAL_ABORT
+  0x06 : PASE_LL_SRV_STATUS_BUFFER_FULL
+  0x07 : PASE_LL_SRV_STATUS_TIMEOUT
+  0x08 : PASE_LL_SRV_STATUS_ERROR

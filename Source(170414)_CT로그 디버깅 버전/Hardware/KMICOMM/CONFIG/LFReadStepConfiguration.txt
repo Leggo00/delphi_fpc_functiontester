@@ -1,0 +1,18 @@
+message name = LFReadStepConfiguration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = A4 
+#6 Scenario step index = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = 0xE4 
+#6 Scenario step index = 0xXX
+#7 Telegram type = 0xXX
+#8 Antenna Area index = 0xXX
+#9 Retry Number = 0xXX

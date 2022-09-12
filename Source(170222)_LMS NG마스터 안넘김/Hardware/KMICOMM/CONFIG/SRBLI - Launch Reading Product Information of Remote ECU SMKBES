@@ -1,0 +1,61 @@
+SRBLI - Launch Reading Product Information of Remote ECU;
+6
+31
+Record Local Identifier;
+3
+8
+Remote ECU Identifier;
+0
+1
+1
+PDM;
+Routine Entry Status #2;
+3
+0
+Routine Entry Status #3;
+3
+0
+Routine Entry Status #4;
+3
+0
+13
+Local Identifier;
+5
+8
+PDM part number (ASCII, 10byte);
+3
+10
+PDM Manufacturing date (BCD, yy/mm/dd, 3byte);
+2
+3
+PDM Software Version;
+1
+PDM Hardware Version;
+1
+DATA8 byte of the additional CAN response;
+5
+0
+PDM CAN DB Version (BCD, 2byte);
+2
+2
+PDM SubMCU Software Version;
+1
+Non-ESCL Option;
+6
+2
+0
+ESCL Option;
+1
+Non-ESCL Option;
+DATA5 byte of the additiona2 CAN response;
+5
+0
+DATA6 byte of the additiona2 CAN response;
+5
+0
+DATA7 byte of the additiona2 CAN response;
+5
+0
+DATA8 byte of the additiona2 CAN response;
+5
+0

@@ -1,0 +1,46 @@
+LFStartBlinkScenario;
+5
+A6
+Antenna area No;
+1
+Key ID No;
+1
+Cycle gap time;
+1
+Type of Request: 1-start blink, 0-get next response;
+1
+7
+ID Key number;
+1
+SumHi;
+1
+SumLo;
+1
+Xmeas;
+1
+Ymeas;
+1
+Zmeas;
+1
+PASE LL status;
+6
+9
+0
+PASE_LL_SRV_STATUS_IDLE;
+1
+PASE_LL_SRV_STATUS_RUNNING;
+2
+PASE_LL_SRV_STATUS_RUNNING_DATA_AVAILABLE;
+3
+PASE_LL_SRV_STATUS_SUCCESS;
+4
+PASE_LL_SRV_STATUS_NO_RF_ANSWER;
+5
+PASE_LL_SRV_STATUS_NORMAL_ABORT;
+6
+PASE_LL_SRV_STATUS_BUFFER_FULL;
+7
+PASE_LL_SRV_STATUS_TIMEOUT;
+8
+PASE_LL_SRV_STATUS_ERROR;
+

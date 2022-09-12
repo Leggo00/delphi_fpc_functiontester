@@ -1,0 +1,17 @@
+message name = LFWriteScenarioConfiguration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x10 
+#5 Request Id = A2 
+#6 Scenario index = XX
+#7 ~ #13 Scenario step index = XX
+#14 ~ #20 Finish Scenario Step = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 0xE2 
+#6 Reserved = 0xXX

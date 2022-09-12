@@ -1,0 +1,24 @@
+message name = SRBLI - Start PIC Components Learning Procedure
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x15
+#7 Routine Entry Option = XX
+  0x01 : Power Distribution Module
+  0x02 : Electrical Steering Column Lock
+  0x03 : BCM
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x15
+#7 Routine Entry Option = XX
+  0x00 : Wrong PIN code
+  0x01 : Power Distribution Module
+  0x02 : Electrical Steering Column Lock
+  0x03 : BCM

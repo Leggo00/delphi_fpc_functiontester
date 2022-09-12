@@ -1,0 +1,35 @@
+[HMF-INFO]
+Format=Hella HMF-File
+Version=Version 1.0
+GenTool=Version 1.0
+Date=23.09.2014
+Time=08:00:00
+[HMF-INFO-END]
+
+[HMF-HEADER]
+Comment=MHE FCM
+Project=M00013-xx MHE FCM
+PartNumber=M00013
+Abart=07
+Revision=AA
+PCB Variante= P00.062-00
+SW Version = A302
+[HMF-HEADER-END]
+
+[HMF-DATA]
+Format=S19
+Location=FLASH
+File=FPC_Gen1.0_AEDE_GSL_verA302.s28
+[HMF-DATA-END]
+
+[HMF-FLASHER]
+Part-Type_1=UPD78F1827
+Checksum_Code Flash=F962
+Device End Address=00017FFF
+Security Flag=00FF
+Boot Block No=007
+Start FSW=0000
+End FSW=005F
+[HMF-FLASHER-END]
+
+

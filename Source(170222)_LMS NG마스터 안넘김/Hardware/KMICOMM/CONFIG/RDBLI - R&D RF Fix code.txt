@@ -1,0 +1,27 @@
+message name = RDBLI - R&D RF Fix code
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0xFA
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0E 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0xFA
+#7 RF Fix Code Key N¡Æ1 byte 1 = 0xXX
+#8 RF Fix Code Key N¡Æ1 byte 2 = 0xXX
+#9 RF Fix Code Key N¡Æ1 byte 3 = 0xXX
+#10 RF Fix Code Key N¡Æ2 byte 1 = 0xXX
+#11 RF Fix Code Key N¡Æ2 byte 2 = 0xXX
+#12 RF Fix Code Key N¡Æ2 byte 3 = 0xXX
+#13 RF Fix Code Key N¡Æ3 byte 1 = 0xXX
+#14 RF Fix Code Key N¡Æ3 byte 2 = 0xXX
+#15 RF Fix Code Key N¡Æ3 byte 3 = 0xXX
+#16 RF Fix Code Key N¡Æ4 byte 1 = 0xXX
+#17 RF Fix Code Key N¡Æ4 byte 2 = 0xXX
+#18 RF Fix Code Key N¡Æ4 byte 3 = 0xXX

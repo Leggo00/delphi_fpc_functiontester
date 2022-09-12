@@ -1,0 +1,24 @@
+SRBLI - Request teaching 1st PIC FOB key;
+3
+31
+Record Local Identifier;
+3
+13
+Teaching parameter;
+0
+2
+1
+Yes;
+2
+No;
+2
+Record Local Identifier;
+5
+13
+Teaching Status;
+6
+2
+1
+Key's Teaching completed (Immo, PASE and RKE);
+f0
+Teaching procedure cancelled (finished);

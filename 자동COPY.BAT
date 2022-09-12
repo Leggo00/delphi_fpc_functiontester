@@ -1,0 +1,2 @@
+COPY \\10.226.14.14\kmitester\KMITester.exe D:\02_SOFTWARE\KMITESTER\KMITester.exe.
+PAUSE

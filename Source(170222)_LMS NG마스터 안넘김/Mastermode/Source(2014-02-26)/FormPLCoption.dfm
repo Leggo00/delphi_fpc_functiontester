@@ -1,0 +1,413 @@
+object FrmPLCoption: TFrmPLCoption
+  Left = 103
+  Top = 91
+  Width = 1272
+  Height = 894
+  Caption = 'Option'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Arial'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 15
+  object lbMain: TLabel
+    Left = 8
+    Top = 48
+    Width = 49
+    Height = 24
+    Caption = 'MAIN'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 8
+    Top = 270
+    Width = 98
+    Height = 24
+    Caption = 'Motor Ecu'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 422
+    Top = 271
+    Width = 87
+    Height = 24
+    Caption = 'Station B'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 838
+    Top = 267
+    Width = 87
+    Height = 24
+    Caption = 'Station C'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1264
+    Height = 41
+    Align = alTop
+    TabOrder = 0
+    object Label2: TLabel
+      Left = 1
+      Top = 1
+      Width = 1262
+      Height = 39
+      Align = alClient
+      Alignment = taCenter
+      BiDiMode = bdRightToLeft
+      Caption = 'Option Set'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      Layout = tlCenter
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 841
+    Width = 1264
+    Height = 19
+    Panels = <>
+  end
+  object GridA: TAdvStringGrid
+    Left = 7
+    Top = 296
+    Width = 409
+    Height = 534
+    Cursor = crDefault
+    ColCount = 4
+    FixedCols = 0
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 2
+    OnKeyDown = GridAKeyDown
+    ActiveCellFont.Charset = DEFAULT_CHARSET
+    ActiveCellFont.Color = clWindowText
+    ActiveCellFont.Height = -11
+    ActiveCellFont.Name = 'Tahoma'
+    ActiveCellFont.Style = [fsBold]
+    ControlLook.FixedGradientFrom = clWhite
+    ControlLook.FixedGradientTo = clBtnFace
+    Filter = <>
+    FixedColWidth = 140
+    FixedRowHeight = 22
+    FixedFont.Charset = DEFAULT_CHARSET
+    FixedFont.Color = clWindowText
+    FixedFont.Height = -11
+    FixedFont.Name = 'Tahoma'
+    FixedFont.Style = [fsBold]
+    FloatFormat = '%.2f'
+    Look = glClassic
+    PrintSettings.DateFormat = 'dd/mm/yyyy'
+    PrintSettings.Font.Charset = DEFAULT_CHARSET
+    PrintSettings.Font.Color = clWindowText
+    PrintSettings.Font.Height = -11
+    PrintSettings.Font.Name = 'MS Sans Serif'
+    PrintSettings.Font.Style = []
+    PrintSettings.FixedFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FixedFont.Color = clWindowText
+    PrintSettings.FixedFont.Height = -11
+    PrintSettings.FixedFont.Name = 'MS Sans Serif'
+    PrintSettings.FixedFont.Style = []
+    PrintSettings.HeaderFont.Charset = DEFAULT_CHARSET
+    PrintSettings.HeaderFont.Color = clWindowText
+    PrintSettings.HeaderFont.Height = -11
+    PrintSettings.HeaderFont.Name = 'MS Sans Serif'
+    PrintSettings.HeaderFont.Style = []
+    PrintSettings.FooterFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FooterFont.Color = clWindowText
+    PrintSettings.FooterFont.Height = -11
+    PrintSettings.FooterFont.Name = 'MS Sans Serif'
+    PrintSettings.FooterFont.Style = []
+    PrintSettings.PageNumSep = '/'
+    ScrollBarAlways = saVert
+    SearchFooter.FindNextCaption = 'Find &next'
+    SearchFooter.FindPrevCaption = 'Find &previous'
+    SearchFooter.Font.Charset = DEFAULT_CHARSET
+    SearchFooter.Font.Color = clWindowText
+    SearchFooter.Font.Height = -11
+    SearchFooter.Font.Name = 'MS Sans Serif'
+    SearchFooter.Font.Style = []
+    SearchFooter.HighLightCaption = 'Highlight'
+    SearchFooter.HintClose = 'Close'
+    SearchFooter.HintFindNext = 'Find next occurence'
+    SearchFooter.HintFindPrev = 'Find previous occurence'
+    SearchFooter.HintHighlight = 'Highlight occurences'
+    SearchFooter.MatchCaseCaption = 'Match case'
+    ColWidths = (
+      140
+      73
+      85
+      87)
+  end
+  object GridMain: TAdvStringGrid
+    Left = 8
+    Top = 73
+    Width = 1241
+    Height = 192
+    Cursor = crDefault
+    ColCount = 4
+    FixedCols = 0
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 3
+    OnKeyDown = GridAKeyDown
+    ActiveCellFont.Charset = DEFAULT_CHARSET
+    ActiveCellFont.Color = clWindowText
+    ActiveCellFont.Height = -11
+    ActiveCellFont.Name = 'Tahoma'
+    ActiveCellFont.Style = [fsBold]
+    ControlLook.FixedGradientFrom = clWhite
+    ControlLook.FixedGradientTo = clBtnFace
+    Filter = <>
+    FixedColWidth = 140
+    FixedRowHeight = 22
+    FixedFont.Charset = DEFAULT_CHARSET
+    FixedFont.Color = clWindowText
+    FixedFont.Height = -11
+    FixedFont.Name = 'Tahoma'
+    FixedFont.Style = [fsBold]
+    FloatFormat = '%.2f'
+    Look = glClassic
+    PrintSettings.DateFormat = 'dd/mm/yyyy'
+    PrintSettings.Font.Charset = DEFAULT_CHARSET
+    PrintSettings.Font.Color = clWindowText
+    PrintSettings.Font.Height = -11
+    PrintSettings.Font.Name = 'MS Sans Serif'
+    PrintSettings.Font.Style = []
+    PrintSettings.FixedFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FixedFont.Color = clWindowText
+    PrintSettings.FixedFont.Height = -11
+    PrintSettings.FixedFont.Name = 'MS Sans Serif'
+    PrintSettings.FixedFont.Style = []
+    PrintSettings.HeaderFont.Charset = DEFAULT_CHARSET
+    PrintSettings.HeaderFont.Color = clWindowText
+    PrintSettings.HeaderFont.Height = -11
+    PrintSettings.HeaderFont.Name = 'MS Sans Serif'
+    PrintSettings.HeaderFont.Style = []
+    PrintSettings.FooterFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FooterFont.Color = clWindowText
+    PrintSettings.FooterFont.Height = -11
+    PrintSettings.FooterFont.Name = 'MS Sans Serif'
+    PrintSettings.FooterFont.Style = []
+    PrintSettings.PageNumSep = '/'
+    ScrollBarAlways = saVert
+    SearchFooter.FindNextCaption = 'Find &next'
+    SearchFooter.FindPrevCaption = 'Find &previous'
+    SearchFooter.Font.Charset = DEFAULT_CHARSET
+    SearchFooter.Font.Color = clWindowText
+    SearchFooter.Font.Height = -11
+    SearchFooter.Font.Name = 'MS Sans Serif'
+    SearchFooter.Font.Style = []
+    SearchFooter.HighLightCaption = 'Highlight'
+    SearchFooter.HintClose = 'Close'
+    SearchFooter.HintFindNext = 'Find next occurence'
+    SearchFooter.HintFindPrev = 'Find previous occurence'
+    SearchFooter.HintHighlight = 'Highlight occurences'
+    SearchFooter.MatchCaseCaption = 'Match case'
+    ColWidths = (
+      140
+      73
+      85
+      82)
+  end
+  object GridB: TAdvStringGrid
+    Left = 423
+    Top = 296
+    Width = 409
+    Height = 534
+    Cursor = crDefault
+    ColCount = 4
+    FixedCols = 0
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 4
+    OnKeyDown = GridAKeyDown
+    ActiveCellFont.Charset = DEFAULT_CHARSET
+    ActiveCellFont.Color = clWindowText
+    ActiveCellFont.Height = -11
+    ActiveCellFont.Name = 'Tahoma'
+    ActiveCellFont.Style = [fsBold]
+    ControlLook.FixedGradientFrom = clWhite
+    ControlLook.FixedGradientTo = clBtnFace
+    Filter = <>
+    FixedColWidth = 140
+    FixedRowHeight = 22
+    FixedFont.Charset = DEFAULT_CHARSET
+    FixedFont.Color = clWindowText
+    FixedFont.Height = -11
+    FixedFont.Name = 'Tahoma'
+    FixedFont.Style = [fsBold]
+    FloatFormat = '%.2f'
+    Look = glClassic
+    PrintSettings.DateFormat = 'dd/mm/yyyy'
+    PrintSettings.Font.Charset = DEFAULT_CHARSET
+    PrintSettings.Font.Color = clWindowText
+    PrintSettings.Font.Height = -11
+    PrintSettings.Font.Name = 'MS Sans Serif'
+    PrintSettings.Font.Style = []
+    PrintSettings.FixedFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FixedFont.Color = clWindowText
+    PrintSettings.FixedFont.Height = -11
+    PrintSettings.FixedFont.Name = 'MS Sans Serif'
+    PrintSettings.FixedFont.Style = []
+    PrintSettings.HeaderFont.Charset = DEFAULT_CHARSET
+    PrintSettings.HeaderFont.Color = clWindowText
+    PrintSettings.HeaderFont.Height = -11
+    PrintSettings.HeaderFont.Name = 'MS Sans Serif'
+    PrintSettings.HeaderFont.Style = []
+    PrintSettings.FooterFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FooterFont.Color = clWindowText
+    PrintSettings.FooterFont.Height = -11
+    PrintSettings.FooterFont.Name = 'MS Sans Serif'
+    PrintSettings.FooterFont.Style = []
+    PrintSettings.PageNumSep = '/'
+    ScrollBarAlways = saVert
+    SearchFooter.FindNextCaption = 'Find &next'
+    SearchFooter.FindPrevCaption = 'Find &previous'
+    SearchFooter.Font.Charset = DEFAULT_CHARSET
+    SearchFooter.Font.Color = clWindowText
+    SearchFooter.Font.Height = -11
+    SearchFooter.Font.Name = 'MS Sans Serif'
+    SearchFooter.Font.Style = []
+    SearchFooter.HighLightCaption = 'Highlight'
+    SearchFooter.HintClose = 'Close'
+    SearchFooter.HintFindNext = 'Find next occurence'
+    SearchFooter.HintFindPrev = 'Find previous occurence'
+    SearchFooter.HintHighlight = 'Highlight occurences'
+    SearchFooter.MatchCaseCaption = 'Match case'
+    ColWidths = (
+      140
+      73
+      85
+      86)
+  end
+  object GridC: TAdvStringGrid
+    Left = 839
+    Top = 296
+    Width = 409
+    Height = 534
+    Cursor = crDefault
+    ColCount = 4
+    FixedCols = 0
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 5
+    OnKeyDown = GridAKeyDown
+    ActiveCellFont.Charset = DEFAULT_CHARSET
+    ActiveCellFont.Color = clWindowText
+    ActiveCellFont.Height = -11
+    ActiveCellFont.Name = 'Tahoma'
+    ActiveCellFont.Style = [fsBold]
+    ControlLook.FixedGradientFrom = clWhite
+    ControlLook.FixedGradientTo = clBtnFace
+    Filter = <>
+    FixedColWidth = 140
+    FixedRowHeight = 22
+    FixedFont.Charset = DEFAULT_CHARSET
+    FixedFont.Color = clWindowText
+    FixedFont.Height = -11
+    FixedFont.Name = 'Tahoma'
+    FixedFont.Style = [fsBold]
+    FloatFormat = '%.2f'
+    Look = glClassic
+    PrintSettings.DateFormat = 'dd/mm/yyyy'
+    PrintSettings.Font.Charset = DEFAULT_CHARSET
+    PrintSettings.Font.Color = clWindowText
+    PrintSettings.Font.Height = -11
+    PrintSettings.Font.Name = 'MS Sans Serif'
+    PrintSettings.Font.Style = []
+    PrintSettings.FixedFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FixedFont.Color = clWindowText
+    PrintSettings.FixedFont.Height = -11
+    PrintSettings.FixedFont.Name = 'MS Sans Serif'
+    PrintSettings.FixedFont.Style = []
+    PrintSettings.HeaderFont.Charset = DEFAULT_CHARSET
+    PrintSettings.HeaderFont.Color = clWindowText
+    PrintSettings.HeaderFont.Height = -11
+    PrintSettings.HeaderFont.Name = 'MS Sans Serif'
+    PrintSettings.HeaderFont.Style = []
+    PrintSettings.FooterFont.Charset = DEFAULT_CHARSET
+    PrintSettings.FooterFont.Color = clWindowText
+    PrintSettings.FooterFont.Height = -11
+    PrintSettings.FooterFont.Name = 'MS Sans Serif'
+    PrintSettings.FooterFont.Style = []
+    PrintSettings.PageNumSep = '/'
+    ScrollBarAlways = saVert
+    SearchFooter.FindNextCaption = 'Find &next'
+    SearchFooter.FindPrevCaption = 'Find &previous'
+    SearchFooter.Font.Charset = DEFAULT_CHARSET
+    SearchFooter.Font.Color = clWindowText
+    SearchFooter.Font.Height = -11
+    SearchFooter.Font.Name = 'MS Sans Serif'
+    SearchFooter.Font.Style = []
+    SearchFooter.HighLightCaption = 'Highlight'
+    SearchFooter.HintClose = 'Close'
+    SearchFooter.HintFindNext = 'Find next occurence'
+    SearchFooter.HintFindPrev = 'Find previous occurence'
+    SearchFooter.HintHighlight = 'Highlight occurences'
+    SearchFooter.MatchCaseCaption = 'Match case'
+    ColWidths = (
+      140
+      73
+      85
+      85)
+  end
+end

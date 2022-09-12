@@ -1,0 +1,34 @@
+RDBLI - R&D RF Fix code;
+02
+21
+Record Local  Identifier;
+3
+FA
+13
+Local Identifier;
+5
+FA
+RF Fix Code Key N¡Æ1 byte 1;
+1
+RF Fix Code Key N¡Æ1 byte 2;
+1
+RF Fix Code Key N¡Æ1 byte 3;
+1
+RF Fix Code Key N¡Æ2 byte 1;
+1
+RF Fix Code Key N¡Æ2 byte 2;
+1
+RF Fix Code Key N¡Æ2 byte 3;
+1
+RF Fix Code Key N¡Æ3 byte 1;
+1
+RF Fix Code Key N¡Æ3 byte 2;
+1
+RF Fix Code Key N¡Æ3 byte 3;
+1
+RF Fix Code Key N¡Æ4 byte 1;
+1
+RF Fix Code Key N¡Æ4 byte 2;
+1
+RF Fix Code Key N¡Æ4 byte 3;
+1

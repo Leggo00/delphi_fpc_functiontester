@@ -1,0 +1,47 @@
+message name = SRBLI - Launch Changing Calibration byte of Remote ECU
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x09
+#7 Remote ECU Identifier = XX
+  0x01 : PDM
+#8 Remote Calibration Byte No = XX
+  0x00 : Display current value
+  0x05 : Calib_Engine_RPM_Parameter
+#9 Remote Calibration Byte Value = XX
+  0x00 : Display current value of supported calibration bytes
+  0x01 : Reserved
+  0x02 : A 4-cylindered car
+  0x03 : A 6-cylindered car
+  0x04 : A 8-cylindered car
+  0x05 : Reserved
+#10 Routine Entry Status #4 = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0A 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x09
+#7 DiagPDMCalResponseCode = XX
+  0x01 : Positive response
+  0x02 : Negative response
+#8 DiagPDMCalErrorCode = XX
+  0x00 : No error
+  0x01 : If operation is failed
+  0x02 : If requested C_MUTCalNumber is not supported
+  0x03 : If requested C_MUTCalValue is out of range
+#9 Calib_Engine_RPM_Parameter = XX
+  0x01 : Reserved
+  0x02 : A 4-cylindered car
+  0x03 : A 6-cylindered car
+  0x04 : A 8-cylindered car
+  0x05 : Reserved
+#10 DATA4 byte of the CAN response = 0x00
+#11 DATA5 byte of the CAN response = 0x00
+#12 DATA6 byte of the CAN response = 0x00
+#13 DATA7 byte of the CAN response = 0x00
+#14 DATA8 byte of the CAN response = 0x00

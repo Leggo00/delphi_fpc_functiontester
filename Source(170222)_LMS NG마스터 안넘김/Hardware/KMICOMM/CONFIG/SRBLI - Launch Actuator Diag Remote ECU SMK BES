@@ -1,0 +1,82 @@
+SRBLI - Launch Actuator Diag Remote ECU;
+6
+31
+Record Local Identifier;
+3
+6
+Remote ECU Identifier;
+0
+1
+1
+PDM;
+Remote Actuator Identifier;
+0
+9
+01
+SSB_LED_AMBER;
+02
+SSB_LED_GREEN;
+03
+HOLDER_ILL;
+04
+SSB_ILLU;
+05
+O_ACC;
+06
+O_IGN1;
+07
+O_IGN2;
+08
+O_STARTER;
+09
+Perform ESCL open check;
+Remote Actuator Command;
+0
+2
+0
+Turn OFF;
+1
+Turn ON;
+Routine Entry Status ;
+3
+0
+9
+Local Identifier;
+5
+6
+C_DiagPDMACTResponseCode;
+6
+2
+1
+Positive response;
+2
+Negative response;
+C_DiagPDMACTErrorCode;
+6
+4
+0
+No error and if ESCL is not opened state;
+1
+If actuator operation is failed;
+2
+If requested Actuator Code is not supported;
+3
+No error and if ESCL is opened state(if only perform ESCL open check);
+DATA3 byte of the CAN response;
+5
+0
+DATA4 byte of the CAN response;
+5
+0
+DATA5 byte of the CAN response;
+5
+0
+DATA6 byte of the CAN response;
+5
+0
+DATA7 byte of the CAN response;
+5
+0
+DATA8 byte of the CAN response;
+5
+0

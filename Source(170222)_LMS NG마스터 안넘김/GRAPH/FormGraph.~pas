@@ -1,0 +1,1172 @@
+//------------------------------------------------------------------------------
+//
+//   그래프 통합툴 제작.
+//
+//------------------------------------------------------------------------------
+unit FormGraph;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, WPaintBox, UnitGraph, AdvPanel, ThreadTimer, XiButton,
+  Buttons, StdCtrls, DPBLabel, AMLed, Math, Global, FloatList;
+
+const
+    WM_UPDATE_GRAPH = WM_USER + 1000;
+    INVALID_STR = 'N/A';
+
+type
+  TGraphMode = ( gm_None, gm_Cursor, gm_ZoomRect, gm_ZoomHorizental, gm_MoveALL, gm_MoveHorizental );
+
+  TFrmGraph = class(TForm)
+    PaintBoxGraph: TWolfPaintBox;
+    AdvPanel2: TAdvPanel;
+    Timer: TTimer;
+    BtnOpen: TSpeedButton;
+    BtnSave: TSpeedButton;
+    BtnSaveJpeg: TSpeedButton;
+    BtnPrint: TSpeedButton;
+    BtnNormal: TSpeedButton;
+    BtnTrace: TSpeedButton;
+    BtnStart: TSpeedButton;
+    BtnStop: TSpeedButton;
+    BtnSplit: TSpeedButton;
+    BtnGrpSet: TSpeedButton;
+    BtnZoomIn: TSpeedButton;
+    BtnZoomOut: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    OpenDialog: TOpenDialog;
+    SaveDialog: TSaveDialog;
+    PrintDialog: TPrintDialog;
+    Led_Read: TLed;
+    Label_Time: TLabel;
+    procedure PaintBoxGraphPaint(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure TimerTimer(Sender: TObject);
+    procedure PaintBoxGraphMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure PaintBoxGraphMouseMove(Sender: TObject; Shift: TShiftState;
+      X, Y: Integer);
+    procedure PaintBoxGraphMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure PaintBoxGraphDragDrop(Sender, Source: TObject; X,
+      Y: Integer);
+    procedure PaintBoxGraphDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure BtnGrpSetClick(Sender: TObject);
+    procedure BtnStartClick(Sender: TObject);
+    procedure BtnStopClick(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure BtnNormalClick(Sender: TObject);
+    procedure BtnTraceClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure BtnSplitClick(Sender: TObject);
+    procedure BtnOpenClick(Sender: TObject);
+    procedure BtnSaveClick(Sender: TObject);
+    procedure BtnSaveJpegClick(Sender: TObject);
+    procedure BtnPrintClick(Sender: TObject);
+    procedure BtnZoomOutClick(Sender: TObject);
+  private
+    { Private declarations }
+    StartPt, LastPt : TPoint;
+    GraphMode : TGraphMode;
+
+    FGraphTime, FSampling : Double;
+    FScopeChStr : String;
+    FCHCount, FSampleCount : Integer;
+//    FResourceList : TList;
+
+    procedure UpdateGraph(var Msg : TMessage); message WM_UPDATE_GRAPH;
+
+    function  InRect(Rect: TRect; var X, Y: Integer): Boolean;
+    procedure DrawCursorRect(X1, Y1, X2, Y2: Integer);
+    procedure DrawCursorLine(X1, Y1, X2, Y2: Integer);
+    procedure EnabledButton(bOnOff: Boolean);
+  public
+    { Public declarations }
+    fGraphStartTime : Double;
+    bScrollMode : Boolean;
+    bScopeMode  : Boolean;
+    bRunning    : Boolean;
+    Graph : TGraph;
+    LastOpenFile : String;
+    function  RunCommand(Param : String) : String;
+    constructor Create(Sender : TComponent; Graph : TGraph);
+    procedure  LoadFromRawData(FileName: String);
+    procedure  SaveToRawData(FileName: String);    
+  end;
+
+var
+  FrmGraph: TFrmGraph;
+  function MeasGraphValue(Graph : TGraph; Param : String) : String;
+
+  function MeasTime(Graph : TGraph; Param : String) : String;
+  function MeasData(Graph : TGraph; Param : String) : String;
+
+
+implementation
+
+{$R *.dfm}
+
+uses
+    GenUtils, FormSetGraph, uImage;
+
+{
+pocedure CreateCreatWnd(Graph : TGraph) : TForm;
+begin
+    //
+end;
+}
+
+const
+  Colors: array[0..4] of TColor =
+    ( clMaroon, clGreen, clNavy, clPurple, clRed );
+procedure TFrmGraph.LoadFromRawData(FileName : String);
+var i, Idx : Integer;
+    nReadMode, ChCount, Count : Integer;
+    text: TextFile;
+    Str, RdStr, Title, sTemp, sTemp1 : String;
+    fXMin, fXMax, fYMin, fYMax, fXStep, fYStep : Double;
+    fXValue, fYValue : Double;
+    Axis : TAxis;
+    ChData : TChData;
+    Chno : Integer;
+    //ResourceItems : TResourceItem;
+begin
+{
+[INFO]
+TITLE=
+DATE=2010-10-11 오후 9:19:57
+COUNT=4
+CH01=CH1#0.00~999.90,0.1,0.00~999.90,0.1
+CH02=CH2#0.00~999.90,0.1,0.00~999.90,0.1
+CH03=CH3#0.00~999.90,0.1,0.00~999.90,0.1
+CH04=CH4#0.00~999.90,0.1,0.00~999.90,0.1
+[DATA]
+0,0.00,0.44,5.85,0.35,0.32,
+1,0.10,0.43,5.67,0.47,3.07,
+2,0.20,0.37,5.15,0.36,4.65,
+.
+.
+.
+9998,999.80,0.34,5.94,0.43,0.37,
+9999,999.90,0.36,5.88,0.37,0.33,
+
+}
+
+    //Result := False;
+    if not FileExists(FileName) then exit;
+
+    Screen.Cursor := crHourGlass;
+    Graph.DeleteAllChannel;
+    Graph.ClearAxis;
+
+    ChCount   := 0;
+    nReadMode := 0;
+    Idx   := 0;
+    fXMin := 0;
+    fXMax := 10;
+    Title := '';
+
+	  AssignFile (text, FileName);
+    try
+   	    reset (text);
+        while not EOF (text) do begin
+            ReadLn (text, RdStr);
+            if (RdStr = '[INFO]') then begin
+                nReadMode := 1;
+                continue;
+            end else
+            if (RdStr = '[DATA]') then begin
+                nReadMode := 2;
+                continue;
+            end;
+
+            case nReadMode of
+                1: begin
+                    Str := GetToken(RdStr, '=');
+                    if (Str = 'TITLE') then begin
+                        Title := RdStr;
+                    end else
+
+                    if (Str = 'COUNT') then begin
+                        ChCount := StrToIntDef(RdStr, 0);
+                        Idx := 0;
+                    end else
+
+                    if (Str = 'TIME') then begin
+                        fXMin := StrToFloatDef( GetToken(RdStr, '~'), 0);
+                        fXMax := StrToFloatDef( GetToken(RdStr, ' '), 10);
+
+                        Axis.AxisName := Title;
+                        Axis.SetAxisRange(fXMin, fXMax);
+                        Graph.SetBottomAxis(Axis);
+                    end else
+
+                    // CH01=CH1#0.00~999.90,0.1,0.00~999.90,0.1
+                    if Pos('CH', Str) > 0 then
+                    begin
+                        // Str   => CH01
+                        // RdStr => CH1#0.00~999.90,0.1,0.00~999.90,0.1
+                        GetToken(RdStr,'#');
+                        sTemp := GetToken(RdStr,',');
+                        fXMin   := StrToFloatDef(GetToKen(sTemp,'~'),0);
+                        fXMax   := StrToFloatDef(sTemp,999);
+                        fXStep  := StrToFloatDef(GetToken(RdStr,','),1);
+
+                        sTemp := GetToken(RdStr,',');
+                        fYMin   := StrToFloatDef(GetToKen(sTemp,'~'),0);
+                        fYMax   := StrToFloatDef(sTemp,999);
+                        fYStep  := StrToFloatDef(RdStr,1);
+
+                        Graph.LeftAxis   := Graph.AddAxis;
+                        Graph.LeftAxis.SetAxisRange(fYMin, fYMax, fYStep);
+                        Graph.LeftAxis.AxisName := 'Volt [V]';
+
+                        Graph.BottomAxis := Graph.AddAxis;
+                        Graph.BottomAxis.SetAxisRange(fXMin, fXMax, fXStep);
+                        Graph.BottomAxis.AxisName := 'Time [ms]';
+
+                        ChData := Graph.AddChannel;
+                        ChData.ChName := Format('CH%d', [idx]);
+                        ChData.Color  := Colors[idx mod High(Colors)];
+                        inc(idx);
+                    end;
+                end;
+
+                2: begin
+                       Idx := StrToIntDef(GetToken(RdStr, ','), 0);
+                       if Idx >= 0 then
+                       begin
+                           fXValue := StrToFloatDef(GetToken(RdStr, ','), 0);
+                           Chno := 0;
+                           while (RdStr <> '') do
+                           begin
+                               fYValue := StrToFloatDef(GetToken(RdStr, ','), 0);
+                               ChData := TChData(Graph.Channel[Chno]);
+                               ChData.AddXY(fXValue,fYValue);
+                               Inc(Chno);
+                           end;
+                       end;
+                end;
+            end;
+        end;
+
+        // 마지막 저장파일 기억.
+        LastOpenFile := FileName;
+        Caption := ExtractFileName(LastOpenFile);
+    finally
+        CloseFile(text);
+        BtnZoomOutClick(Self);  // 그려진 그래프를 볼수 있도록 한다.
+        Screen.Cursor := crDefault;
+    end;
+
+end;
+
+procedure TFrmGraph.SaveToRawData(FileName : String);
+var i, j : Integer;
+    WtStr : String;
+    f: TextFile;
+    ChData : TChData;
+begin
+    // 채널정보가 없으면 저장안함.
+    if Graph.ChannelCount < 1 then exit;
+
+    if FileExists (FileName) then DeleteFile(pChar(FileName));
+
+    AssignFile (f, FileName);
+    try
+        ReWrite(f);
+        WriteLn (f, '[INFO]');
+        WriteLn (f, Format('TITLE=%s',   [Graph.Title]));
+        WriteLn (f, Format('DATE=%s',    [DateTimeToStr(Now())]));
+        WriteLn (f, Format('COUNT=%d',   [Graph.ChannelCount]));
+
+        for j:= 0 to Graph.ChannelCount-1 do begin
+            ChData := TChData(Graph.Channel[j]);
+            WtStr := Format('CH%.2d=%s#%f~%f,%f,%f~%f,%f',
+                              [j+1,
+                              ChData.ChName,
+                              ChData.RefAxisX.fAxisMin,
+                              ChData.RefAxisX.fAxisMax,
+                              ChData.RefAxisX.AxisStep,
+                              ChData.RefAxisY.fAxisMin,
+                              ChData.RefAxisY.fAxisMax,
+                              ChData.RefAxisY.AxisStep]);
+            WriteLn (f, WtStr);
+        end;
+
+        WriteLn (f, '[DATA]');
+        for i:= 0 to Graph.Channel[0].Count-1 do
+        begin
+            WtStr := IntToStr(i) + ',' + FormatFloat('0.00', ChData.Data[i].x) + ',';
+            for j:= 0 to Graph.ChannelCount-1 do begin
+                ChData := TChData(Graph.Channel[j]);
+                WtStr := WtStr + FormatFloat('0.00', ChData.Data[i].y) + ',';
+            end;
+            WriteLn (f, WtStr);
+        end;
+        Flush (f);
+
+    finally
+        CloseFile (f);
+    end;
+end;
+
+constructor TFrmGraph.Create(Sender : TComponent; Graph : TGraph);
+begin
+    inherited Create(Sender);
+
+    Self.Graph := Graph;
+end;
+
+procedure TFrmGraph.UpdateGraph(var Msg : TMessage);
+begin
+    PaintBoxGraph.Invalidate;
+end;
+
+//------------------------------------------------------------------------------
+const
+    ColorTable : array [0..4] of TColor =
+        ( clNavy, clBlue, clGreen, clRed, clPurple );
+
+// 그래프 제어를 Command로 제어한다.
+function TFrmGraph.RunCommand(Param : String) : String;
+var i, nTime : Integer;
+    Str, RdStr, Cmd, AxisName, ChName : String;
+    ChData : TChData;
+    Axis : TAxis;
+    fValue, fMin, fMax : Double;
+    Resource, NewResource : TResourceItem;
+begin
+    Result := '';
+
+    while (Param <> '') do begin
+        Str := GetTokenTrim(Param, ';');
+        Cmd := Uppercase(GetToken(Str, '='));
+        //----------------------------------------------------------------------
+        if (Cmd = 'CLEAR') then begin
+            Graph.DeleteAllChannel;
+            Graph.ClearAxis;
+
+            Timer.Interval := 100;
+            bScopeMode := false;
+
+            Graph.BottomAxis := Graph.AddAxis;
+            Graph.BottomAxis.AxisName := 'Time [ms]';
+            Graph.BottomAxis.SetAxisRange(0, fGraphTime, 0);
+
+            Timer.Enabled := False;
+{
+            // 그래프 채널목록을 삭제한다.
+            for i := 0 to FResourceList.Count-1 do
+            begin
+                Resource := TResourceItem(FResourceList[i]);
+                Resource.Free;
+            end;
+            FResourceList.Clear;
+}
+        end else
+        //----------------------------------------------------------------------
+        if (Cmd = 'SETAXIS') then begin    // SETCH:RESNAME:1~2;
+            // 기존의 동일이름의 축이 있는지 확인.  없으면 생성한다.
+            AxisName := GetTokenTrim(Str, ':');
+            fMin :=  StrToFloatDef( GetToken(Str, '~'), 0);
+            fMax :=  StrToFloatDef( Str, 100);
+
+            Axis := Graph.FindAxis(AxisName);
+            if (Axis = nil) then Axis := Graph.AddAxis;
+
+            Axis.AxisName := AxisName;
+            Axis.SetAxisRange(fMin, fMax);
+            if (Graph.LeftAxis = nil) then
+                Graph.LeftAxis := Axis;
+        end else
+        //----------------------------------------------------------------------
+        // 채널설정.
+        if (Cmd = 'SETCH') then begin    // SETCH:RESNAME:AXISNAME
+            ChName := GetTokenTrim(Str, ':');
+
+            ChData := Graph.FindChannel(ChName);
+            if (ChData = nil) then
+                ChData := Graph.AddChannel;
+
+            ChData.ChName := ChName;
+            ChData.RefAxisX := Graph.BottomAxis;
+
+            // 축을 찾는다.
+            AxisName := GetToken(Str, ':');
+            Axis := Graph.FindAxis(AxisName);
+            if (Axis <> nil) then ChData.RefAxisY := Axis
+                             else ChData.RefAxisY := Graph.LeftAxis;
+            ChData.Color := ColorTable[Graph.GetChannelCount mod 5];
+        end else
+        //----------------------------------------------------------------------
+        if (Cmd = 'SPLIT') then begin
+            Graph.bViewSplit := (Str = 'ON') or (Str = '1');
+        end else
+        //----------------------------------------------------------------------
+        if (Cmd = 'SAMPLING') then begin
+            fValue := StrToFloatDef(Str, 10);
+            if fValue <= 0 then fValue := 10;
+
+            FSampling := fValue;
+            FSampleCount := Round(FGraphTime * FSampling);
+
+            bScopeMode := (FSampling > 100);  // 100Hz 이상인경우는 Scope모드로 변경.
+            if (not bScopeMode) then begin
+                Timer.Interval := Round((1 / FSampling) * 1000);
+            end else
+                Timer.Interval := 50;
+
+            //Edit_Sampling.Text := FormatFloat('0.####', FSampling);
+        end else
+        //----------------------------------------------------------------------
+        if (Cmd = 'TIME') then begin
+            FGraphTime := StrToFloatDef(Str, 10);
+
+            if FSampling <= 0 then FSampling := 0.1;
+            FSampleCount := Round(FGraphTime * FSampling);
+
+            if (Graph.BottomAxis <> nil ) then
+                Graph.BottomAxis.SetAxisRange(0, FGraphTime, 0);
+        end;
+        //----------------------------------------------------------------------
+        if (Cmd = 'START') then begin
+            if (Graph.ChannelCount > 0) then
+            begin
+                EnabledButton(False);
+
+                bScrollMode   := (Str = 'ON');
+                Led_Read.LedOn := True;
+                Graph.ZoomOut;
+                for i:= Graph.ChannelCount-1 downto 0 do begin
+                    Graph.Channel[i].Clear;
+                end;
+                fGraphStartTime := GetTickCountEX;
+                bRunning := True;
+{
+                // 각 하드웨어 동기를 맞춘다.
+                FrmRunResource.SetTimeSync;
+
+                // 처음을 그리기위해..
+                Self.Tag := 1;
+                TimerTimer(nil);
+                Self.Tag := 0;
+
+                // SCOPE MODE일경우...
+                if (bScopeMode) then
+                begin
+                    FCHCount := MakeScopeChStr(FScopeChStr);
+                    if (FScopeChStr <> '') and (FCHCount > 0) then
+                        FrmRunResource.RunScope( FScopeChStr, FCHCount, FSampleCount, FSampling, 0, '', 0, nil);
+                end
+}                
+            end;
+        end else
+        //----------------------------------------------------------------------
+        if (Cmd = 'STOP') then begin
+           bRunning := False;
+           Timer.Enabled := False;
+           Led_Read.LedOn := False;
+           EnabledButton(True);
+        end else
+        //----------------------------------------------------------------------
+        // 시간계산..
+        if (Cmd = 'MEAS') then begin
+            Result := MeasGraphValue(Graph, Str);
+        end;
+
+        //----------------------------------------------------------------------
+        if (Cmd = 'WAIT') then begin
+            while (GetTickCountEX - fGraphStartTime < Round(FGraphTime * 1000 * 1.1)) do  //10
+            begin
+                if (not bRunning) then break;
+                Application.ProcessMessages;;
+            end;
+        end;
+    end;
+    PaintBoxGraph.Invalidate;
+end;
+
+
+procedure TFrmGraph.FormCreate(Sender: TObject);
+begin
+//    FResourceList := TList.Create;
+    bRunning := False;
+    if Graph = nil then begin
+        Close;
+        exit;
+    end;
+
+    fGraphTime := 5;
+    PaintBoxGraph.Align := alClient;
+
+    Graph.FrontColor := clWhite;
+    Graph.BackColor  := clWhite;
+    Graph.LineColor  := clGray;
+    Graph.bViewSplit := True;
+
+    // 축을설정한다.
+    Graph.BottomAxis.SetAxisRange(0, 5, 0);
+    Graph.BottomAxis.AxisName := 'TIME (Sec)';
+
+    Graph.LeftAxis.SetAxisRange(0, 10, 0);
+    Graph.LeftAxis.AxisName := 'LEVEL (V)';
+
+    RunCommand('CLEAR');
+end;
+
+procedure TFrmGraph.FormShow(Sender: TObject);
+begin
+    LoadWindowPos(Self);
+end;
+
+
+procedure TFrmGraph.FormDestroy(Sender: TObject);
+var i : Integer;
+    ResourceItem : TResourceItem;
+begin
+ {
+    for i := 0 to FResourceList.Count-1 do
+    begin
+        ResourceItem := TResourceItem(FResourceList[i]);
+        ResourceItem.Free;
+    end;
+
+//    FResourceList.Free;
+    Graph.Free;
+}
+end;
+procedure TFrmGraph.PaintBoxGraphPaint(Sender: TObject);
+var Bm : TBitmap;
+    DRect, URect : TRect;
+    fTime : Double;
+    i, nCount : Integer;
+begin
+    // Use Double Buffering.
+    fTime := GetTickCountEx();
+
+    Bm := TBitmap.Create;
+    try
+        Bm.Width  := PaintBoxGraph.Width;
+        Bm.Height := PaintBoxGraph.Height;
+        Bm.Canvas.Font.Assign(PaintBoxGraph.Canvas.Font);
+        DRect := PaintBoxGraph.ClientRect;
+
+        Graph.DrawGraph(Bm.Canvas, DRect);
+
+        PaintBoxGraph.Canvas.CopyRect(DRect, Bm.Canvas, DRect);
+    finally
+        Bm.Free;
+    end;
+    fTime := GetTickCountEx() - fTime;
+end;
+
+
+procedure TFrmGraph.TimerTimer(Sender: TObject);
+var i, j : Integer;
+    XValue, YValue : Double;
+    Str, ResVal : String;
+    ResourceItem : TResourceItem;
+begin  {
+    Timer.Enabled := False;
+
+    XValue := (GetTickCountEX - fGraphStartTime) / 1000;
+    Label_Time.Caption := FormatFloat('0.00', XValue);
+
+    if (bScrollMode) and (not bScopeMode) and (XValue > fGraphTime) then begin
+        Graph.BottomAxis.AxisMax := XValue;
+        Graph.BottomAxis.AxisMin := (XValue - fGraphTime);
+    end;
+
+    try
+        for i := 0 to Graph.ChannelCount-1 do
+        begin
+            ResourceItem := TResourceItem(FResourceList[i]);
+//            ResourceItem := CurrResource.FindResourceByName(Graph.Channel[i].ChName);
+            if (ResourceItem = nil) then continue;
+
+            // SCOPE모드일경우에은 CAN과 NI Hardware는 Skip한다.
+            Str := UpperCase(ResourceItem.HwInfo);
+            if (Pos('DEV', Str) > 0) then continue;  // NI Card는 Scope모드에 상관없이 측정.
+            
+            if (bScopeMode) then begin
+                if (Pos('CAN', Str) > 0) and (Self.Tag = 0) then continue;
+            end;
+
+            ResVal := ReadResource(ResourceItem, '');
+            if (ResVal = 'ON') or (ResVal = 'O') then 
+                YValue := 1
+            else
+                YValue := StrToFloatDef(ResVal, 0);
+
+            Graph.Channel[i].AddXY( XValue, YValue );
+
+            // 시간이 지난 데이터틑 삭제한다.
+            if (bScrollMode) then begin
+                while Graph.Channel[i].Count > 0 do begin
+                    if (Graph.Channel[i].Data[0].x < Graph.BottomAxis.AxisMin ) then begin
+                        Graph.Channel[i].Delete(0);
+                    end else
+                        break;
+                end;
+            end;
+        end;
+    finally
+    end;
+
+    // 나무 자주 그래프를 그리지 않으려고 200ms 간격으로 Update.
+    if ((GetTickCount - Timer.Tag) > 200) then begin
+        PaintBoxGraph.Invalidate;
+        Timer.Tag := GetTickCount;
+    end;
+
+    bRunning := (XValue <= Graph.BottomAxis.AxisMax) and (XValue < 60) ;
+
+    Timer.Enabled := bRunning;
+    BtnStop.Down := (not bRunning);
+    Led_Read.LedOn := bRunning;
+
+    if (not bRunning) then
+        EnabledButton(True);    }
+end;
+
+procedure TFrmGraph.PaintBoxGraphMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+    if not BtnZoomIn.Down then exit;
+    
+    if not InRect(Graph.GraphRect, X, Y) then begin
+        StartPt := Point(-1, -1);
+        GraphMode := gm_None;
+        exit;
+    end;
+
+    StartPt := Point(X, Y);
+    LastPt  := Point(X, Y);
+
+    if (Button = mbLeft)   then
+    begin
+        if Graph.bViewSplit then GraphMode := gm_ZoomHorizental
+                            else GraphMode := gm_ZoomRect;
+    end else
+    if (Button = mbRight)  then begin
+        if Graph.bViewSplit then GraphMode := gm_MoveHorizental
+                            else GraphMode := gm_MoveALL;
+    end;
+    if (Button = mbMiddle) then  GraphMode := gm_ZoomHorizental;
+
+    case GraphMode of
+        gm_Cursor         : ;
+        gm_ZoomRect       : DrawCursorRect(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+        gm_ZoomHorizental : DrawCursorRect(StartPt.X, Graph.GraphRect.Top+2, LastPt.X, Graph.GraphRect.Bottom-2);
+        gm_MoveALL        : DrawCursorLine(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+        gm_MoveHorizental : DrawCursorLine(StartPt.X, StartPt.Y, LastPt.X, StartPt.Y);
+    end;
+end;
+
+procedure TFrmGraph.PaintBoxGraphMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    if GraphMode = gm_None then exit;
+
+    case GraphMode of
+        gm_Cursor        : ;
+        gm_ZoomRect      : begin
+              DrawCursorRect(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+              DrawCursorRect(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+          end;
+
+        gm_ZoomHorizental: begin
+              DrawCursorRect(StartPt.X, Graph.GraphRect.Top+2, LastPt.X, Graph.GraphRect.Bottom-2);
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+              DrawCursorRect(StartPt.X, Graph.GraphRect.Top+2, LastPt.X, Graph.GraphRect.Bottom-2);
+        end;
+
+        gm_MoveHorizental : begin
+              DrawCursorLine(StartPt.X, StartPt.Y, LastPt.X, StartPt.Y);
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+              DrawCursorLine(StartPt.X, StartPt.Y, LastPt.X, StartPt.Y);
+        end;
+
+        gm_MoveALL       : begin
+              DrawCursorLine(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+              DrawCursorLine(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+        end;
+    end;
+end;
+
+procedure TFrmGraph.PaintBoxGraphMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+    if GraphMode = gm_None then exit;
+
+    case GraphMode of
+        gm_Cursor        : ;
+        gm_ZoomRect      : begin
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+
+              if (StartPt.X < LastPt.X) then
+                  Graph.ZoomRect(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y)
+              else
+                  Graph.ZoomOut;
+              PaintBoxGraph.Invalidate;
+          end;
+
+        gm_ZoomHorizental: begin
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+
+              if (StartPt.X < LastPt.X) then
+                  Graph.ZoomHorizental(StartPt.X, LastPt.X)
+              else
+                  Graph.ZoomOut;
+              PaintBoxGraph.Invalidate;
+        end;
+
+        gm_MoveHorizental : begin
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+              Graph.MoveX(StartPt.X, LastPt.X);
+              PaintBoxGraph.Invalidate;
+        end;
+
+        gm_MoveALL       : begin
+              InRect(Graph.GraphRect, X, Y);
+              LastPt := Point(X, Y);
+              Graph.MoveXY(StartPt.X, StartPt.Y, LastPt.X, LastPt.Y);
+              PaintBoxGraph.Invalidate;
+        end;
+    end;
+    StartPt := Point(-1,-1);
+    GraphMode := gm_None;
+end;
+
+
+
+procedure TFrmGraph.DrawCursorRect(X1, Y1, X2, Y2 : Integer);
+var R, G, B, nInc : Integer;
+begin
+    with PaintBoxGraph.Canvas do
+    begin
+
+        Pen.Style   := psSolid;
+        Pen.Color   := clWhite;
+        Pen.Mode    := pmXor;
+        Brush.Style := bsClear;
+{
+        nInc := 100;
+        R := GetRValue(Graph.FrontColor);
+        G := GetGValue(Graph.FrontColor);
+        B := GetBValue(Graph.FrontColor);
+
+        if R > 128 then R := R - nInc else R := R + nInc;
+        if G > 128 then G := G - nInc else G := G + nInc;
+        if B > 128 then B := B - nInc else B := B + nInc;
+        Brush.Style := bsSolid;
+        Brush.Color := clGray;// RGB(R, G, B);
+}
+        Rectangle(X1, Y1, X2, Y2);
+        Pen.Mode    := pmCopy;
+    end;
+end;
+
+procedure TFrmGraph.DrawCursorLine(X1, Y1, X2, Y2 : Integer);
+const GAB = 7;
+begin
+    with PaintBoxGraph.Canvas do begin
+        Pen.Style   := psSolid;
+        Pen.Color   := clWhite;
+        Pen.Mode    := pmXor;
+        Brush.Style := bsClear;
+        MoveTo(X1, Y1);
+        LineTo(X2, Y2);
+
+        Ellipse(X1-GAB, Y1-GAB, X1+GAB, Y1+GAB);
+        Pen.Mode           := pmCopy;
+    end;
+end;
+
+
+function TFrmGraph.InRect(Rect : TRect; var X, Y : Integer) : Boolean;
+begin
+    Result := True;
+    if (X <= Rect.Left   ) then begin X := Rect.Left+1;    Result := False; end;
+    if (X >= Rect.Right  ) then begin X := Rect.Right-1;   Result := False; end;
+    if (Y <= Rect.Top    ) then begin Y := Rect.Top+1;     Result := False; end;
+    if (Y >= Rect.Bottom ) then begin Y := Rect.Bottom-1;  Result := False; end;
+end;
+
+
+procedure TFrmGraph.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    Timer.Enabled := False;
+    SaveWindowPos(Self);
+
+    if FormStyle = fsMDIChild then
+    begin
+        Action := caFree;
+        FrmGraph := nil;
+    end;
+end;
+
+procedure TFrmGraph.PaintBoxGraphDragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+    Accept := (DragResourceItem <> nil);
+end;
+
+
+procedure TFrmGraph.PaintBoxGraphDragDrop(Sender, Source: TObject; X,
+  Y: Integer);
+var NewAxis : TAxis;
+    ChData, NewCh : TChData;
+    Axis : TAxis;
+    i : Integer;
+    NewResource : TResourceItem;
+begin
+{
+    if (DragResourceItem <> nil) then
+    begin
+        // 축을 생성한다.
+
+//        RunCommand(Format('SETAXIS=%s:%f~%f', [DragResourceItem.sUnit, DragResourceItem.OutMin, DragResourceItem.OutMax]));
+//        RunCommand(Format('SETCH=%s:%s',      [DragResourceItem.ResCode, DragResourceItem.sUnit]));
+
+        ChData := Graph.FindChannel(DragResourceItem.ResCode);
+        if (ChData = nil) then begin
+            ChData := Graph.AddChannel;
+
+            NewResource := TResourceItem.Create;
+            NewResource.Assign(DragResourceItem);
+            FResourceList.Add(NewResource);
+        end;
+        ChData.ChName := DragResourceItem.ResCode;
+
+        // 축을 찾는다.
+        Axis := Graph.FindAxis(DragResourceItem.sUnit);
+        if (Axis = nil) then
+            Axis := Graph.AddAxis;
+
+        Axis.AxisName := DragResourceItem.sUnit;
+        Axis.SetAxisRange(DragResourceItem.OutMin, DragResourceItem.OutMax);
+
+        ChData.RefAxisX := Graph.BottomAxis;
+        ChData.RefAxisY := Axis;
+        ChData.Color := ColorTable[Graph.GetChannelCount mod 5];
+
+        // 채널정보를 입력한다.
+        PaintBoxGraph.Invalidate;
+    end;
+}
+end;
+
+procedure TFrmGraph.BtnGrpSetClick(Sender: TObject);
+begin
+    FrmSetGraph.Execute(Graph);
+    PaintBoxGraph.Invalidate;
+end;
+
+procedure TFrmGraph.BtnStartClick(Sender: TObject);
+var i, nChCount : Integer;
+    sChStr : String;
+    fValue : Double;
+begin
+{
+//    fValue := StrToFloatDef(Edit_Sampling.Text, 10);
+
+    Graph.ZoomOut;
+
+//    RunCommand(Format('SAMPLING=%f', [fValue]));
+    RunCommand(Format('TIME=%f', [Graph.BottomAxis.AxisMax]));
+    RunCommand('START=ON');
+}
+end;
+
+procedure TFrmGraph.BtnStopClick(Sender: TObject);
+begin
+    RunCommand('STOP');
+end;
+
+procedure TFrmGraph.SpeedButton3Click(Sender: TObject);
+begin
+    RunCommand('CLEAR');
+end;
+
+procedure TFrmGraph.BtnNormalClick(Sender: TObject);
+begin
+//
+end;
+
+procedure TFrmGraph.BtnTraceClick(Sender: TObject);
+begin
+//
+end;
+
+
+procedure TFrmGraph.BtnSplitClick(Sender: TObject);
+begin
+    Graph.bViewSplit := not Graph.bViewSplit;
+    PaintBoxGraph.Invalidate;
+end;
+
+procedure TFrmGraph.BtnOpenClick(Sender: TObject);
+begin
+    OpenDialog.Title := '그래프 데이터 열기';
+    OpenDialog.DefaultExt := 'txt';
+    OpenDialog.Filter := 'Graph data Files(*.txt)|*.txt';
+    if OpenDialog.Execute then begin
+        LoadFromRawData(OpenDialog.FileName);
+    end;
+end;
+
+procedure TFrmGraph.BtnSaveClick(Sender: TObject);
+begin
+    SaveDialog.Title := '그래프 데이터 저장';
+    SaveDialog.DefaultExt := 'txt';
+    SaveDialog.Filter := 'Graph data Files(*.txt)|*.txt';
+    if SaveDialog.Execute then begin
+         SaveToRawData(SaveDialog.FileName);
+        // 마지막 저장파일 기억.
+        //LastOpenFile := FileName;
+        Caption := ExtractFileName(SaveDialog.FileName);
+    end;
+end;
+
+procedure TFrmGraph.BtnSaveJpegClick(Sender: TObject);
+begin
+    SaveDialog.Title := '그래프 BMP저장';
+    SaveDialog.DefaultExt := 'jpg';
+    SaveDialog.Filter := 'JPEG Files(*.jpg)|*.jpg';
+    if SaveDialog.Execute then begin
+        Graph.SaveToJPG(SaveDialog.FileName);
+    end;
+end;
+
+procedure TFrmGraph.BtnPrintClick(Sender: TObject);
+begin
+    if PrintDialog.Execute then begin
+        //
+    end;
+end;
+
+procedure TFrmGraph.BtnZoomOutClick(Sender: TObject);
+begin
+    Graph.ZoomOut;
+    PaintBoxGraph.Invalidate;
+
+    BtnNormal.Down := True;
+end;
+
+procedure TFrmGraph.EnabledButton(bOnOff : Boolean);
+var i : Integer;
+begin
+    for i := 0 to ComponentCount-1 do begin
+        if (Components[i] is TControl) then
+        begin
+            if (Components[i].Tag = 1) then
+               (Components[i] as TControl).Enabled := bOnOff
+            else
+            if (Components[i].Tag = 2) then
+               (Components[i] as TControl).Enabled := not bOnOff;
+        end;
+    end;
+end;
+
+function MeasGraphValue(Graph : TGraph; Param : String) : String;
+var Command, Str : String;
+begin
+    Result := INVALID_STR;
+
+    Str := Param;
+    Command := GetToken(Str, '=');
+    if (Command = 'TIME') then
+        Result := MeasTime(Graph, Str)
+    else
+        Result := MeasData(Graph, Param);
+end;
+
+//------------------------------------------------------------------------------
+function MeasTime(Graph : TGraph; Param : String) : String;
+type TItemState = ( is_Disable, is_Ready, is_CheckOk );
+var i, j, Idx, nPulseCount : Integer;
+    Str, RdStr, DebugStr, TempStr : String;
+
+    fStartTime, fEndTime, fTime, fOldTime : Double;
+    fValue, fOldValue, fResVal : Double;
+
+    ItemsStr : array [1..2] of String;
+
+    Items : array [1..2] of record
+        ResName, ResType, ResValue : String;
+        Idx, nCh : Integer;
+        fOldTime, fTime, fOldValue, fValue, fSkipTime : Double;
+        fTrigLevel, fDelay, fSetDelay : Double;
+        State : TItemState;
+        nCount: Integer;
+        fDelayStart : Double;
+        fSkip : Double;
+    end;
+begin
+    Result  := 'N/A';
+    fResVal := -9999;
+    nPulseCount := 0;
+
+    if (Graph = nil) then exit;
+
+    DebugStr := Param;
+
+    // 1) PARAMETER를 분석한다.
+    // PARAM = RES1:U:1:1~RES2:D:2=1
+    ItemsStr[1] := GetToken(Param, '~');
+    ItemsStr[2] := GetToken(Param, ' ');
+    for i := 1 to 2 do begin
+        with Items[i] do begin
+            Idx       := -1;
+            RdStr     := GetToken(ItemsStr[i], '=');
+            
+            ResName   := GetToken(RdStr, ':');
+            ResType   := GetToken(RdStr, ':');
+            ResValue  := GetToken(RdStr, ':');
+            nCount    := StrToIntDef(GetToken(RdStr, ':'), 0);
+
+            fSkip     := StrToIntDef(ItemsStr[i], 0);
+            // 그래프 채널번호를 찾는다.
+            nCh := -1;
+            for j:=0 to Graph.ChannelCount-1 do begin
+                if (Graph.Channel[j].ChName = ResName) then begin
+                    nCh := j;
+                    break;
+                end;
+            end;
+            fTrigLevel := StrToFloatDef(ResValue, 0);
+        end;
+    end;
+
+    //--------------------------------------------------------------------------
+    // 1) 첫번째 조건을 찾는다.
+    nPulseCount := 0;
+    fStartTime := -1;
+    Idx := Items[1].nCh;
+    if (Idx < 0) or (Idx >= Graph.ChannelCount) then begin
+        WriteDebugStr( Format('Start Idx = %d', [Idx]));
+        exit;
+    end;
+
+    fOldValue := Graph.Channel[Idx].Data[0].y;
+    for i:= 1 to Graph.Channel[Idx].Count-1 do
+    begin
+        fTime  := Graph.Channel[Idx].Data[i].x;
+        fValue := Graph.Channel[Idx].Data[i].y;
+
+        if (fTime < Items[1].fSkip) then continue;
+
+        // Rise Edge검출
+        if ((Items[1].ResType = 'U') and (fOldValue < Items[1].fTrigLevel) and (fValue >= Items[1].fTrigLevel)) or
+           ((Items[1].ResType = 'L') and (fOldValue > Items[1].fTrigLevel) and (fValue <= Items[1].fTrigLevel)) then
+        begin
+            Inc(nPulseCount);
+            if nPulseCount > Items[1].nCount then begin
+                fStartTime := fTime;
+                break;
+            end
+        end;
+        fOldValue := fValue;
+    end;
+    if (fStartTime < 0) then exit;
+
+    //--------------------------------------------------------------------------
+    // 2) 두번째 조건을 찾는다.
+    nPulseCount := 0;
+    fEndTime    := -1;
+    Idx := Items[2].nCh;
+    if (Idx < 0) or (Idx >= Graph.ChannelCount) then begin
+        WriteDebugStr( Format('End Idx = %d', [Idx]));
+        exit;
+    end;
+
+    fOldValue := Graph.Channel[Idx].Data[0].y;
+    for i:= 1 to Graph.Channel[Idx].Count-1 do
+    begin
+        fTime  := Graph.Channel[Idx].Data[i].x;
+        if (fTime >= fStartTime) and (fTime > Items[2].fSkip) then
+        begin
+            fValue := Graph.Channel[Idx].Data[i].y;
+            // Rise Edge검출
+            if ((Items[2].ResType = 'U') and (fOldValue < Items[2].fTrigLevel) and (fValue >= Items[2].fTrigLevel)) or
+               ((Items[2].ResType = 'L') and (fOldValue > Items[2].fTrigLevel) and (fValue <= Items[2].fTrigLevel)) then
+            begin
+                Inc(nPulseCount);
+                if nPulseCount > Items[2].nCount then begin
+                    fEndTime := fTime;
+                    break;
+                end
+            end;
+        end;
+        fOldValue := fValue;
+    end;
+    
+    if (fEndTime < 0) then exit;
+
+    //--------------------------------------------------------------------------
+    // 3) 결과를 계산한다.
+    Result := FloatToStr(fEndTime - fStartTime);
+end;
+
+// 그래프의 값을 측정한다.
+function MeasData(Graph : TGraph; Param : String) : String;
+var i, j, nDigit : Integer;
+    sItemName, sChName : String;
+    fValue, fScale, fOffset: Double;
+    Data, DutyList, FreqList : TFloatList;
+begin
+    Result := INVALID_STR;
+    if (Graph = nil) then exit;
+
+    sItemName := GetToken(Param, '=');
+    sChName   := GetToken(Param, ',');
+    fScale    := StrToFloatDef( GetToken(Param, ','), 1);
+    fOffset   := StrToFloatDef( GetToken(Param, ','), 0);
+    nDigit    := StrToIntDef( GetToken(Param, ','), 0);
+
+    // 1) 그래프 채널번호를 찾는다.
+    for i:=0 to Graph.ChannelCount-1 do begin
+        if (Graph.Channel[i].ChName = sChName) then
+        begin
+            // CAN Start up Time을 측정하기 위해 즉석에서 만듬.
+            if sItemName = 'RISETIME' then
+            begin
+                for j := 0 to Graph.Channel[i].Count-1 do begin
+                    if Graph.Channel[i].Data[j].y > fScale then begin
+                        fValue := Graph.Channel[i].Data[j].x;
+                        break;
+                    end;
+                end;
+            end else begin
+                fValue := Graph.Channel[i].MeasValue(sItemName);
+                fValue := fScale * fValue + fOffset;
+            end;
+            case nDigit of
+              1 : Result := FormatFloat('0.0', fValue);
+              2 : Result := FormatFloat('0.00', fValue);
+              3 : Result := FormatFloat('0.000', fValue);
+              4 : Result := FormatFloat('0.0000', fValue);
+              else Result := FormatFloat('0.00', fValue);
+            end;
+            exit;
+        end;
+    end;
+end;
+
+end.

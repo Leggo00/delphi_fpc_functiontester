@@ -1,0 +1,25 @@
+message name = LFWriteAntennaAreaConfiguration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0E 
+#5 Request Id = A0 
+#6 Antenna Area Index = XX
+#7 Telegram index = XX
+#8 ~ #9 Output configuration = XX
+#10 Data Power = XX
+#11 RSSI Power = XX
+#12 Destroy bit Power = XX
+#13 Data load state = XX
+#14 RSSI load state = XX
+#15 ~ #16 RSSI Key threshold = XX
+#17 Antenna Area Type = XX
+#18 Antenna Area Index = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 0xE0 
+#6 Reserved = 0xXX

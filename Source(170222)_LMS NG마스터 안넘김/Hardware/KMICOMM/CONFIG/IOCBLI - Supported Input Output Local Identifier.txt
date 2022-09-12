@@ -1,0 +1,16 @@
+message name = IOCBLI - Supported Input Output Local Identifier
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 30 
+#6 Input Output Local Identifier = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x00 
+#5 Request Id = 0x70 
+#6 Input Output Local Identifier = 0x00
+#N+7 Supported IOLI = XX

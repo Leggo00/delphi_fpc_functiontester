@@ -1,0 +1,514 @@
+Publics by module
+
+_activateRecipe	size = 0
+	_activateRecipe                 
+
+_activateWorkorder	size = 0
+	_activateWorkorder              
+
+_apiFreeBuffers	size = 0
+	_apiFreeBuffers                 
+
+_apiGetVersion	size = 0
+	_apiGetVersion                  
+
+_apiHeartbeat	size = 0
+	_apiHeartbeat                   
+
+_apiInit	size = 0
+	_apiInit                        
+
+_apiLogin	size = 0
+	_apiLogin                       
+
+_apiLogout	size = 0
+	_apiLogout                      
+
+_apiShutdown	size = 0
+	_apiShutdown                    
+
+_appendAttributeToSerialNumber	size = 0
+	_appendAttributeToSerialNumber  
+
+_appendAttributeToWorkorder	size = 0
+	_appendAttributeToWorkorder     
+
+_appendAttributesToMaterialBin	size = 0
+	_appendAttributesToMaterialBin  
+
+_assignBatchNoToWorkorder	size = 0
+	_assignBatchNoToWorkorder       
+
+_assignSerialNumberForProductOrWorkorder	size = 0
+	_assignSerialNumberForProductOrWorkorder
+
+_assignSerialNumberMergeAndUploadState	size = 0
+	_assignSerialNumberMergeAndUploadState
+
+_assignSerialNumberToWorkOrder	size = 0
+	_assignSerialNumberToWorkOrder  
+
+_bomCheck	size = 0
+	_bomCheck                       
+
+_bomCheckForWorkorder	size = 0
+	_bomCheckForWorkorder           
+
+_changeFeederBank	size = 0
+	_changeFeederBank               
+
+_changeMatBinForSerialNumberRepair	size = 0
+	_changeMatBinForSerialNumberRepair
+
+_changeMaterialBinAttributes	size = 0
+	_changeMaterialBinAttributes    
+
+_changeMaterialBinQuantity	size = 0
+	_changeMaterialBinQuantity      
+
+_changeWorkOrder	size = 0
+	_changeWorkOrder                
+
+_changeWorkOrderForLine	size = 0
+	_changeWorkOrderForLine         
+
+_checkEquipmentData	size = 0
+	_checkEquipmentData             
+
+_checkMergedPartsForSnrComplete	size = 0
+	_checkMergedPartsForSnrComplete 
+
+_checkSerialNumberState	size = 0
+	_checkSerialNumberState         
+
+_checkSnrStateBySnrRef	size = 0
+	_checkSnrStateBySnrRef          
+
+_confirmAdvice	size = 0
+	_confirmAdvice                  
+
+_createAttribute	size = 0
+	_createAttribute                
+
+_createNewMaterialBin	size = 0
+	_createNewMaterialBin           
+
+_createNewMaterialBinExt	size = 0
+	_createNewMaterialBinExt        
+
+_createRecipe	size = 0
+	_createRecipe                   
+
+_customFunction	size = 0
+	_customFunction                 
+
+_getAdvice	size = 0
+	_getAdvice                      
+
+_getAttributesForMaterialBin	size = 0
+	_getAttributesForMaterialBin    
+
+_getAttributesForSerialNumber	size = 0
+	_getAttributesForSerialNumber   
+
+_getAttributesForWorkorder	size = 0
+	_getAttributesForWorkorder      
+
+_getBomItems	size = 0
+	_getBomItems                    
+
+_getBoxContent	size = 0
+	_getBoxContent                  
+
+_getCalendarData	size = 0
+	_getCalendarData                
+
+_getCompleteMaterialSetup	size = 0
+	_getCompleteMaterialSetup       
+
+_getCurrentCalendar	size = 0
+	_getCurrentCalendar             
+
+_getCurrentMaterialSetup	size = 0
+	_getCurrentMaterialSetup        
+
+_getFailureCauseForStation	size = 0
+	_getFailureCauseForStation      
+
+_getFailureDataForSerialNumber	size = 0
+	_getFailureDataForSerialNumber  
+
+_getFailureSlipDataForSerialNumber	size = 0
+	_getFailureSlipDataForSerialNumber
+
+_getFailureTypForStation	size = 0
+	_getFailureTypForStation        
+
+_getKapSetupDataForMaterial	size = 0
+	_getKapSetupDataForMaterial     
+
+_getMaterialBinData	size = 0
+	_getMaterialBinData             
+
+_getMaterialBinDataByProductNo	size = 0
+	_getMaterialBinDataByProductNo  
+
+_getMaterialBinInfo	size = 0
+	_getMaterialBinInfo             
+
+_getMaterialBinsForAttribute	size = 0
+	_getMaterialBinsForAttribute    
+
+_getMaterialSetupData	size = 0
+	_getMaterialSetupData           
+
+_getMaterialSetupDataForKapAndPeriod	size = 0
+	_getMaterialSetupDataForKapAndPeriod
+
+_getMdaDocuments	size = 0
+	_getMdaDocuments                
+
+_getMergeParts	size = 0
+	_getMergeParts                  
+
+_getMergedUnits	size = 0
+	_getMergedUnits                 
+
+_getNextBookingForStationAndLayer	size = 0
+	_getNextBookingForStationAndLayer
+
+_getNextMaterialBinNumber	size = 0
+	_getNextMaterialBinNumber       
+
+_getNextSerialNumber	size = 0
+	_getNextSerialNumber            
+
+_getNextSerialNumberForWorkOrder	size = 0
+	_getNextSerialNumberForWorkOrder
+
+_getNumberOfProducts	size = 0
+	_getNumberOfProducts            
+
+_getPlacementName	size = 0
+	_getPlacementName               
+
+_getProductInfo	size = 0
+	_getProductInfo                 
+
+_getRecipeData	size = 0
+	_getRecipeData                  
+
+_getRecipeHeaderAndVersion	size = 0
+	_getRecipeHeaderAndVersion      
+
+_getRegisteredBatch	size = 0
+	_getRegisteredBatch             
+
+_getRegisteredUser	size = 0
+	_getRegisteredUser              
+
+_getRequiredEquipmentData	size = 0
+	_getRequiredEquipmentData       
+
+_getResultDataForSerialNumber	size = 0
+	_getResultDataForSerialNumber   
+
+_getSerialNumberBySnrRef	size = 0
+	_getSerialNumberBySnrRef        
+
+_getSerialNumberHistoryData	size = 0
+	_getSerialNumberHistoryData     
+
+_getSerialNumbersForAttribute	size = 0
+	_getSerialNumbersForAttribute   
+
+_getSerialnumberInfo	size = 0
+	_getSerialnumberInfo            
+
+_getSetupDataBySerialNumber	size = 0
+	_getSetupDataBySerialNumber     
+
+_getSetupEquipmentData	size = 0
+	_getSetupEquipmentData          
+
+_getSnrForWorkorderAndWorkstep	size = 0
+	_getSnrForWorkorderAndWorkstep  
+
+_getSnrHistoryData	size = 0
+	_getSnrHistoryData              
+
+_getSnrInfoData	size = 0
+	_getSnrInfoData                 
+
+_getSnrUploadInfo	size = 0
+	_getSnrUploadInfo               
+
+_getStationQuantity	size = 0
+	_getStationQuantity             
+
+_getStationSetup	size = 0
+	_getStationSetup                
+
+_getStorage	size = 0
+	_getStorage                     
+
+_getWorkorderForLine	size = 0
+	_getWorkorderForLine            
+
+_getWorkordersForAttribute	size = 0
+	_getWorkordersForAttribute      
+
+_getWorkplanItems	size = 0
+	_getWorkplanItems               
+
+_logMessage	size = 0
+	_logMessage                     
+
+_mdataBomVerify	size = 0
+	_mdataBomVerify                 
+
+_mdataGetBomData	size = 0
+	_mdataGetBomData                
+
+_mdcCreateLog	size = 0
+	_mdcCreateLog                   
+
+_mdcGetConditionCodes	size = 0
+	_mdcGetConditionCodes           
+
+_mdcGetLog	size = 0
+	_mdcGetLog                      
+
+_mdcGetStationConditions	size = 0
+	_mdcGetStationConditions        
+
+_mdcGetStationMessages	size = 0
+	_mdcGetStationMessages          
+
+_mdcUploadStationCondition	size = 0
+	_mdcUploadStationCondition      
+
+_mergeBatch	size = 0
+	_mergeBatch                     
+
+_mergeMaterialBin	size = 0
+	_mergeMaterialBin               
+
+_mergeParts	size = 0
+	_mergeParts                     
+
+_queryRecipeData	size = 0
+	_queryRecipeData                
+
+_queryTestData	size = 0
+	_queryTestData                  
+
+_registerBatch	size = 0
+	_registerBatch                  
+
+_registerUser	size = 0
+	_registerUser                   
+
+_registerUserAtLine	size = 0
+	_registerUserAtLine             
+
+_removeAttributeFromMaterialBin	size = 0
+	_removeAttributeFromMaterialBin 
+
+_removeAttributeFromSerialNumber	size = 0
+	_removeAttributeFromSerialNumber
+
+_removeAttributeFromWorkorder	size = 0
+	_removeAttributeFromWorkorder   
+
+_removeEquipmentForWorkorder	size = 0
+	_removeEquipmentForWorkorder    
+
+_removeMergeParts	size = 0
+	_removeMergeParts               
+
+_reportRmQuantity	size = 0
+	_reportRmQuantity               
+
+_setMaterialBinLocation	size = 0
+	_setMaterialBinLocation         
+
+_setMaterialBinState	size = 0
+	_setMaterialBinState            
+
+_setProductionCycleTime	size = 0
+	_setProductionCycleTime         
+
+_setSetupCycleTime	size = 0
+	_setSetupCycleTime              
+
+_setWorkOrderFromSerialNumber	size = 0
+	_setWorkOrderFromSerialNumber   
+
+_setupActivation	size = 0
+	_setupActivation                
+
+_shipActivateShippingLotAtKap	size = 0
+	_shipActivateShippingLotAtKap   
+
+_shipAddChildLotToParentLot	size = 0
+	_shipAddChildLotToParentLot     
+
+_shipAddSnrToShippingLot	size = 0
+	_shipAddSnrToShippingLot        
+
+_shipCheckSnrAddToShippingLot	size = 0
+	_shipCheckSnrAddToShippingLot   
+
+_shipCheckSnrFromShippingLot	size = 0
+	_shipCheckSnrFromShippingLot    
+
+_shipCompleteLot	size = 0
+	_shipCompleteLot                
+
+_shipDeactivateShippingLotAtKap	size = 0
+	_shipDeactivateShippingLotAtKap 
+
+_shipGetChildLotsForParentLot	size = 0
+	_shipGetChildLotsForParentLot   
+
+_shipGetLotFromSerialNo	size = 0
+	_shipGetLotFromSerialNo         
+
+_shipGetShippingLotForLotNo	size = 0
+	_shipGetShippingLotForLotNo     
+
+_shipGetShippingLotsForPartNo	size = 0
+	_shipGetShippingLotsForPartNo   
+
+_shipGetSnrDataForShippingLot	size = 0
+	_shipGetSnrDataForShippingLot   
+
+_shipMoveAllChildLotsToNewParentLot	size = 0
+	_shipMoveAllChildLotsToNewParentLot
+
+_shipMoveChildLotToNewParentLot	size = 0
+	_shipMoveChildLotToNewParentLot 
+
+_shipMoveChildLotsFromLotToLot	size = 0
+	_shipMoveChildLotsFromLotToLot  
+
+_shipRemoveAllChildLotFromParentLot	size = 0
+	_shipRemoveAllChildLotFromParentLot
+
+_shipRemoveChildLotFromLot	size = 0
+	_shipRemoveChildLotFromLot      
+
+_shipRemoveSnrFromShippingLot	size = 0
+	_shipRemoveSnrFromShippingLot   
+
+_shipReopenShippingLot	size = 0
+	_shipReopenShippingLot          
+
+_shipReplaceShippingLot	size = 0
+	_shipReplaceShippingLot         
+
+_smtConsumption	size = 0
+	_smtConsumption                 
+
+_smtEventSetup	size = 0
+	_smtEventSetup                  
+
+_smtSerialNumberSetup	size = 0
+	_smtSerialNumberSetup           
+
+_smtSetupPreparation	size = 0
+	_smtSetupPreparation            
+
+_splitBatchNoToSerialNumber	size = 0
+	_splitBatchNoToSerialNumber     
+
+_switchSerialNumber	size = 0
+	_switchSerialNumber             
+
+_switchSerialNumberBySnrRef	size = 0
+	_switchSerialNumberBySnrRef     
+
+_testPaa	size = 0
+	_testPaa                        
+
+_testSpa	size = 0
+	_testSpa                        
+
+_trGetLockedSerialNumbers	size = 0
+	_trGetLockedSerialNumbers       
+
+_trGetSerialNumberLockHistory	size = 0
+	_trGetSerialNumberLockHistory   
+
+_trLockSerialNumbers	size = 0
+	_trLockSerialNumbers            
+
+_trUnlockSerialNumbers	size = 0
+	_trUnlockSerialNumbers          
+
+_unregisterBatch	size = 0
+	_unregisterBatch                
+
+_unregisterUser	size = 0
+	_unregisterUser                 
+
+_updateEquipmentData	size = 0
+	_updateEquipmentData            
+
+_updateMaterialSetup	size = 0
+	_updateMaterialSetup            
+
+_updateMaterialSetupHistory	size = 0
+	_updateMaterialSetupHistory     
+
+_updateSetupData	size = 0
+	_updateSetupData                
+
+_updateSetupDataBySnr	size = 0
+	_updateSetupDataBySnr           
+
+_updateSetupDataHistory	size = 0
+	_updateSetupDataHistory         
+
+_uploadFailureslip	size = 0
+	_uploadFailureslip              
+
+_uploadMaterialBinBookingsExt	size = 0
+	_uploadMaterialBinBookingsExt   
+
+_uploadMaterialBookings	size = 0
+	_uploadMaterialBookings         
+
+_uploadResultDataAndRecipe	size = 0
+	_uploadResultDataAndRecipe      
+
+_uploadState	size = 0
+	_uploadState                    
+
+_uploadStateAndFailData	size = 0
+	_uploadStateAndFailData         
+
+_uploadStateAndFailureData	size = 0
+	_uploadStateAndFailureData      
+
+_uploadStateAndResultData	size = 0
+	_uploadStateAndResultData       
+
+_uploadStationResult	size = 0
+	_uploadStationResult            
+
+_uploadStationState	size = 0
+	_uploadStationState             
+
+_uploadStationWasteTime	size = 0
+	_uploadStationWasteTime         
+
+_verifyMerge	size = 0
+	_verifyMerge                    
+
+_verifyMergeBySnrRef	size = 0
+	_verifyMergeBySnrRef            
+
+_verifyMergeProduct	size = 0
+	_verifyMergeProduct             

@@ -1,0 +1,544 @@
+#STEP_0
+    Name=[Start of Testing]
+    Enabled=1
+    $INPUT
+        DC_POWER_#1_4.4;0;
+        DELAY;0.5;
+        DC_POWER_#2_5;0;
+        DELAY;0.5;
+        DC_POWER_#3_12;0;
+        DELAY;1;
+        IGN_ON;OFF;
+        VCC5V_ON;OFF;
+        VCC4.4V_ON;OFF;
+        DELAY;2;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;F;
+    $OPTION
+        ;;
+
+#STEP_1
+    Name=V_INPUT
+    Enabled=1
+    $INPUT
+        VCC5V_ON;ON;
+        DELAY;0.5;
+        DC_POWER_#2_5;5;
+        DELAY;0.7;
+        RQ_2_VCC_5V_IN;ON;
+    $INPUT2
+        VCC4.4V_ON;ON;
+        DC_POWER_#1_4.4;4.4;
+        DELAY;0.5;
+        CAN_MASK;OFF;
+        IGN_ON;ON;
+        DC_POWER_#3_12;12;
+        DELAY;0.5;
+        TCS11(0x153);ON;
+        TCS13(0x394);ON;
+        TCS15(0x507);ON;
+        ESP11(0x47F);ON;
+        ESP12(0x220);ON;
+        WHL_SPD11(0x386);ON;
+        CLU11(0x4F1);ON;
+        SAS11(0x2B0);ON;
+        CGW1(0x541);ON;
+        HEV_PC4(0x371);ON;
+        HEV_PC5(0x372);ON;
+        P_STS(0x470);ON;
+        HU_MON_PE_01(0x57F);ON;
+        NAVI1(0x533);ON;
+        NAVI2(0x534);ON;
+        DELAY;0.5;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;4.9 ~ 5.1;V;;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_2
+    Name=12V_CHECK
+    Enabled=1
+    $INPUT
+        RQ_0_IGN_IN;ON;
+        DC_POWER_#3_A;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;11.5 ~ 12.5;V;SCALE=2;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_3
+    Name=4.4V_CHECK
+    Enabled=1
+    $INPUT
+        RQ_1_VCC_4.4V_IN;ON;
+        DC_POWER_#1_A;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;3.9 ~ 4.5;V;;;
+        RD_DC_POWER_#1_A;1~2;A;;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_4
+    Name=5V_CHECK
+    Enabled=1
+    $INPUT
+        DC_POWER_#2_A;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        RD_DC_POWER_#2_A;15~100;mA;SCALE=1000;T;
+    $OPTION
+        RETRY;5;
+        TIMEOUT;1;
+
+#STEP_5
+    Name=LDO 3.3V Tx
+    Enabled=1
+    $INPUT
+        RQ_7_VCC_3.3_TX;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;3.2 ~ 3.45;V;;;
+    $OPTION
+        ;;
+
+#STEP_6
+    Name=LDO 3.3V Rx
+    Enabled=1
+    $INPUT
+        RQ_8_VCC_3.3;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;3.2 ~ 3.45;V;;;
+    $OPTION
+        ;;
+
+#STEP_7
+    Name=PLL 1.5 VDDA
+    Enabled=1
+    $INPUT
+        RQ_9_VDDA1V5;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;1.5 ~ 1.85;V;;;
+    $OPTION
+        ;;
+
+#STEP_8
+    Name=PLL 1.5 VDDD
+    Enabled=1
+    $INPUT
+        RQ_10_VDDD1V5;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;1.5 ~ 1.85;V;;;
+    $OPTION
+        ;;
+
+#STEP_9
+    Name=PLL 3.3 VDDA
+    Enabled=1
+    $INPUT
+        RQ_11_VDDA3V3;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;3.15 ~ 3.45;V;;;
+    $OPTION
+        ;;
+
+#STEP_10
+    Name=PLL 3.3 VDDD
+    Enabled=1
+    $INPUT
+        RQ_12_VDDD3V3;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;3.15 ~ 3.45;V;;;
+    $OPTION
+        ;;
+
+#STEP_11
+    Name=RF LO #01 muxa
+    Enabled=1
+    $INPUT
+        RQ_16_LRR1_LO_MON2;ON;
+    $INPUT2
+        DELAY;2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_HIGH;1.5 ~ 2.5;V;;;
+        NISCOPE_PULSEWIDTH;23~27;ms;;;
+        NISCOPE_PERIOD;47 ~ 53;ms;;;
+        Muxa;;;CALC:%NISCOPE_HIGH%;;
+    $OPTION
+        RETRY;3;
+        TIMEOUT;1;
+
+#STEP_12
+    Name=RF LO #01 muxb,(Muxa-muxb)
+    Enabled=1
+    $INPUT
+        RQ_17_LRR1_LO_REF;ON;
+    $INPUT2
+        DELAY;2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_HIGH_B;1.5 ~ 2.5;V;;;
+        Muxb;;;CALC:%NISCOPE_HIGH_B%;;
+        (Muxa-muxb);100 ~ 300;mV;CALC:((%Muxa%-%Muxb%)*1000);;
+    $OPTION
+        ;;
+
+#STEP_13
+    Name=RF LO #02 muxa
+    Enabled=1
+    $INPUT
+        RQ_18_LRR2_LO_MON2;ON;
+    $INPUT2
+        DELAY;2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_HIGH;1.5 ~ 2.5;V;;;
+        NISCOPE_PULSEWIDTH;23~27;ms;;;
+        NISCOPE_PERIOD;47 ~ 53;ms;;;
+        Muxa;;;CALC:%NISCOPE_HIGH%;;
+    $OPTION
+        RETRY;3;
+        TIMEOUT;1;
+
+#STEP_14
+    Name=RF LO #02 muxb,(Muxa-muxb)
+    Enabled=1
+    $INPUT
+        RQ_19_LRR2_LO_REF;ON;
+    $INPUT2
+        DELAY;2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_HIGH_B;1.5 ~ 2.5;V;;;
+        Muxb;;;CALC:%NISCOPE_HIGH_B%;;
+        (Muxa-muxb);100 ~ 300;mV;CALC:((%Muxa%-%Muxb%)*1000);;
+    $OPTION
+        ;;
+
+#STEP_15
+    Name=RF LO #03 muxa
+    Enabled=1
+    $INPUT
+        RQ_14_SRR1_LO_MON2;ON;
+    $INPUT2
+        DELAY;2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_HIGH;1.5 ~ 2.5;V;;;
+        NISCOPE_PULSEWIDTH;7.5~10.5;ms;;;
+        NISCOPE_PERIOD;47 ~ 53;ms;;;
+        Muxa;;;CALC:%NISCOPE_HIGH%;;
+    $OPTION
+        RETRY;3;
+        TIMEOUT;1;
+
+#STEP_16
+    Name=RF LO #03 muxb,(Muxa-muxb)
+    Enabled=1
+    $INPUT
+        RQ_15_SRR1_LO_REF;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_HIGH_B;1.5 ~ 2.5;V;;;
+        Muxb;;;CALC:%NISCOPE_HIGH_B%;;
+        (Muxa-muxb);100 ~ 300;mV;CALC:((%Muxa%-%Muxb%)*1000);;
+    $OPTION
+        RETRY;3;
+
+#STEP_17
+    Name=PLL_MUX1
+    Enabled=1
+    $INPUT
+        RQ_13_RCC1010_DMUX1;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;2.5~3.5;V;;;
+    $OPTION
+        ;;
+
+#STEP_18
+    Name=READDTC
+    Enabled=1
+    $INPUT
+        CAN_MASK;ON;
+        DIAG_SEND;10 03;
+        DELAY;0.2;
+        DIAG_SEND;19 02 0C;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        FLAG_DTC;*56 04*;;;;
+    $OPTION
+        ;;
+
+#STEP_19
+    Name=F/E_Failsafe
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 01 60;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ADC_SPI;0;;;;
+        RF_RX_SPI;0;;;;
+        ADC_DATA_ERROR;0;;;;
+        TX_TEMPERATURE;0;;;;
+        PLL_LOCK;0;;;;
+    $OPTION
+        TIMEOUT;1;
+        RUNMODE;56 04POS%FLAG_DTC%;
+
+#STEP_20
+    Name=[End of test]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_21
+    Name=EXIT
+    Enabled=1
+    $INPUT
+        DIAG_STOP;ON;
+        CAN_C_CONNECT;OFF;
+        CAN_EMUL_DISCONNECT;ON;
+        DC_POWER_#3_12;0;
+        DELAY;0.5;
+        DC_POWER_#1_4.4;0;
+        DELAY;0.5;
+        DC_POWER_#2_5;0;
+        DELAY;1;
+        IGN_ON;OFF;
+        VCC5V_ON;OFF;
+        VCC4.4V_ON;OFF;
+        DELAY;0.2;
+    $INPUT2
+        DELAY;2;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        TIMEOUT;100;
+
+#RES_AO
+    ;;;;
+
+#RES_DO
+    VCC4.4V_ON;advDO_01;;;
+    VCC5V_ON;advDO_02;;;
+    IGN_ON;advDO_03;;;
+    CAN_HI_OPEN_ON;advDO_04;;;
+    CAN_LO_OPEN_ON;advDO_05;;;
+    advDO_06;advDO_06;;;
+    advDO_07;advDO_07;;;
+    SY_FW;advDO_08;;;
+    SY_RT;advDO_09;;;
+    SY_DOWN;advDO_10;;;
+    GREEN;advDO_11;;;
+    YELLOW;advDO_12;;;
+    RED;advDO_13;;;
+    advDO_14;advDO_14;;;
+    advDO_15;advDO_15;;;
+    advDO_16;advDO_16;;;
+
+#RES_RO
+    ;;;;
+
+#RES_PO
+    ;;;;
+
+#RES_COMOUT
+    ___POWER___;;;;
+    DC_POWER_#1_4.4;DEV_01;SETPOWER,%PARAM%,3;;
+    DC_POWER_#2_5;DEV_02;SETPOWER,%PARAM%,3;;
+    DC_POWER_#3_12;DEV_03;SETPOWER,%PARAM%,3;;
+    DC_POWER_#1_A;DEV_01;CURR,A;;
+    DC_POWER_#2_A;DEV_02;CURR,A;;
+    DC_POWER_#3_A;DEV_03;CURR,A;;
+    ___DIAG___;;;;
+    DIAG_SETID;CANDIAG;SETID:7D0,7D8;;
+    DIAG_START;CANDIAG;SEND:10 03;;
+    DIAG_SEND;CANDIAG;SEND;;
+    DIAG_STOP;CANDIAG;SEND:20;;
+    HEX;CANDIAG;READHEX;;
+    READ_LEN;CANDIAG;READ:2,6,2;;
+    READ_STR;CANDIAG;READSTR:3,0;;
+    SECURITY_ACCESS;CANDIAG;SECURITY;;
+    ---EMULCAN---;;;;
+    CAN_EMUL_CONNECT;DEV_04;CMD:30=21 00 7E 00;;
+    CAN_EMUL_DISCONNECT;DEV_04;CMD:31=06;;
+    -----------EMULCAN--------------;;;;
+    TCS11(0x153);DEV_04;%PARAM%:SEND:153=00 00 00 00 00 00 00 00:10;;
+    TCS13(0x394);DEV_04;%PARAM%:SEND:394=00 00 01 00 00 00 0F 00:10 > $C7,1,8,$00,$20,$40,$60,$80,$A0,$C0,$E0 > $C7,6,8,$0F,$0D,$0B,$09,$07,$05,$03,$01;;
+    TCS15(0x507);DEV_04;%PARAM%:SEND:507=00 00 00 00:100;;
+    ESP11(0x47F);DEV_04;%PARAM%:SEND:47F=00 00 00 00 00 00:20;;
+    ESP12(0x220);DEV_04;%PARAM%:SEND:220=00 00 00 00 00 00 00:10;;
+    WHL_SPD11(0x386);DEV_04;%PARAM%:SEND:386=00 00 00 00 00 00 00 00:20;;
+    CLU11(0x4F1);DEV_04;%PARAM%:SEND:4F1=00 00 00 00:20 > $C2,28,4,0,15,1;;
+    SAS11(0x2B0);DEV_04;%PARAM%:SEND:2B0=00 00 00 00 00:10 > $C7,4,17,$00,$11,$22,$33,$44,$55,$66,$77,$88,$99,$AA,$BB,$CC,$BB,$DD,$EE,$FF;;
+    CGW1(0x541);DEV_04;%PARAM%:SEND:541=00 00 00 00 00 00 00 00:100;;
+    HEV_PC4(0x371);DEV_04;%PARAM%:SEND:371=00 00 00 00 00 00 00 00:10;;
+    HEV_PC5(0x372);DEV_04;%PARAM%:SEND:372=00 00 00 00 00 00 00 00:10;;
+    P_STS(0x470);DEV_04;%PARAM%:SEND:470=00 00 00 00 00 00:10 > $C7,5,16,$00,$04,$08,$4C,$10,$14,$18,$5C,$20,$24,$28,$6C,$70,$74,$78,$BC;;
+    HU_MON_PE_01(0x57F);DEV_04;%PARAM%:SEND:57F=00 00 00 00 00 00 00 00:2000;;
+    NAVI1(0x533);DEV_04;%PARAM%:SEND:533=00 00 00 00 00 00 00 00:100 > $C2,0,3,0,5,1;;
+    NAVI2(0x534);DEV_04;%PARAM%:SEND:534=00 00 00 00 00 00 00 00:100 > $C2,0,3,0,5,1;;
+    ;;;;
+
+#RES_VROUT
+    JIG_CONTROL;JIG;%PARAM%;;
+    RESETIO;RESETIO;;;
+    ---------------------------NIBORD;;sChannels:nChannelCount,numSampsPerChan,fSampling;;
+    ;;채널번호:채널갯수,데이터갯수,샘플링주기;;
+    RQ_0_IGN_IN;NISCOPE;Dev1/ai0:1,7000,10000;;
+    RQ_1_VCC_4.4V_IN;NISCOPE;Dev1/ai1:1,7000,10000;;
+    RQ_2_VCC_5V_IN;NISCOPE;Dev1/ai2:1,7000,10000;;
+    RQ_3_C_CAN_HI;NISCOPE;Dev1/ai3:1,7000,10000;;
+    RQ_4_C_CAN_LO;NISCOPE;Dev1/ai4:1,7000,10000;;
+    RQ_7_VCC_3.3_TX;NISCOPE;Dev1/ai7:1,7000,10000;;
+    RQ_8_VCC_3.3;NISCOPE;Dev1/ai8:1,7000,10000;;
+    RQ_9_VDDA1V5;NISCOPE;Dev1/ai9:1,7000,10000;;
+    RQ_10_VDDD1V5;NISCOPE;Dev1/ai10:1,7000,10000;;
+    RQ_11_VDDA3V3;NISCOPE;Dev1/ai11:1,7000,10000;;
+    RQ_12_VDDD3V3;NISCOPE;Dev1/ai12:1,7000,10000;;
+    RQ_13_RCC1010_DMUX1;NISCOPE;Dev1/ai13:1,7000,10000;;
+    RQ_14_SRR1_LO_MON2;NISCOPE;Dev1/ai14:1,5000,10000,1;;
+    RQ_15_SRR1_LO_REF;NISCOPE;Dev1/ai15:1,5000,10000,1;;
+    RQ_16_LRR1_LO_MON2;NISCOPE;Dev1/ai16:1,4000,10000,1;;
+    RQ_17_LRR1_LO_REF;NISCOPE;Dev1/ai17:1,5000,10000,1;;
+    RQ_18_LRR2_LO_MON2;NISCOPE;Dev1/ai18:1,5000,10000,1;;
+    RQ_19_LRR2_LO_REF;NISCOPE;Dev1/ai19:1,5000,10000,1;;
+
+#RES_AD
+    ;NISCOPE;;;
+
+#RES_DI
+    SY_UP_STATE;advDI_01;;;
+    SY_DW_STATE;advDI_02;;;
+    SY_FW_STATE;advDI_03;;;
+    SY_RT_STATE;advDI_04;;;
+    START1;advDI_05;;;
+    START2;advDI_06;;;
+    STOP;advDI_07;;;
+    SAFETY_SN;advDI_08;;;
+    advDI_09;advDI_09;;;
+    advDI_10;advDI_10;;;
+    advDI_11;advDI_11;;;
+    advDI_12;advDI_12;;;
+    advDI_13;advDI_13;;;
+    advDI_14;advDI_14;;;
+    advDI_15;advDI_15;;;
+    advDI_16;advDI_16;;;
+
+#RES_COMIN
+    RD_DC_POWER_#1_A;DEV_01;A,300,7;;
+    RD_DC_POWER_#2_A;DEV_02;A,300,7;;
+    RD_DC_POWER_#3_A;DEV_03;A,300,7;;
+    DIAG_READ;CANDIAG;READHEX;;
+    DIAG_READ;CANDIAG;READSTR:3;;
+    DIAG_READ_VALUE;CANDIAG;READ:4,0,16,M;;
+    -----FLAG_DTC----;;;;
+    FLAG_DTC;CANDIAG;READHEX;;
+    -----FAILSAFE----;;;;
+    ADC_SPI;CANDIAG;READ:9,0,8,M;;
+    RF_RX_SPI;CANDIAG;READ:3,0,8,M;;
+    ADC_DATA_ERROR;CANDIAG;READ:10,0,8,M;;
+    TX_TEMPERATURE;CANDIAG;READ:3,0,8,M;;
+    PLL_LOCK;CANDIAG;READ:7,0,8,M;;
+    -----RX_LO----;;;;
+    RX_LO_SRR1;CANDIAG;READ:8,0,16,M;;
+    RX_LO_LRR1;CANDIAG;READ:10,0,16,M;;
+    RX_LO_LRR2;CANDIAG;READ:12,0,16,M;;
+
+#RES_VRIN
+    ---------------------------NIBORD;;sChannels:nChannelCount,numSampsPerChan,fSampling;;
+    ;;채널번호:채널갯수,데이터갯수,샘플링주기|READCMD=Channel;;
+    NISCOPE_HIGH;GRAPH;HIGH=CH1;;
+    NISCOPE_HIGH_B;GRAPH;HIGH=CH1;;
+    NISCOPE_AVE;GRAPH;AVE=CH1;;
+    NISCOPE_WIDTH;GRAPH;WIDTH=CH1;;
+    NISCOPE_LOW;GRAPH;LOW=CH1;;
+    NISCOPE_HIWIDTH;GRAPH;HIWIDTH=CH1;;
+    NISCOPE_5V_AVE;GRAPH;AVE=CH1;;
+    -----FE_NISCOPE_OPTION_FUNCTION----;;;;
+    NISCOPE_PULSEWIDTH;GRAPH;PULSEWIDTH=CH1,,,,1,;;
+    NISCOPE_PERIOD;GRAPH;PERIOD=CH1,,,,1,;;
+    NISCOPE_AVE_FILTER;GRAPH;AVE=CH1,,,,1,;;
+
+#RES_CAN
+    CAN_C_CONNECT;CAN1_01;CONNECT:500;;
+    CAN_MASK;CAN1_01;CONNECT:500,MASK=7D8;;
+    CAN_C_CLEAR;CAN1_01;CLEAR;;
+    -----EXECAN----;;;;
+    CAN_PR_POLLING;CAN2_01;POLLING:;;
+    CAN_SEND(0x222);CAN2_01;SEND:222=%PARAM%;;
+    CAN_SEND(0x22F)_Cycle;CAN2_01;SEND:22F=0B 01 00 00 7A 00 00 00:100;;
+    CAN_SEND;CAN2_01;SEND:%PARAM%;;
+    CAN_READ(0x220);CAN2_01;READ:220;;
+    CAN_TIME(0x220);CAN2_01;READ:220>TIME;;
+    CAN_BYTE(0x221);CAN2_01;SET:221=40,8:1,0:M;;
+
+#END

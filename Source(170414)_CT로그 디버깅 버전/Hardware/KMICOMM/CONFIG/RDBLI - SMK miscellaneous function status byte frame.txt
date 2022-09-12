@@ -1,0 +1,33 @@
+message name = RDBLI - SMK miscellaneous function status byte frame
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x08
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0B 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0x08
+#7 ESCL retry counter during unlock operation = 0xXX
+#8 ESCL retry counter during lock operation = 0xXX
+#9 Warm reset counter = 0xXX
+#10 BES SMK State = XX
+  0x00 : UNDEFINED
+  0x01 : OFF LOCKED
+  0x02 : OFF UNLOCKED
+  0x03 : ACC
+  0x04 : IGN
+  0x05 : IGN_TO_START
+  0x06 : START
+  0x07 : ENGINE RUNNING
+  0x0F : OFF ESCL Failure
+#11 Emergency Stop SSB Event Counter = 0xXX
+#12 SSB Error Counter (0h ~ 10h) = 0xXX
+#13 Reserved = 0x00
+#14 Reserved = 0x00
+#15 Reserved = 0x00

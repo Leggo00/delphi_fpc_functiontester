@@ -1,0 +1,17 @@
+message name = Clear DTC(DiagnosticInformation) service
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 14 
+#6 Group of Diagnostic Info (MSB) = 0x80
+#7 Group of Diagnostic Info (LSB) = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 0x54 
+#6 Group of Diagnostic Info (MSB) = 0x80
+#7 Group of Diagnostic Info (LSB) = 0x00

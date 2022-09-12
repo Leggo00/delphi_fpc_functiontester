@@ -1,0 +1,54 @@
+message name = SRBLI - Launch Self Diag Remote ECU
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x04
+#7 Remote ECU Identifier = XX
+  0x01 : PDM
+#8 DTC Type = XX
+  0x00 : Present failure
+  0x01 : Memorized failure
+#9 Routine Entry Status #3 = 0x00
+#10 Routine Entry Status #4 = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0A 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x04
+#7 NumberOfDTC = 0xXX
+#8 DATA2 byte of the CAN response 
+  b0 : CAN BUSOFF
+  b1 : CAN ERR
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Sub MCU failed
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved
+#9 DATA3 byte of the CAN response = 0x00
+#10 DATA4 byte of the CAN response = 0x00
+#11 DATA5 byte of the CAN response = 0x00
+#12 DATA6 byte of the CAN response = 0x00
+#13 DATA7 byte of the CAN response 
+  b0 : IMMO TX SCB
+  b1 : Reserved
+  b2 : ESCL GND SCB
+  b3 : ESCL BAT SCB
+  b4 : Reserved
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved
+#14 DATA8 byte of the CAN response 
+  b0 : IMMO TX SCG
+  b1 : Reserved
+  b2 : ESCL GND SCG
+  b3 : ESCL BAT SCG
+  b4 : Reserved
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved

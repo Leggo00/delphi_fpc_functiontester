@@ -1,0 +1,42 @@
+message name = RDBLI - SMK Option Configuration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x03
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0x03
+#7 bit1 
+  b0 : 3_INT_ANT_BIT (0:disabled/1:enabled)
+  b1 : 4_INT_ANT_BIT (0:disabled/1:enabled)
+  b2 : TAIL_BIT (0:trunk/1:tail gate)
+  b3 : TAIL_LOCK_BIT (0:only unlock/1:unlocking and locking)
+  b4 : Bi_FobHodelr_config
+  b5 : Bi_CAPA_SENSOR
+  b6 : Bi_TWO_STEP_UNLOCK
+  b7 : Bi_DoorBrokenDetectionBySMK
+#8 bit2 
+  b0 : Authorisation of PIC function (bi_PIC_option)
+  b1 : Authorisation of ESCL function(bi_ESCL_optoin)
+  b2 : Automatic Transmission (bi_AT_option)
+  b3 : Bi_CalulKtr(Transponder learning without locking)
+  b4 : Bi_Diesel option(Diesel =1,Gasolin =0)
+  b5 : Bi_BCM_Learning
+  b6 : Bi_WEL_Enable
+  b7 : Bi_Passive_Pre_Auth
+#9 bit3 
+  b0 : Bi_FS_Enable
+  b1 : Bi_Auto_Config_ESCL_Option
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Reserved
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved

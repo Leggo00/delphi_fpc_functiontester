@@ -1,0 +1,16 @@
+message name = SRBLI - SMK NEUTRLIZATION
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x17
+#7 ~ #9 PIN code = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x17

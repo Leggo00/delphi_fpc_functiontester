@@ -1,0 +1,67 @@
+message name = WDBLI - Write SMK's calibration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 3B 
+#6 Record Local Identifier = 0x02
+#7 Number of the byte to be modified = XX
+  0x01 : TMPVDOUT
+  0x02 : IGN1_FALLING_EDGE_FILTER
+  0x03 : VEHICLE_IDENTIFICATION_CODE
+  0x06 : BUTTON1_BYTE
+  0x07 : BUTTON2_BYTE
+  0x08 : BUTTON3_BYTE
+  0x09 : BUTTON4_BYTE
+  0x0A : BUTTON5_BYTE
+  0x0B : BUTTON6_BYTE
+  0x0F : Calib_TP_Auth_Timer
+  0x10 : Calib_Fob_ID_Auth_Timer
+  0x11 : Calib_Fast_Restart_Timer
+  0x14 : Calib_Battery_Saving
+  0x16 : Calib_Vehicle_speed_starting_without_brake
+  0x18 : Calib_Vehicle_stop_continue_time_ESCL_lock
+  0x19 : Calib_ESCL_Status_Timer
+  0x1A : Calib_SSB_Input_Chattering_Time
+  0x1B : Calib_SSB_Long_Time
+  0x1C : Calib_SSB_Long_Seq_Ctr
+  0x1D : Calib_SSB_Long_Seq_Time
+  0x1E : Calib_SSB_LimpHome_Cranking_time
+  0x1F : Calib_SSB_LimpHome_Confirmation_Time
+  0x20 : Calib_SSB_consistency_failure_inc_step
+  0x21 : Calib_SSB_consistency_failure_dec_step
+  0x22 : Calib_SSB_consistency_failure_max
+  0x24 : Calib_Engine_Glow_Status_timer
+  0x26 : Calib_MaxCrankingTemp1
+  0x27 : Calib_MaxCrankingTemp2
+  0x28 : Calib_MaxCrankingTemp3
+  0x29 : Calib_MaxCrankingTemp4
+  0x2A : Calib_MaxCrankingTempErr
+  0x2B : Calib_MaxCrankingTime1
+  0x2C : Calib_MaxCrankingTime2
+  0x2D : Calib_MaxCrankingTime3
+  0x2E : Calib_MaxCrankingTime4
+  0x2F : Calib_MaxCrankingTimeErr
+  0x30 : First_Stage_Timer
+  0x31 : Second_Stage_Timer
+  0x32 : Short_Periodic_Searching_Timer
+  0x33 : Long_Periodic_Searching_Timer
+  0x34 : Passive_Access_Pre_Auth_Timer
+  0x35 : Check_Valid_Fob_Outside_Timer
+  0x36 : WEL_Light_On_Timer
+  0x37 : WEL_Func_Off_Timer
+  0x38 : Delay_Time_T1
+  0x39 : SSB_Input_Inhibit_Duration
+  0x3A : ALT_L_LimpHome_TIME
+  0x3B : Passive_Access_Pre_Auth_Running_Timer
+#8 Value to assign to this byte = XX
+#9 Not used = 0x00
+#10 Not used = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 0x7B 
+#6 Local Identifier = 0x02

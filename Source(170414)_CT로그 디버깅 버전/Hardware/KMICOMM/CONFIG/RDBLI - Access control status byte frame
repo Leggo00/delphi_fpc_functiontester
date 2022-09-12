@@ -1,0 +1,40 @@
+RDBLI - Access control status byte frame;
+02
+21
+Record Local  Identifier;
+3
+b
+13
+Local Identifier of diagnostic burst;
+5
+b
+Number of taught RF keys;
+1
+Number of resynchronisation done on RF Key N¡Æ1;
+1
+Number of resynchronisation done on RF Key N¡Æ2;
+1
+Number of taught transponder keys;
+1
+Reserved;
+5
+0
+Reserved;
+5
+0
+Reserved;
+5
+0
+Reserved;
+5
+0
+Reserved;
+5
+0
+Reserved;
+5
+0
+Number of resynchronisation done on RF Key N¡Æ3;
+1
+Number of resynchronisation done on RF Key N¡Æ4;
+1

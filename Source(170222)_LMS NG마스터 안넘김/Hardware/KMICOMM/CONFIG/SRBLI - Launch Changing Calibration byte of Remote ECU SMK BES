@@ -1,0 +1,86 @@
+SRBLI - Launch Changing Calibration byte of Remote ECU;
+6
+31
+Record Local Identifier;
+3
+9
+Remote ECU Identifier;
+0
+1
+1
+PDM;
+Remote Calibration Byte No;
+0
+2
+0
+Display current value;
+5
+Calib_Engine_RPM_Parameter;
+Remote Calibration Byte Value;
+0
+6
+0
+Display current value of supported calibration bytes;
+1
+Reserved;
+2
+A 4-cylindered car;
+3
+A 6-cylindered car;
+4
+A 8-cylindered car;
+5
+Reserved;
+Routine Entry Status #4;
+3
+0
+9
+Local Identifier;
+5
+9
+DiagPDMCalResponseCode;
+6
+2
+1
+Positive response;
+2
+Negative response;
+DiagPDMCalErrorCode;
+6
+4
+0
+No error;
+1
+If operation is failed;
+2
+If requested C_MUTCalNumber is not supported;
+3
+If requested C_MUTCalValue is out of range;
+Calib_Engine_RPM_Parameter;
+6
+5
+1
+Reserved;
+2
+A 4-cylindered car;
+3
+A 6-cylindered car;
+4
+A 8-cylindered car;
+5
+Reserved;
+DATA4 byte of the CAN response;
+5
+0
+DATA5 byte of the CAN response;
+5
+0
+DATA6 byte of the CAN response;
+5
+0
+DATA7 byte of the CAN response;
+5
+0
+DATA8 byte of the CAN response;
+5
+0

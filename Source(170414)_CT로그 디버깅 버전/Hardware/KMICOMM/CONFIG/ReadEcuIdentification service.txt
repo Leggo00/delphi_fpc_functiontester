@@ -1,0 +1,43 @@
+message name = ReadEcuIdentification service
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 1A 
+#6 Record Local Identifier = 0x80
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x49 
+#5 Request Id = 0x5A 
+#6 ~ #11 Vehicle name (ASCII, 6byte) = XX
+#12 ~ #22 HMC/KMC part number (ASCII, 11byte) = XX
+#23 ~ #42 HMC/KMC part name (ASCII, 20byte) = XX
+#43 ~ #50 Manufacturing date (ASCII, yy/mm/dd, 8byte) = XX
+#51 Software customer number = 0xXX
+#52 Software application number (MSB) = 0xXX
+#53 Software application number (LSB) = 0xXX
+#54 Software version number = 0xXX
+#55 Software intermediate version number = 0xXX
+#56 MSB compensation byte to give the checksum = AA55h = 0xXX
+#57 LSB compensation byte to give the checksum = AA55h = 0xXX
+#58 Product number No.1 = 0xXX
+#59 Product number No.2 = 0xXX
+#60 Product number No.3 = 0xXX
+#61 Product number No.4 = 0xXX
+#62 Product number No.5 = 0xXX
+#63 Product number No.6 = 0xXX
+#64 Product number No.7 = 0xXX
+#65 Product number No.8 = 0xXX
+#66 Serial number (10 digits - in EEPROM) = 0xXX
+#67 Serial number (10 digits - in EEPROM) = 0xXX
+#68 Serial number (10 digits - in EEPROM) = 0xXX
+#69 Serial number (10 digits - in EEPROM) = 0xXX
+#70 Serial number (10 digits - in EEPROM) = 0xXX
+#71 CAN DB Version No.1 (BCD) = 0xXX
+#72 CAN DB Version No.2 (BCD) = 0xXX
+#73 HW Version = 0xXX
+#74 ~ #75 HW Version marked in customer drawing (ASCII CODE) = XX
+#76 ~ #77 SW Version marked in customer drawing (ASCII CODE) = XX

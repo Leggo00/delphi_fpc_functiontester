@@ -1,0 +1,30 @@
+RDBLI - Logic Inputs Status;
+2
+21
+Record Local  Identifier;
+3
+05
+3
+Local Identifier of diagnostic burst;
+5
+05
+bit1;
+0
+L_SSB_SW2;
+L_ACC;
+L_IGN1;
+L_P_POSITION;
+L_BRAKE;
+L_FL_DOOR_LOCK_UNLOCK;
+L_FR_DOOR_LOCK_UNLOCK;
+L_TAILGATE_TRUNK_SW;
+bit2;
+0
+L_FL_CAPA_SENSOR (GH09MY only);
+L_FR_CAPA_SENSOR (GH09MY only);
+Reserved;
+Reserved;
+Reserved;
+Reserved;
+Reserved;
+Reserved;

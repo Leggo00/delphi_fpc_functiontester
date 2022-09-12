@@ -1,0 +1,30 @@
+message name = SRBLI - Clear DTC (Diag Information) Remote ECU
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x07
+#7 Remote ECU Identifier = XX
+  0x01 : PDM
+#8 Routine Entry Status #2 = 0x00
+#9 Routine Entry Status #3 = 0x00
+#10 Routine Entry Status #4 = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0A 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x07
+#7 C_DiagPDMClearResponseCode = XX
+  0x01 : Positive response
+  0x02 : Negative response
+#8 C_DiagPDMCLRErrorCode = 0x00
+#9 DATA3 byte of the CAN response = 0x00
+#10 DATA4 byte of the CAN response = 0x00
+#11 DATA5 byte of the CAN response = 0x00
+#12 DATA6 byte of the CAN response = 0x00
+#13 DATA7 byte of the CAN response = 0x00
+#14 DATA8 byte of the CAN response = 0x00

@@ -1,0 +1,71 @@
+ReadEcuIdentification service;
+2
+1a
+Record Local Identifier;
+3
+80
+29
+Vehicle name (ASCII, 6byte);
+3
+6
+HMC/KMC part number (ASCII, 11byte);
+3
+11
+HMC/KMC part name (ASCII, 20byte);
+3
+20
+Manufacturing date (ASCII, yy/mm/dd, 8byte);
+3
+8
+Software customer number;
+1
+Software application number (MSB);
+1
+Software application number (LSB);
+1
+Software version number;
+1
+Software intermediate version number;
+1
+MSB compensation byte to give the checksum = AA55h;
+1
+LSB compensation byte to give the checksum = AA55h;
+1
+Product number No.1;
+1
+Product number No.2;
+1
+Product number No.3;
+1
+Product number No.4;
+1
+Product number No.5;
+1
+Product number No.6;
+1
+Product number No.7;
+1
+Product number No.8;
+1
+Serial number (10 digits - in EEPROM);
+1
+Serial number (10 digits - in EEPROM);
+1
+Serial number (10 digits - in EEPROM);
+1
+Serial number (10 digits - in EEPROM);
+1
+Serial number (10 digits - in EEPROM);
+1
+CAN DB Version No.1 (BCD);
+1
+CAN DB Version No.2 (BCD);
+1
+HW Version;
+1
+HW Version marked in customer drawing  (ASCII CODE);
+3
+2
+SW Version marked in customer drawing (ASCII CODE);
+3
+2

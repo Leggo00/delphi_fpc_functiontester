@@ -1,0 +1,27 @@
+message name = RDBLI - Access control status byte frame
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x0B
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0E 
+#5 Request Id = 0x61 
+#6 Local Identifier of diagnostic burst = 0x0B
+#7 Number of taught RF keys = 0xXX
+#8 Number of resynchronisation done on RF Key N¡Æ1 = 0xXX
+#9 Number of resynchronisation done on RF Key N¡Æ2 = 0xXX
+#10 Number of taught transponder keys = 0xXX
+#11 Reserved = 0x00
+#12 Reserved = 0x00
+#13 Reserved = 0x00
+#14 Reserved = 0x00
+#15 Reserved = 0x00
+#16 Reserved = 0x00
+#17 Number of resynchronisation done on RF Key N¡Æ3 = 0xXX
+#18 Number of resynchronisation done on RF Key N¡Æ4 = 0xXX

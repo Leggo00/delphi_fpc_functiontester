@@ -1,0 +1,7 @@
+81: Start Communication
+82: Stop Commnunication
+3E: Tester Present
+1A 08: Read ECU ID
+21 01: Read Data by LocalID
+13 80 00: Read Diagnostic Trouble Code
+14 80 00: Clear Diagnostic Information

@@ -1,0 +1,16 @@
+Clear DTC(DiagnosticInformation) service;
+3
+14
+Group of Diagnostic Info (MSB);
+3
+80
+Group of Diagnostic Info (LSB);
+3
+0
+2
+Group of Diagnostic Info (MSB);
+5
+80
+Group of Diagnostic Info (LSB);
+5
+0

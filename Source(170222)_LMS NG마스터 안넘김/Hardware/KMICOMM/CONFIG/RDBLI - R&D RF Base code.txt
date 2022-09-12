@@ -1,0 +1,31 @@
+message name = RDBLI - R&D RF Base code
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0xFB
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x12 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0xFB
+#7 RF Base Code Key Num 1 Byte 1 = 0xXX
+#8 RF Base Code Key Num 1 Byte 2 = 0xXX
+#9 RF Base Code Key Num 1 Byte 3 = 0xXX
+#10 RF Base Code Key Num 1 Byte 4 = 0xXX
+#11 RF Base Code Key Num 2 Byte 1 = 0xXX
+#12 RF Base Code Key Num 2 Byte 2 = 0xXX
+#13 RF Base Code Key Num 2 Byte 3 = 0xXX
+#14 RF Base Code Key Num 2 Byte 4 = 0xXX
+#15 RF Base Code Key Num 3 Byte 1 = 0xXX
+#16 RF Base Code Key Num 3 Byte 2 = 0xXX
+#17 RF Base Code Key Num 3 Byte 3 = 0xXX
+#18 RF Base Code Key Num 3 Byte 4 = 0xXX
+#19 RF Base Code Key Num 4 Byte 1 = 0xXX
+#20 RF Base Code Key Num 4 Byte 2 = 0xXX
+#21 RF Base Code Key Num 4 Byte 3 = 0xXX
+#22 RF Base Code Key Num 4 Byte 4 = 0xXX

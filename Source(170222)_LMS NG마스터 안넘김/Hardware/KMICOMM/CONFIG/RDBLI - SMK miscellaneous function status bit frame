@@ -1,0 +1,30 @@
+RDBLI - SMK miscellaneous function status bit frame;
+2
+21
+Record Local  Identifier;
+3
+09
+5
+Local Identifier;
+5
+09
+Reserved;
+5
+0
+bit;
+0
+CAN Communication limp home mode status with any related node;
+P Position Signal Failure Status;
+LIN Communication Limp Home Mode Status(GH only);
+EMS Communication Failure Status(GH/BK only);
+NA_OPTION_STATUS;
+Vehicle speed inconsistency;
+Reserved;
+Reserved;
+Reserved;
+5
+0
+Reserved;
+5
+0
+

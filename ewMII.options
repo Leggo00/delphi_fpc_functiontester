@@ -1,0 +1,106 @@
+########################################################################################
+# ewMII.options                                                                        #
+#                                                                                      #
+# Options file for the iTAC ewMII shared library using ARTES. As per default, the      #
+# ewMII shared library searches this file in the current working directory.            #
+# Optionally you may specify a different location of this options file while           #
+# initializing the ewMII shared library with the function apiInit.                     #
+########################################################################################
+
+########################
+# general java options #
+########################
+## set the java class path to all required jars
+-Djava.class.path=api-client-clib-java-bundle-7.10.00-16.jar
+
+## set maximum java heap memory
+-Xmx64m
+
+## make the java VM more verbose when it initializes
+#-verbose
+
+## set this two JVM parameter, if you want to remote attach the java debugger
+#-Xdebug
+#-Xrunjdwp:transport=dt_socket,server=y,address=9009,suspend=y
+
+## If you use Borland Compilers BCC oder Delphi you may see hard internal errors which may
+## disappear if you specify the -Xcheck:jni JVM parameter.
+## This has to do with a bug in the Borland compilers in combination with function calls
+## and saving/restore foating point CPU registers
+#-Xcheck:jni
+
+#############################
+# ewMII specific properties #
+#############################
+## You may change the default java temporary directory, if you want.
+#-Ditac.tempdir=/tmp
+
+## You may change the default directory, where the file ihas.properties will be searched.
+## Usually, this file is not needed and so you don't need to change this directory.
+#-Ditac.artes.propdir=./
+
+## native code logging path and filename
+-Ditac.ewmii.logfilepath=./ewMIInative.log
+
+## enable/disable native code logging 
+-Ditac.ewmii.debug=false
+
+#######################################
+# logging properties with jdk logging #
+#######################################
+# ARTES logger
+-DARTES.level=INFO
+-DARTES.namedhandlers=LOGFILE
+#-DARTES.namedhandlers=ARTESHANDLER
+-DARTES.useparenthandlers=false
+
+# PERF logger (using ARTES handler)
+-DPERF.level=INFO
+-DPERF.namedhandlers=LOGFILE
+#-DPERF.namedhandlers=PERFHANDLER
+-DPERF.useparenthandlers=false
+
+# ITAC logger (default looger)
+-DITAC.level=INFO
+-DITAC.namedhandlers=LOGFILE
+-DITAC.useparenthandlers=false
+
+# Console log handler
+#-Dcom.itac.logger.handler.CONSOLE=java.util.logging.ConsoleHandler
+#-Dcom.itac.logger.handler.CONSOLE.handlerlevel=ALL
+#-Dcom.itac.logger.handler.CONSOLE.encoding=UTF-8
+#-Dcom.itac.logger.handler.CONSOLE.formatter=com.itac.util.logging.sun.PatternFormatter
+#-Dcom.itac.logger.handler.CONSOLE.messagepattern=[%d{dd.MM. HH:mm:ss,S}][%p][%t][%c] >%m<%n
+
+# ARTES log handler (ewmiiapi_artes.log)
+#-Dcom.itac.logger.handler.ARTESHANDLER=java.util.logging.FileHandler
+#-Dcom.itac.logger.handler.ARTESHANDLER.handlerlevel=ALL
+#-Dcom.itac.logger.handler.ARTESHANDLER.encoding=UTF-8
+#-Dcom.itac.logger.handler.ARTESHANDLER.pattern=ewmiiapi_artes_%g.log
+#-Dcom.itac.logger.handler.ARTESHANDLER.formatter=com.itac.util.logging.sun.PatternFormatter
+#-Dcom.itac.logger.handler.ARTESHANDLER.messagepattern=[%d{dd.MM. HH:mm:ss,S}][%p][%t][%c] >%m<%n
+#-Dcom.itac.logger.handler.ARTESHANDLER.count=10
+#-Dcom.itac.logger.handler.ARTESHANDLER.limit=100000000
+#-Dcom.itac.logger.handler.ARTESHANDLER.append=true
+
+# PERF log handler (ewmiiapi_perf.log)
+#-Dcom.itac.logger.handler.PERFHANDLER=java.util.logging.FileHandler
+#-Dcom.itac.logger.handler.PERFHANDLER.handlerlevel=ALL
+#-Dcom.itac.logger.handler.PERFHANDLER.encoding=UTF-8
+#-Dcom.itac.logger.handler.PERFHANDLER.pattern=ewmiiapi_perf_%g.log
+#-Dcom.itac.logger.handler.PERFHANDLER.formatter=com.itac.util.logging.sun.PatternFormatter
+#-Dcom.itac.logger.handler.PERFHANDLER.messagepattern=[%d{dd.MM. HH:mm:ss,S}][%p][%t][%c] >%m<%n
+#-Dcom.itac.logger.handler.PERFHANDLER.count=10
+#-Dcom.itac.logger.handler.PERFHANDLER.limit=100000000
+#-Dcom.itac.logger.handler.PERFHANDLER.append=true
+
+# Default log handler (ewmiiapi.log)
+-Dcom.itac.logger.handler.LOGFILE=java.util.logging.FileHandler
+-Dcom.itac.logger.handler.LOGFILE.handlerlevel=ALL
+-Dcom.itac.logger.handler.LOGFILE.encoding=UTF-8
+-Dcom.itac.logger.handler.LOGFILE.pattern=ewmiiapi_%g.log
+-Dcom.itac.logger.handler.LOGFILE.formatter=com.itac.util.logging.sun.PatternFormatter
+-Dcom.itac.logger.handler.LOGFILE.messagepattern=[%d{dd.MM. HH:mm:ss,S}][%p][%t][%c] >%m<%n
+-Dcom.itac.logger.handler.LOGFILE.count=10
+-Dcom.itac.logger.handler.LOGFILE.limit=100000000
+-Dcom.itac.logger.handler.LOGFILE.append=true

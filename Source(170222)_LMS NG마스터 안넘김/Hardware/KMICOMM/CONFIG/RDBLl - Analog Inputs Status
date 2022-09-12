@@ -1,0 +1,26 @@
+RDBLl - Analog Inputs Status;
+2
+21
+Record Local Identifier;
+3
+06
+5
+Local Identifier;
+5
+06
+A_VBAT_MON;
+8
+0
+0.08
+V;
+Reserved;
+5
+0
+Reserved;
+5
+0
+A_ALT_L;
+8
+0
+0.02
+V;

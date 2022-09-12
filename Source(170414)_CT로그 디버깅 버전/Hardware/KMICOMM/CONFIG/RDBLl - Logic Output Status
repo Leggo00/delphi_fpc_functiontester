@@ -1,0 +1,23 @@
+RDBLl - Logic Output Status;
+02
+21
+Record Local  Identifier;
+3
+07
+3
+Local Identifier;
+5
+07
+bit1;
+0
+O_KEYOUT_IND;
+O_IMMO_IND;
+unused;
+O_EXT_BUZZER;
+O_ESCL_ENABLE;
+unused;
+unused;
+unused;
+bit2;
+5
+0

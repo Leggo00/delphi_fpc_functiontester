@@ -1,0 +1,11 @@
+#TestInfo
+  ProjectFile=
+  CanDBFile1=
+  CanDBFile2=
+  ProjectView=1
+
+#WindowList
+  TFrmData;TEST RESULT;2,2,1031,854
+  TFrmGraph;GRAPH;367,496,433,264
+  TFrmLog;LOG;-235,494,597,266
+  TFrmAlret;경고 리스트;-70,57,612,346

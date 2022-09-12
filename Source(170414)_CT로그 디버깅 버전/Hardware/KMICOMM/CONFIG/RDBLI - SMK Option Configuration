@@ -1,0 +1,40 @@
+RDBLI - SMK Option Configuration;
+02
+21
+Record Local Identifier;
+3
+03
+4
+Local Identifier;
+5
+03
+bit1;
+0
+3_INT_ANT_BIT (0:disabled/1:enabled);
+4_INT_ANT_BIT (0:disabled/1:enabled);
+TAIL_BIT (0:trunk/1:tail gate);
+TAIL_LOCK_BIT (0:only unlock/1:unlocking and locking);
+Bi_FobHodelr_config;
+Bi_CAPA_SENSOR;
+Bi_TWO_STEP_UNLOCK;
+Bi_DoorBrokenDetectionBySMK;
+bit2;
+0
+Authorisation of PIC function (bi_PIC_option);
+Authorisation of ESCL function(bi_ESCL_optoin);
+Automatic Transmission (bi_AT_option);
+Bi_CalulKtr(Transponder learning without locking);
+Bi_Diesel option(Diesel =1,Gasolin =0);
+Bi_BCM_Learning;
+Bi_WEL_Enable;
+Bi_Passive_Pre_Auth;
+bit3;
+0
+Bi_FS_Enable;
+Bi_Auto_Config_ESCL_Option;
+Reserved;
+Reserved;
+Reserved;
+Reserved;
+Reserved;
+Reserved;

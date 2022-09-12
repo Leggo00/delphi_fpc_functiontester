@@ -1,0 +1,306 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Tester dontKnow FPCM
+VAL_TABLE_ New_Value_Table_2 1 "ng" 0 "ok" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ FCO_L : 0|16@1+ (0.04608,0) [0|3019.8528] "L/h" Vector__XXX
+
+BO_ 1634 AnalogInputs_5_to_8: 2 Vector__XXX
+ SG_ EXT_Flow_1 : 39|16@0- (0.1,-100) [0|400] "L/H" Vector__XXX
+
+BO_ 1292 CLU13: 1 dontKnow
+ SG_ LowFuelWarm : 0|2@1+ (1,0) [0|3] "" Vector__XXX
+
+BO_ 640 EMS3: 8 dontKnow
+ SG_ CR_Ems3_Amb_Pres : 56|8@1+ (2.122,0) [0|541.11] "kPa"  FPCM
+
+BO_ 899 FATC11: 5 dontKnow
+ SG_ CR_Fatc_OutTempSns : 32|8@1+ (0.5,-40) [-40|60] "¡ÆC"  FPCM
+
+BO_ 1633 AnalogData: 8 Vector__XXX
+ SG_ AD_Return_hydrometer : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ AD_Return_Flow : 7|16@0- (0.1,-100) [0|0] "L/h" Vector__XXX
+
+BO_ 1087 TCU1: 8 Vector__XXX
+ SG_ Temp_AT : 32|8@1+ (1,-40) [-40|215] "" Vector__XXX
+
+BO_ 512 EMS20: 5 dontKnow
+ SG_ Split_Stat : 32|1@1- (1,0) [0|1] ""  FPCM
+ SG_ FCO_uL : 0|16@1+ (0.04608,0) [0|3019.8528] "L/h"  FPCM
+ SG_ CF_Ems_PumpTPres : 16|8@1+ (3.137254902,0) [0|800] "kPa"  FPCM
+
+BO_ 1751 FPC_Dev_Tx3: 8 FPCM
+ SG_ in_testmode : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ test_mode_stage : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Dummy3 : 48|16@1+ (1,0) [0|0] ""  dontKnow
+ SG_ PIOutSignal : 0|32@1+ (1,0) [0|0] ""  dontKnow
+
+BO_ 1749 NFPC_Dev_Tx2: 8 FPCM
+ SG_ DiagSignal : 48|8@1+ (1,0) [0|255] ""  dontKnow
+ SG_ dummy2 : 56|8@1+ (1,0) [0|255] ""  dontKnow
+ SG_ ErrorSignal : 32|16@1+ (1,0) [0|65535] ""  dontKnow
+ SG_ PsSigSignal : 16|16@1+ (1,0) [0|65535] ""  dontKnow
+ SG_ PsRefSignal : 0|16@1+ (1,0) [0|65535] ""  dontKnow
+
+BO_ 1747 FPC_Dev_Tx1: 8 FPCM
+ SG_ DcOutSignal : 32|16@1+ (1,0) [0|65535] ""  dontKnow
+ SG_ PtermSignal : 0|16@1+ (1,0) [0|65535] ""  dontKnow
+ SG_ PactSignal : 48|16@1+ (1,0) [0|65535] ""  dontKnow
+ SG_ ItermSignal : 16|16@1+ (1,0) [0|65535] ""  dontKnow
+
+BO_ 1790 FPC_Develop: 8 dontKnow
+ SG_ dummy1 : 24|40@1+ (1,0) [0|0] ""  FPCM
+ SG_ Param_Value : 8|16@1+ (1,0) [0|0] ""  FPCM
+ SG_ index_param : 0|8@1+ (1,0) [0|255] ""  FPCM
+
+BO_ 1806 ISO_FPCM_Req: 8 Tester
+ SG_ ISO_FPCM_Req_Data : 0|64@1- (1,0) [0|0] ""  FPCM
+
+BO_ 1912 ISO_FPCM_Resp: 8 FPCM
+ SG_ ISO_FPCM_Resp_Data : 0|64@1- (1,0) [0|0] ""  Tester
+
+BO_ 1792 ISO_Functional_Req_All: 8 Tester
+ SG_ ISO_Functional_Req_Data : 0|64@1- (1,0) [0|0] ""  FPCM
+
+BO_ 608 ENG_STATUS: 4 dontKnow
+ SG_ eng_status : 28|3@1+ (1,0) [0|7] ""  FPCM
+
+BO_ 1349 EMS14: 8 dontKnow
+ SG_ TEMP_FUEL : 56|8@1+ (0.75,-48) [-48|143.25] "¡ÆC" Vector__XXX
+ SG_ VB : 24|8@1+ (0.101563,0) [0|25.8984] "V"  FPCM
+
+BO_ 672 EMS5: 8 dontKnow
+ SG_ Accel_Pedal_Value_Filtered : 8|8@1+ (0.3906,0) [0|99.603] ""  FPCM
+
+BO_ 809 EMS2: 8 dontKnow
+ SG_ TPS : 40|8@1+ (0.46948,-15.0235) [0|100] "%" Vector__XXX
+ SG_ ENG_VOL : 56|8@1+ (0.1,0) [0|25.5] ""  FPCM
+ SG_ Temp_EngCooling : 8|8@1+ (0.75,-48) [-48|143.25] "" Vector__XXX
+ SG_ Accel_Pedal_Value : 48|8@1+ (0.3906,0) [0|99.2] ""  FPCM
+
+BO_ 790 EMS1: 7 dontKnow
+ SG_ TQI : 32|8@1+ (0.390625,0) [0|99.6094] "%"  FPCM
+ SG_ Eng_FuelCutOff : 3|1@1+ (1,0) [0|1] ""  FPCM
+ SG_ Eng_Rpm : 16|16@1+ (0.25,0) [0|8000] ""  FPCM
+ SG_ Vehicle_Speed : 48|8@1+ (1,0) [0|0] ""  FPCM
+
+BO_ 898 ECU_P: 8 dontKnow
+ SG_ ecu_p_1G : 40|8@1+ (3.125,0) [0|796.875] "" Vector__XXX
+
+BO_ 1365 FPC_P: 8 FPCM
+ SG_ FPC_FC_80_CtrCirFit : 15|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_40_PreSnrSigErr : 14|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_20_SystemError : 13|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_10_PumpDiscShort : 12|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_08_PreSnrShort : 11|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_04_PreSnrDisc : 10|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_02_PreSnrHi : 9|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ FPC_FC_01_PumpOverCur : 8|1@1+ (1,0) [0|1] ""  dontKnow
+ SG_ fpc_duty_actual : 16|8@1+ (0.391,0) [0|99.705] ""  dontKnow
+ SG_ fpc_p : 0|8@1+ (3.125,0) [0|796.875] ""  dontKnow
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 65535;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ SG_  "GenSigEVName" STRING ;
+BA_DEF_ SG_  "GenSigEnvVarType" ENUM  "int","float","undef";
+BA_DEF_ SG_  "NWM_WakeupAllowed" ENUM  "No","Yes";
+BA_DEF_ SG_  "SignalCategory" HEX 10 15;
+BA_DEF_ SG_  "UndefinedValueRangeBegin" INT 0 0;
+BA_DEF_ SG_  "GwSigMissingSourceType" ENUM  "Undef","OldValue","DefaultValue","InitialValue";
+BA_DEF_ SG_  "GwSigLatencyTime" INT 0 65535;
+BA_DEF_ SG_  "NmNetworkRequest" ENUM  "No","Yes";
+BA_DEF_ SG_  "NmNetworkRequestHoldingTime" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeoutTime_FAM" INT 0 65535;
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 200;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 40 500;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 2000;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 20 20;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 3 3;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","not_used","not_used","not_used","not_used","not_used","not_used","not_used","NoMsgSendType";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "NWM_Botschaft" ENUM  "No","Yes";
+BA_DEF_ BO_  "TpTxIndex" INT 0 255;
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 0;
+BA_DEF_ BO_  "DiagRequest" ENUM  "no","yes";
+BA_DEF_ BO_  "DiagState" ENUM  "no","yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "no","yes";
+BA_DEF_ BO_  "DiagUudtResponse" ENUM  "false","true";
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmCAN" INT 1 2;
+BA_DEF_ BU_  "NmStationAddress" HEX 0 255;
+BA_DEF_ BU_  "NmNode" ENUM  "No","Yes";
+BA_DEF_ BU_  "GenNodSleepTime" INT 1375 1650;
+BA_DEF_ BU_  "NWM_Knoten" ENUM  "No","Yes";
+BA_DEF_ BU_  "TpRxIdentifier" HEX 0 0;
+BA_DEF_ BU_  "TpTxIdentifier" HEX 0 0;
+BA_DEF_  "SyncJumpWidthMax" INT 1 8;
+BA_DEF_  "SyncJumpWidthMin" INT 1 4;
+BA_DEF_  "SamplePointMax" INT 50 85;
+BA_DEF_  "SamplePointMin" INT 55 85;
+BA_DEF_  "Baudrate" INT 50000 125000;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "NmMessageCount" INT 0 128;
+BA_DEF_  "NmBaseAddress" HEX 0 2047;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "GenEnvVarEndingDsp" STRING ;
+BA_DEF_  "GenEnvVarEndingSnd" STRING ;
+BA_DEF_  "GenEnvVarPrefix" STRING ;
+BA_DEF_  "GenNWMApBusSleep" STRING ;
+BA_DEF_  "GenNWMApCanNormal" STRING ;
+BA_DEF_  "GenNWMApCanOff" STRING ;
+BA_DEF_  "GenNWMApCanOn" STRING ;
+BA_DEF_  "GenNWMApCanSleep" STRING ;
+BA_DEF_  "GenNWMApCanWakeUp" STRING ;
+BA_DEF_  "GenNWMGotoMode_Awake" STRING ;
+BA_DEF_  "GenNWMGotoMode_BusSleep" STRING ;
+BA_DEF_  "GenNWMSleepTime" INT 1375 1650;
+BA_DEF_  "GenNWMTalkNM" STRING ;
+BA_DEF_  "VersionDay" INT 1 31;
+BA_DEF_  "VersionMonth" INT 1 12;
+BA_DEF_  "VersionYear" INT 0 9999;
+BA_DEF_  "VersionWeek" INT 1 53;
+BA_DEF_  "VersionNumber" INT 0 9999;
+BA_DEF_  "VersionNumberInternal" INT 0 9999;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_REL_ BU_SG_REL_  "GenSigTimeoutMsg" HEX 0 2047;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "NoSigSendType";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigEVName" "";
+BA_DEF_DEF_  "GenSigEnvVarType" "undef";
+BA_DEF_DEF_  "NWM_WakeupAllowed" "No";
+BA_DEF_DEF_  "SignalCategory" 12;
+BA_DEF_DEF_  "UndefinedValueRangeBegin" 0;
+BA_DEF_DEF_  "GwSigMissingSourceType" "Undef";
+BA_DEF_DEF_  "GwSigLatencyTime" 40;
+BA_DEF_DEF_  "NmNetworkRequest" "No";
+BA_DEF_DEF_  "NmNetworkRequestHoldingTime" 0;
+BA_DEF_DEF_  "GenSigTimeoutTime_FAM" 0;
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 60;
+BA_DEF_DEF_  "GenMsgCycleTime" 200;
+BA_DEF_DEF_  "GenMsgDelayTime" 20;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 3;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "NWM_Botschaft" "No";
+BA_DEF_DEF_  "TpTxIndex" 0;
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "DiagRequest" "no";
+BA_DEF_DEF_  "DiagState" "no";
+BA_DEF_DEF_  "DiagResponse" "no";
+BA_DEF_DEF_  "DiagUudtResponse" "false";
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "NmCAN" 1;
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmNode" "Yes";
+BA_DEF_DEF_  "GenNodSleepTime" 1500;
+BA_DEF_DEF_  "NWM_Knoten" "Yes";
+BA_DEF_DEF_  "TpRxIdentifier" 0;
+BA_DEF_DEF_  "TpTxIdentifier" 0;
+BA_DEF_DEF_  "SyncJumpWidthMax" 3;
+BA_DEF_DEF_  "SyncJumpWidthMin" 2;
+BA_DEF_DEF_  "SamplePointMax" 82;
+BA_DEF_DEF_  "SamplePointMin" 75;
+BA_DEF_DEF_  "Baudrate" 100000;
+BA_DEF_DEF_  "Manufacturer" "HMC";
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_DEF_DEF_  "NmBaseAddress" 1024;
+BA_DEF_DEF_  "NmType" "Vector";
+BA_DEF_DEF_  "GenEnvVarEndingDsp" "Dsp_";
+BA_DEF_DEF_  "GenEnvVarEndingSnd" "_";
+BA_DEF_DEF_  "GenEnvVarPrefix" "Env";
+BA_DEF_DEF_  "GenNWMApBusSleep" "ApplNmCanBusSleep()";
+BA_DEF_DEF_  "GenNWMApCanNormal" "ApplNmCanNormal()";
+BA_DEF_DEF_  "GenNWMApCanOff" "ApplCanOffline()";
+BA_DEF_DEF_  "GenNWMApCanOn" "ApplCanOnline()";
+BA_DEF_DEF_  "GenNWMApCanSleep" "ApplNmCanSleep()";
+BA_DEF_DEF_  "GenNWMApCanWakeUp" "ApplCanWakeUp()";
+BA_DEF_DEF_  "GenNWMGotoMode_Awake" "GotoMode_Awake()";
+BA_DEF_DEF_  "GenNWMGotoMode_BusSleep" "GotoMode_BusSleep()";
+BA_DEF_DEF_  "GenNWMSleepTime" 1500;
+BA_DEF_DEF_  "GenNWMTalkNM" "TalkNM()";
+BA_DEF_DEF_  "VersionDay" 1;
+BA_DEF_DEF_  "VersionMonth" 1;
+BA_DEF_DEF_  "VersionYear" 0;
+BA_DEF_DEF_  "VersionWeek" 1;
+BA_DEF_DEF_  "VersionNumber" 0;
+BA_DEF_DEF_  "VersionNumberInternal" 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+BA_DEF_DEF_REL_ "GenSigTimeoutMsg" 0;
+BA_ "BusType" "CAN";
+BA_ "GenMsgSendType" BO_ 1751 0;
+BA_ "GenMsgSendType" BO_ 1749 0;
+BA_ "GenMsgSendType" BO_ 1747 0;
+BA_ "DiagRequest" BO_ 1806 1;
+BA_ "GenMsgCycleTime" BO_ 1912 0;
+BA_ "GenMsgSendType" BO_ 1365 0;
+BA_ "GenSigTimeoutTime_FAM" SG_ 3221225472 FCO_L 2000;
+BA_ "GenSigSendType" SG_ 3221225472 FCO_L 0;
+BA_ "GenSigStartValue" SG_ 1634 EXT_Flow_1 1000;
+BA_ "GenSigStartValue" SG_ 1633 AD_Return_Flow 1000;
+BA_ "GenSigStartValue" SG_ 1087 Temp_AT 40;
+BA_ "GenSigSendType" SG_ 512 FCO_uL 0;
+BA_ "GenSigTimeoutTime_FAM" SG_ 512 FCO_uL 2000;
+BA_ "GenSigSendType" SG_ 512 CF_Ems_PumpTPres 0;
+BA_ "GenSigTimeoutTime_FAM" SG_ 512 CF_Ems_PumpTPres 2000;
+BA_ "GenSigSendType" SG_ 1912 ISO_FPCM_Resp_Data 1;
+BA_ "GenSigStartValue" SG_ 1349 TEMP_FUEL 255;
+BA_ "GenSigStartValue" SG_ 809 TPS 32.0002982022663;
+BA_ "GenSigStartValue" SG_ 809 Temp_EngCooling 64;
+BA_ "GenSigSendType" SG_ 898 ecu_p_1G 0;
+BA_ "GenSigTimeoutTime_FAM" SG_ 898 ecu_p_1G 2000;
+

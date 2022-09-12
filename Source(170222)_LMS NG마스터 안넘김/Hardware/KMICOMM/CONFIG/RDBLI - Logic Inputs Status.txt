@@ -1,0 +1,33 @@
+message name = RDBLI - Logic Inputs Status
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x05
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x04 
+#5 Request Id = 0x61 
+#6 Local Identifier of diagnostic burst = 0x05
+#7 bit1 
+  b0 : L_SSB_SW2
+  b1 : L_ACC
+  b2 : L_IGN1
+  b3 : L_P_POSITION
+  b4 : L_BRAKE
+  b5 : L_FL_DOOR_LOCK_UNLOCK
+  b6 : L_FR_DOOR_LOCK_UNLOCK
+  b7 : L_TAILGATE_TRUNK_SW
+#8 bit2 
+  b0 : L_FL_CAPA_SENSOR (GH09MY only)
+  b1 : L_FR_CAPA_SENSOR (GH09MY only)
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Reserved
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved

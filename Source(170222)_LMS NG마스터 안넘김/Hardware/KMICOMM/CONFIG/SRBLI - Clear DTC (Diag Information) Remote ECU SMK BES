@@ -1,0 +1,52 @@
+SRBLI - Clear DTC (Diag Information) Remote ECU;
+6
+31
+Record Local Identifier;
+3
+7
+Remote ECU Identifier;
+0
+1
+1
+PDM;
+Routine Entry Status #2;
+3
+0
+Routine Entry Status #3;
+3
+0
+Routine Entry Status #4;
+3
+0
+9
+Local Identifier;
+5
+7
+C_DiagPDMClearResponseCode;
+6
+2
+1
+Positive response;
+2
+Negative response;
+C_DiagPDMCLRErrorCode;
+5
+0
+DATA3 byte of the CAN response;
+5
+0
+DATA4 byte of the CAN response;
+5
+0
+DATA5 byte of the CAN response;
+5
+0
+DATA6 byte of the CAN response;
+5
+0
+DATA7 byte of the CAN response;
+5
+0
+DATA8 byte of the CAN response;
+5
+0

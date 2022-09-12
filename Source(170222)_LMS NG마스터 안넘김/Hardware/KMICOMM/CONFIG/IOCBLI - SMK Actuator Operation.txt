@@ -1,0 +1,43 @@
+message name = IOCBLI - SMK Actuator Operation
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 30 
+#6 Input Output Local Identifier = XX
+  0x01 : Key out Led output
+  0x02 : Immobilizer Led output
+  0x04 : External Buzzer
+  0x05 : ESCL ENABLE(ESCL only)
+  0x20 : Activate INTERIOR_ANTENNA1
+  0x21 : Activate INTERIOR_ANTENNA2
+  0x22 : Activate INTERIOR_ANTENNA3
+  0x23 : Activate INTERIOR_ANTENNA4
+  0x24 : Activate TRUNK_ANTENNA
+  0x25 : Activate BUMPER/TAIL_GATE ANTENNA
+  0x26 : Activate DRV_DR_ANTENNA
+  0x27 : Activate AST_DR_ANTENNA
+  0x28 : Perform LF antenna check for INTERIOR_ANTENNA1
+  0x29 : Perform LF antenna check for INTERIOR_ANTENNA2
+  0x2A : Perform LF antenna check for INTERIOR_ANTENNA3
+  0x2B : Perform LF antenna check for INTERIOR_ANTENNA4
+  0x2C : Perform LF antenna check for TRUNK_ANTENNA
+  0x2D : Perform LF antenna check for BUMPER/TAIL_GATE ANTENNA
+  0x2E : Perform LF antenna check for DRV_DR_ANTENNA
+  0xEF : Perform LF antenna check for AST_DR_ANTENNA
+  0x30 : Perform SCI Diagnosis for Enternal Receiver Communication Line
+  0x31 : Perform SCI Diagnosis for ESCL_COM
+#7 Input Output Control Parameter = 0x06
+#8 Control state #1: ON Time Duration  = XX
+#9 Control state #2: OFF Time Duration = XX
+#10 Control state #3: required number of activation = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x04 
+#5 Request Id = 0x70 
+#6 Input Output Local Identifier = 0xXX
+#7 Input Output Control Parameter = 0x06
+#8 Control state #1 = 0xXX

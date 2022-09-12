@@ -1,0 +1,73 @@
+SRBLI - Launch Self Diag Remote ECU;
+6
+31
+Record Local  Identifier;
+3
+4
+Remote ECU Identifier;
+0
+1
+1
+PDM;
+DTC Type;
+0
+2
+0
+Present failure;
+1
+Memorized failure;
+Routine Entry Status #3;
+3
+0
+Routine Entry Status #4;
+3
+0
+9
+Local Identifier;
+5
+4
+NumberOfDTC;
+1
+DATA2 byte of the CAN response;
+0
+CAN BUSOFF;
+CAN ERR;
+Reserved;
+Reserved;
+Sub MCU failed;
+Reserved;
+Reserved;
+Reserved;
+DATA3 byte of the CAN response;
+5
+0
+DATA4 byte of the CAN response;
+5
+0
+DATA5 byte of the CAN response;
+5
+0
+DATA6 byte of the CAN response;
+5
+0
+DATA7 byte of the CAN response;
+0
+IMMO TX SCB;
+Reserved;
+ESCL GND SCB;
+ESCL BAT SCB;
+Reserved;
+Reserved;
+Reserved;
+Reserved;
+DATA8 byte of the CAN response;
+0
+IMMO TX SCG;
+Reserved;
+Reserved;
+ESCL BAT SCG;
+Reserved;
+Reserved;
+Reserved;
+Reserved;
+

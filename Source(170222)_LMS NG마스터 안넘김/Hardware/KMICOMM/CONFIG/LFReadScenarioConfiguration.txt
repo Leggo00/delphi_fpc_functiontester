@@ -1,0 +1,17 @@
+message name = LFReadScenarioConfiguration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = A5 
+#6 Scenario index = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x10 
+#5 Request Id = 0xE5 
+#6 Scenario index = 0xXX
+#7 ~ #13 Scenario step index = 0xXX
+#14 ~ #20 Finish Scenario Step = 0xXX

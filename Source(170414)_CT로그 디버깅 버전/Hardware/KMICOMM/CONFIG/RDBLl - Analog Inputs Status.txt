@@ -1,0 +1,20 @@
+message name = RDBLl - Analog Inputs Status
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x06
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0x06
+#7 A_VBAT_MON = 0xXX * 0.080000 + 0.000000[V]
+ #8 Reserved = 0x00
+#9 Reserved = 0x00
+#10 A_ALT_L = 0xXX * 0.020000 + 0.000000[V]
+ 

@@ -1,0 +1,21 @@
+message name = SRBLI - Request teaching 2nd PIC FOB key
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 31 
+#6 Routine Local Identifier = 0x14
+#7 Teaching parameter = XX
+  0x01 : Yes
+  0x02 : No
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 0x71 
+#6 Record Local Identifier = 0x14
+#7 Teaching Status = XX
+  0xF0 : Teaching procedure cancelled (finished)
+  0xF1 : Teaching procedure automatically finished

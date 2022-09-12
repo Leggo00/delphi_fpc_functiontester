@@ -1,0 +1,45 @@
+message name = SRBLI - Launch Actuator Diag Remote ECU
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x06
+#7 Remote ECU Identifier = XX
+  0x01 : PDM
+#8 Remote Actuator Identifier = XX
+  0x01 : SSB_LED_AMBER
+  0x02 : SSB_LED_GREEN
+  0x03 : HOLDER_ILL
+  0x04 : SSB_ILLU
+  0x05 : O_ACC
+  0x06 : O_IGN1
+  0x07 : O_IGN2
+  0x08 : O_STARTER
+  0x09 : Perform ESCL open check
+#9 Remote Actuator Command = XX
+  0x00 : Turn OFF
+  0x01 : Turn ON
+#10 Routine Entry Status  = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0A 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x06
+#7 C_DiagPDMACTResponseCode = XX
+  0x01 : Positive response
+  0x02 : Negative response
+#8 C_DiagPDMACTErrorCode = XX
+  0x00 : No error and if ESCL is not opened state
+  0x01 : If actuator operation is failed
+  0x02 : If requested Actuator Code is not supported
+  0x03 : No error and if ESCL is opened state(if only perform ESCL open check)
+#9 DATA3 byte of the CAN response = 0x00
+#10 DATA4 byte of the CAN response = 0x00
+#11 DATA5 byte of the CAN response = 0x00
+#12 DATA6 byte of the CAN response = 0x00
+#13 DATA7 byte of the CAN response = 0x00
+#14 DATA8 byte of the CAN response = 0x00

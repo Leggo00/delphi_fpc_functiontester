@@ -1,0 +1,62 @@
+WDBLI - Write SMK's option configuration;
+6
+3b
+Record Local  Identifier;
+3
+3
+Number of the bit to be modified;
+0
+18
+1
+3_INT_ANT_BIT;
+2
+4_INT_ANT_BIT;
+3
+TAIL_BIT;
+4
+TAIL_LOCK_BIT;
+5
+Bi_FobHodelr_config;
+6
+Bi_CAPA_SENSOR;
+7
+Bi_TWO_STEP_UNLOCK;
+8
+Bi_DoorBrokenDetectionBySMK;
+9
+bi_PIC_option;
+0A
+bi_ESCL_optoin;
+0B
+bi_AT_option;
+0C
+Bi_CalulKtr;
+0D
+Bi_Diesel option;
+0E
+Bi_BCM_Learning;
+0F
+Bi_WEL_Enalbe;
+10
+Bi_Passive_Pre_Auth;
+11
+Bi_FS_Enable;
+12
+Bi_Auto_Config_ESCL_Option;
+Value to assign to this bit;
+0
+2
+0
+0;
+1
+1;
+Not used;
+3
+0
+Not used;
+3
+0
+1
+Local Identifier;
+5
+3

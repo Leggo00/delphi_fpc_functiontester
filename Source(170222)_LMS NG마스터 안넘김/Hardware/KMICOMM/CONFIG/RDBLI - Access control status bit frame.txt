@@ -1,0 +1,108 @@
+message name = RDBLI - Access control status bit frame
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x0A
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x0C 
+#5 Request Id = 0x61 
+#6 Local Identifier of diagnostic burst = 0x0A
+#7 RF status n¡Æ1 : Protocol analysis 
+  b0 : SameKey - Detection of same Fix Code
+  b1 : SameRC - Detection of same Rolling Code
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Key #3 learnt
+  b5 : Key #3 synchro
+  b6 : Key #4 learnt
+  b7 : Key #4 synchro
+#8 RF status n¡Æ2 : data analysis 
+  b0 : Desync key - if 1, the key is desynchronized
+  b1 : Disabled key
+  b2 : Unknown key - The key is unknown key (Fix Code unknown)
+  b3 : Low battery - Key's battery low level is detected
+  b4 : Button #1
+  b5 : Button #2
+  b6 : Button #3
+  b7 : Button #4
+#9 RF status n¡Æ3 : data analysis 
+  b0 : Button #5
+  b1 : Button #6
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Key #1 learnt
+  b5 : Key #1 synchro
+  b6 : Key #2 learnt
+  b7 : Key #2 synchro
+#10 Transponder status n¡Æ1 = XX
+  0x00 : Immo coil error
+  0x01 : TP is virgin
+  0x02 : TP is learned and valid
+  0x03 : TP is not valid (TP is present, but no valid ISK)
+  0x04 : TP not present (base-station OK, but no response from transponder)
+  0x05 : TP is not valid (TP is present, but no valid IDE)
+  0x06 : not all data blocks received before "Start Fob Learning Request" 
+  0x07 : TP has already been learned during this learning session 
+  0x08 : Request to learn 2nd fob while 1st fob not yet learnt or not all data could be read from the transponder
+  0x09 : TP is not valid (TP is present, but no valid PSW)
+  0xFF : Default value
+#11 Transponder status n¡Æ2 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Resynch failed
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved
+#12 Immo & PASE status n¡Æ1 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : ATLRNRUN
+  b3 : PDM_Status LSB (00:Virgin, 01:Learnt)
+  b4 : PDM_Status MSB (10:Neutral, 11:undef)
+  b5 : CODEOK
+  b6 : SMK_Status LSB (00:Virgin, 01:Learnt)
+  b7 : SMK_Status MSB (10:Neutral, 11:undef)
+#13 Immo & PASE status n¡Æ2 
+  b0 : ECM MIN code is correct
+  b1 : ECM neutralization is requested and pending
+  b2 : ECM Neutralization has been sent
+  b3 : Reserved
+  b4 : Reserved
+  b5 : Lock by timer1
+  b6 : Reserved
+  b7 : Reserved
+#14 ESCL Status 1 
+  b0 : ESCL_ENABLE
+  b1 : ESCL_Failure
+  b2 : ESCL_Unlocked
+  b3 : ESLC_Locked
+  b4 : ESCL_Intermediate
+  b5 : ESCL_Normal
+  b6 : ESCL_Neutralized
+  b7 : ESCL_Virgin
+#15 ESCL Status 2 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Reserved
+  b5 : Response OK
+  b6 : ESCL_AntiScanMode
+  b7 : Reserved
+#16 Status for Standard ECU connected 
+  b0 : PDM 0:Not Connected / 1: connected
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Reserved
+  b5 : Reserved
+  b6 : Reserved
+  b7 : Reserved

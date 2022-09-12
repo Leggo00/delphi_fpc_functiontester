@@ -1,0 +1,101 @@
+message name = SRBLI - Launch Switch Diag Remote ECU
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x05
+#7 Remote ECU Identifier = XX
+  0x01 : PDM
+#8 No. of Targeted Remote ECU's CAN Response Frame = XX
+  0x01 : Expected one CAN response frame
+  0x02 : Expected two CAN response frame
+#9 Routine Entry Status #3 = 0x00
+#10 Routine Entry Status #4 = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x12 
+#5 Request Id = 0x71 
+#6 Local Identifier = 0x05
+#7 A_VBAT_LOAD_MON = 0xXX * 0.080000 + 0.000000[V]
+ #8 F_VS_ABS_Main = 0xXX
+#9 F_VS_ABS_Sub = 0xXX
+#10 L_Reserved (F_RPM) = 0x00
+#11 Logic Input of Main MCU 
+  b0 : Reserved
+  b1 : L_START_EMS
+  b2 : L_FOB_IN
+  b3 : L_IGN2
+  b4 : L_ESCL_UNLOCK
+  b5 : A_IGN1
+  b6 : L_ACC
+  b7 : SSB_SW1
+#12 Logic Input of Sub MCU 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : L_ESCL_UNLOCK_Sub
+  b5 : A_IGN1_Sub
+  b6 : L_ACC_Sub
+  b7 : SSB_SW1_Sub
+#13 DATA7 byte of the CAN response 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : O_SSB_ILLU
+  b5 : HOLDER_ILL
+  b6 : SSB_LED_GREEN
+  b7 : SSB_LED_AMBER
+#14 DATA8 byte of the CAN response 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : O_ESCL_GND
+  b3 : O_ESCL_BAT
+  b4 : O_STARTER
+  b5 : O_IGN2
+  b6 : O_IGN1
+  b7 : O_ACC
+#15 A_VBAT_CPU_MON = 0xXX * 0.080000 + 0.000000[V]
+ #16 ~ #17 F_RPM = 0xXX
+#18 DATA4 byte of the CAN response 2 = 0x00
+#19 DATA5 byte of the CAN response 2 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Starter P/N SW SCB
+  b5 : IGN2 Relay SCB
+  b6 : IGN1 Relay SCB
+  b7 : ACC Relay SCB
+#20 DATA6 byte of the CAN response 2 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Reserved
+  b5 : IGN2 Relay Open
+  b6 : IGN1 Relay Open
+  b7 : ACC Relay Open
+#21 DATA7 byte of the CAN response 2 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Starter Output SCB
+  b5 : IGN2 Output SCB
+  b6 : IGN1 Output SCB
+  b7 : ACC Output SCB
+#22 DATA8 byte of the CAN response 2 
+  b0 : Reserved
+  b1 : Reserved
+  b2 : Reserved
+  b3 : Reserved
+  b4 : Starter Output SCG
+  b5 : IGN2 Output SCG
+  b6 : IGN1 Output SCG
+  b7 : ACC Output SCG

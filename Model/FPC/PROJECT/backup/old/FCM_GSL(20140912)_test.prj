@@ -1,0 +1,1216 @@
+#STEP_0
+    Name=[8.3.1.3 Initialization Time]
+    Enabled=0
+    $INPUT
+        RESETIO;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_1
+    Name=trash
+    Enabled=0
+    $INPUT
+        CAN_CONNECT;OFF;
+        DELAY;0.1;
+        CAN_CONNECT;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_2
+    Name=POWER ON_9V
+    Enabled=0
+    $INPUT
+        CAN_CONNECT;ON;
+        BAT_ON;ON;
+        DELAY;0.5;
+        DC_POWER;9;
+        DELAY;1;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_DUTY;90~100;;;;
+        fpc_duty_actual;90~100;;SCALE=0.391;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_3
+    Name=POWER ON_13.5V
+    Enabled=0
+    $INPUT
+        DC_POWER;13.5;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_DUTY;90~100;;;;
+        fpc_duty_actual;90~100;;SCALE=0.391;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_4
+    Name=POWER ON_16V
+    Enabled=0
+    $INPUT
+        DC_POWER;16;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_DUTY;90~100;;;;
+        fpc_duty_actual;90~100;;SCALE=0.391;;
+    $OPTION
+        TIMEOUT;1;
+
+#STEP_5
+    Name=Copy-POWER ON_9V
+    Enabled=0
+    $INPUT
+        DC_POWER;13.5;
+        DELAY;0.5;
+        CAN_CONNECT;ON;
+        BAT_ON;ON;
+        DELAY;1;
+    $INPUT2
+        DELAY;5;
+    $OUTPUT
+        ;;
+    $CHECK
+        fpc_p;~;;SCALE=3.125;;
+        fpc_duty_actual;~;;SCALE=0.391;;
+    $OPTION
+        TIMEOUT;2;
+
+#STEP_6
+    Name=[8.3.1.4 DUT Stand by current]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_7
+    Name=Measure current consuption
+    Enabled=1
+    $INPUT
+        PUMP_의사부하_ON;OFF;
+        DC_POWER;13.2;
+        DELAY;0.5;
+        BAT_CURR_ON;ON;
+        DELAY;0.2;
+        BAT_ON;OFF;
+        DELAY;0.8;
+        RQ_11_BAT_CURR_1;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;8~41;mA;SCALE=1000;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_8
+    Name=[8.3.1.6 EEPROM Verificatio/Traceability]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_9
+    Name=Default condition(BATON)
+    Enabled=1
+    $INPUT
+        CAN_CONNECT;OFF;
+        BAT_ON;ON;
+        DELAY;0.5;
+        BAT_CURR_ON;OFF;
+        SENSING_ON;ON;
+        DELAY;0.5;
+        CAN_EMUL_DISCONNECT;ON;
+        DELAY;0.5;
+        CAN_EMUL_CONNECT;ON;
+        0x50C(CLU13);ON;
+        0x545(EMS14);ON;
+        0x200(EMS20);ON;
+        0x260(ENG_STATUS);ON;
+        DELAY;0.5;
+        DC_POWER;13.2;
+        DELAY;0.7;
+        CAN_CONNECT;ON;
+        DIAG_SETID;ON;
+        DIAG_START;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_10
+    Name=Enable TX CAN DID to request S/W version
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 F1 81;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F1 81 47 32 32 32;;;;
+        SW_Version;G222;;;;
+    $OPTION
+        ;;
+
+#STEP_11
+    Name=[8.3.1.7Calibration parameter check ]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_12
+    Name=Default Condition
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;ON;
+        SECURITY_ACCESS;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_13
+    Name=Write P-Gain value
+    Enabled=1
+    $INPUT
+        DIAG_SEND;2E FD 10 00 57;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6E FD 10;;;;
+    $OPTION
+        ;;
+
+#STEP_14
+    Name=Read P-Gain value
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 10 00 57;;;;
+    $OPTION
+        ;;
+
+#STEP_15
+    Name=Write I-Gain value
+    Enabled=1
+    $INPUT
+        DIAG_SEND;2E FD 11 00 3E ;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6E FD 11;;;;
+    $OPTION
+        ;;
+
+#STEP_16
+    Name=Read I-Gain value
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 11;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 11 00 3E;;;;
+    $OPTION
+        ;;
+
+#STEP_17
+    Name=Read output frequency
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 13;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 13 11 0F;;;;
+        DIAG_READ_VALUE;13.101;kHz;SCALE=0.003;;
+    $OPTION
+        ;;
+
+#STEP_18
+    Name=Read default pressure
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 14;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 14 4B 00;;;;
+        DIAG_READ_VALUE;600;kPa;SCALE=0.03125;;
+    $OPTION
+        ;;
+
+#STEP_19
+    Name=Write minimum duty cycle
+    Enabled=1
+    $INPUT
+        DIAG_SEND;2E FD 15 00 23;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6E FD 15;;;;
+    $OPTION
+        ;;
+
+#STEP_20
+    Name=Read minimum duty cycle
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 15;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 15 00 23;;;;
+        DIAG_READ_VALUE;35;%;;;
+    $OPTION
+        ;;
+
+#STEP_21
+    Name=Fuel pump load connected
+    Enabled=1
+    $INPUT
+        PUMP_의사부하_ON;ON;
+        DELAY;0.5;
+        OHM;1;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_22
+    Name=Send1 0 %  Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.1;
+        SECURITY_ACCESS;ON;
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;2F F0 15 03 00 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 00 00;;;;
+        NISCOPE_CHECKDUTY;0~5;%;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_23
+    Name=Sense_Current_Read (FP_IFK_AN)_1
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 10*;;;;
+        DIAG_READSTR_SET;;;;;
+        AAAA;;;VAR:%DIAG_READSTR_SET%;;
+    $OPTION
+        ;;
+
+#STEP_24
+    Name=Write current sensor gain 0A (Calibrate 0A offset)
+    Enabled=1
+    $INPUT
+        DIAG_SEND;2E FD 16 %AAAA%;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6E FD 16;;;;
+    $OPTION
+        ;;
+
+#STEP_25
+    Name=Read current sensor gain 0A
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 16;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 16 %AAAA%;;;;
+    $OPTION
+        ;;
+
+#STEP_26
+    Name=Send1 100 % Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;2F F0 15 03 C8 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 C8 00;;;;
+        NISCOPE_CHECKDUTY;95~100;%;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_27
+    Name=Sense_Current_Read (FP_IFK_AN)_2
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 10*;;;;
+        DIAG_READSTR_SET;;;;;
+        BBBB;;;VAR:%DIAG_READSTR_SET%;;
+    $OPTION
+        ;;
+
+#STEP_28
+    Name=10A Setting
+    Enabled=1
+    $INPUT
+        DC_POWER;10.35;
+        DELAY;0.1;
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;9~11;;SCALE=11;;
+    $OPTION
+        ;;
+
+#STEP_29
+    Name=Write current sensor gain 10A(Calibrate 10A offset)
+    Enabled=1
+    $INPUT
+        DIAG_SEND;2E FD 17 %BBBB%;
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6E FD 17;;;;
+        NISCOPE_AVE;;;SCLAE=11;;
+    $OPTION
+        ;;
+
+#STEP_30
+    Name=Read current sensor gain 10A
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 FD 17;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 FD 17 %BBBB%;;;;
+    $OPTION
+        ;;
+
+#STEP_31
+    Name=10A Setting OFF
+    Enabled=1
+    $INPUT
+        DC_POWER;13.2;
+        DELAY;0.3;
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;;;SCALE=11;;
+    $OPTION
+        ;;
+
+#STEP_32
+    Name=Fuel pump load disconnected
+    Enabled=1
+    $INPUT
+        OHM;0;
+        DELAY;0.1;
+        PUMP_의사부하_ON;OFF;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_33
+    Name=[8.3.1.8 H/W & ADC check]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_34
+    Name=BATT supply voltage check
+    Enabled=1
+    $INPUT
+        RQ_00_BAT;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;12.54~13.86;V;SCALE=2;;
+    $OPTION
+        ;;
+
+#STEP_35
+    Name=Sensor supply voltage check
+    Enabled=1
+    $INPUT
+        RQ_05_SNSPLY;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;4.75~5.25;V;;;
+    $OPTION
+        ;;
+
+#STEP_36
+    Name=FP_IFK_AN (Sense_Current_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 10*;;;;
+        DIAG_READ_VALUE;~;;;;
+    $OPTION
+        ;;
+
+#STEP_37
+    Name=Sensor supply ADC check (SNSPLY_FK_AN)
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 F0 11;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 11*;;;;
+        DIAG_READ_VALUE;;;;;
+        SNSPLY_FK_AN;4.75~5.25;;CALC:(%DIAG_READ_VALUE%*0.00586);;
+    $OPTION
+        ;;
+
+#STEP_38
+    Name=BATT supply ADC check (BATT_FK_AN)
+    Enabled=1
+    $INPUT
+        DIAG_SEND;22 F0 12;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 12*;;;;
+        DIAG_READ_VALUE;;;;;
+        BATT_FK_AN;12.54~13.86;;CALC:(%DIAG_READ_VALUE% * 0.0211) + 0.4;;
+    $OPTION
+        ;;
+
+#STEP_39
+    Name=FP_VFK_AN (Fuel_Pump_Voltage_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 13;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 13*;;;;
+        DIAG_READ_VALUE;~;;;;
+        Fuel_Pump_Voltage_Read;12.54~13.86;;CALC:(%DIAG_READ_VALUE% *0.0259);;
+    $OPTION
+        ;;
+
+#STEP_40
+    Name=PSENSE_AN (Sensor_Signal_Read)
+    Enabled=1
+    $INPUT
+        SENSOR_IN;2.5;
+        DELAY;0.5;
+        DIAG_SEND;22 F0 14;
+    $INPUT2
+        SENSOR_IN;0;
+        DELAY;1;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;62 F0 14*;;;;
+        DIAG_READ_VALUE;~;;;;
+        Sensor_Signal_Read;2.25~2.75;;CALC:(%DIAG_READ_VALUE% *0.00488);;
+    $OPTION
+        ;;
+
+#STEP_41
+    Name=[8.3.1.9	   PWM Duty Cycle Output with CAN Commanded  Duty Cycle]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_42
+    Name=ELOAD_SET
+    Enabled=1
+    $INPUT
+        PUMP_의사부하_ON;ON;
+        DELAY;0.2;
+        OHM;1;
+        DELAY;2;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_43
+    Name=Send2 0 %  Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.1;
+        SECURITY_ACCESS;ON;
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;3E 80;
+        DELAY;0.2;
+        DIAG_SEND;2F F0 15 03 00 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 00 00;;;;
+        NISCOPE_CHECKDUTY;0~5;;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_44
+    Name=0% Check Current
+    Enabled=1
+    $INPUT
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;-9999~0.5;A;SCALE=11;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_45
+    Name=0%_FP_IFK_AN (Fuel_Pump_Voltage_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;;;;;
+        DIAG_READ_VALUE;;;;;
+    $OPTION
+        ;;
+
+#STEP_46
+    Name=Send 25 %    Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;3E 80;
+        DELAY;0.2;
+        DIAG_SEND;2F F0 15 03 36 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 36 00;;;;
+        NISCOPE_DUTY;20~30;;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_47
+    Name=25% Check Current
+    Enabled=1
+    $INPUT
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;2.508~4.158;A;SCALE=11;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_48
+    Name=25%_FP_IFK_AN (Fuel_Pump_Voltage_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;;;;;
+        DIAG_READ_VALUE;;;;;
+    $OPTION
+        ;;
+
+#STEP_49
+    Name=Send 50 %    Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;3E 80;
+        DELAY;0.2;
+        DIAG_SEND;2F F0 15 03 68 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 68 00;;;;
+        NISCOPE_DUTY;45~55;%;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_50
+    Name=50% Check Current
+    Enabled=1
+    $INPUT
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;5.643~7.623;A;SCALE=11;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_51
+    Name=50%_FP_IFK_AN (Fuel_Pump_Voltage_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;;;;;
+        DIAG_READ_VALUE;;;;;
+    $OPTION
+        ;;
+
+#STEP_52
+    Name=75 %    Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;3E 80;
+        DELAY;0.2;
+        DIAG_SEND;2F F0 15 03 9A 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 9A 00;;;;
+        NISCOPE_DUTY;70~80;%;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_53
+    Name=75% Check Current
+    Enabled=1
+    $INPUT
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;8.778~11.088;A;SCALE=11;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_54
+    Name=75%_FP_IFK_AN (Fuel_Pump_Voltage_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;;;;;
+        DIAG_READ_VALUE;;;;;
+    $OPTION
+        ;;
+
+#STEP_55
+    Name=Send 100 %   Duty Cycle through CAN Test Mode
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;OFF;
+        DIAG_SEND;3E 80;
+        DELAY;0.2;
+        DIAG_SEND;2F F0 15 03 C8 00;
+        DELAY;0.8;
+        RQ_01_PUMP+;ON;
+    $INPUT2
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;6F F0 15 03 C8 00;;;;
+        NISCOPE_CHECKDUTY;95~100;%;;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_56
+    Name=100% Check Current
+    Enabled=1
+    $INPUT
+        DIAG_SEND;3E 80;
+        RQ_13_PUMP_CURR;ON;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        NISCOPE_AVE;11.913~13.86;A;SCALE=11;;
+        NISCOPE_AVE;;;;;
+        NISCOPE_AVE;;;SCALE=10;;
+    $OPTION
+        RETRY;2;
+        TIMEOUT;1;
+
+#STEP_57
+    Name=ELOAD_OFF
+    Enabled=1
+    $INPUT
+        DIAG_TESTPRESENT;ON;
+        DELAY;0.2;
+        OHM;0;
+        PUMP_의사부하_ON;OFF;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_58
+    Name=100%_FP_IFK_AN (Fuel_Pump_Voltage_Read)
+    Enabled=0
+    $INPUT
+        DIAG_SEND;22 F0 10;
+    $INPUT2
+        OHM;0;
+        PUMP_의사부하_ON;OFF;
+    $OUTPUT
+        ;;
+    $CHECK
+        DIAG_READ;;;;;
+        DIAG_READ_VALUE;;;;;
+    $OPTION
+        ;;
+
+#STEP_59
+    Name=[8.3.1.10 Sensor Output  Verification]
+    Enabled=1
+    $INPUT
+        ;;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#STEP_60
+    Name=Set Pressure sensor= 1.9 V
+    Enabled=1
+    $INPUT
+        SENSOR_IN;1.9;
+        DELAY;1;
+        RQ_06_SN_IN;ON;
+    $INPUT2
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        fpc_p;330~370;;SCALE=3.125;;
+        NISCOPE_AVE;1.82~1.98;V;;;
+    $OPTION
+        RETRY;1;
+        TIMEOUT;1;
+
+#STEP_61
+    Name=Set Pressure sensor= 2.4 V
+    Enabled=1
+    $INPUT
+        SENSOR_IN;2.4;
+        DELAY;1;
+        RQ_06_SN_IN;ON;
+    $INPUT2
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        fpc_p;455~495;;SCALE=3.125;;
+        NISCOPE_AVE;2.32~2.48;V;;;
+    $OPTION
+        RETRY;1;
+        TIMEOUT;1;
+
+#STEP_62
+    Name=Set Pressure sensor= 2.9 V
+    Enabled=1
+    $INPUT
+        SENSOR_IN;2.9;
+        DELAY;1;
+        RQ_06_SN_IN;ON;
+    $INPUT2
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        fpc_p;580~620;;SCALE=3.125;;
+        NISCOPE_AVE;2.82~2.98;V;;;
+    $OPTION
+        RETRY;1;
+        TIMEOUT;1;
+
+#STEP_63
+    Name=Set Pressure sensor= 3.4 V
+    Enabled=1
+    $INPUT
+        SENSOR_IN;3.4;
+        DELAY;1;
+        RQ_06_SN_IN;ON;
+    $INPUT2
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        fpc_p;705~745;;SCALE=3.125;;
+        NISCOPE_AVE;3.32~3.48;V;;;
+    $OPTION
+        RETRY;1;
+        TIMEOUT;1;
+
+#STEP_64
+    Name=Set Pressure sensor= 3.7 V
+    Enabled=1
+    $INPUT
+        SENSOR_IN;3.7;
+        DELAY;1;
+        RQ_06_SN_IN;ON;
+    $INPUT2
+        DELAY;0.2;
+    $OUTPUT
+        ;;
+    $CHECK
+        fpc_p;780~820;;SCALE=3.125;;
+        NISCOPE_AVE;3.62~3.78;V;;;
+    $OPTION
+        RETRY;1;
+        TIMEOUT;1;
+
+#STEP_65
+    Name=[EXIT]
+    Enabled=1
+    $INPUT
+        DC_POWER;0;
+        SENSING_ON;OFF;
+        DELAY;1;
+        RESETIO;ON;
+        OHM;0;
+    $INPUT2
+        ;;
+    $OUTPUT
+        ;;
+    $CHECK
+        ;;;;;
+    $OPTION
+        ;;
+
+#RES_AO
+    SENSOR_IN;DA1_01;;;
+
+#RES_DO
+    BAT_ON;DO1_01;;;
+    BAT_CURR_ON;DO1_02;;;
+    SENSING_ON;DO1_03;;;
+    PUMP_의사부하_ON;DO1_04;;;
+    PUMP_실부하_ON;DO1_05;;;
+    CAN_HI_OPEN_ON;DO1_06;;;
+    CAN_LO_OPEN_ON;DO1_07;;;
+    SENSOR_ON;DO1_08;;;
+
+#RES_RO
+    ;;;;
+
+#RES_PO
+    ;;;;
+
+#RES_COMOUT
+    DC_POWER;DEV_01;ADR 01|PV %PARAM%|PC 50|OUT 1;;
+    -DIAG;CANDIAG;;;
+    DIAG_SETID;CANDIAG;SETID:70E,778;;
+    DIAG_START;CANDIAG;SEND:10 03;;
+    DIAG_TESTPRESENT;CANDIAG;TESTPRESENT;;
+    DIAG_SEND;CANDIAG;SEND;;
+    DIAG_STOP;CANDIAG;SEND:20;;
+    HEX;CANDIAG;READHEX;;
+    READ_LEN;CANDIAG;READ:2,6,2;;
+    READ_STR;CANDIAG;READSTR:3,0;;
+    SECURITY_ACCESS;CANDIAG;SecurityAccess;;
+    CAN_EMUL_CONNECT;DEV_03;CMD:30=21 00 7E 00;;
+    CAN_EMUL_DISCONNECT;DEV_03;CMD:31=06;;
+    -----------EMULCAN--------------;;;;
+    0x50C(CLU13);DEV_03;%PARAM%:SEND:50C=00:100;;
+    0x545(EMS14);DEV_03;%PARAM%:SEND:545=00 00 00 82 00 00 00 5F:100;;
+    0x200(EMS20);DEV_03;%PARAM%:SEND:200=00 00 00 00 00:10 > $C7,2,7,$20,$48,$70,$97,$BF,$E7,FF;;
+    0x260(ENG_STATUS);DEV_03;%PARAM%:SEND:260=00 00 00 30:10;;
+    -ELOAD-;;;;
+    CURRENT;DEV_04;CC:%PARAM%;;
+    OHM;DEV_04;CR:%PARAM%;;
+
+#RES_VROUT
+    RESETIO;RESETIO;;;
+    ;;채널번호:채널갯수,데이터갯수,샘플링주기;;
+    RQ_00_BAT;NISCOPE;Dev1/ai0:1,2000,500000;;
+    RQ_01_PUMP+;NISCOPE;Dev1/ai1:1,1000,655000;;
+    RQ_BAT_PUMP+;NISCOPE;Dev1/ai0,Dev1/ai1:2,2000,500000;;
+    RQ_02_PUMP-;NISCOPE;Dev1/ai2:1,2000,500000;;
+    RQ_03_CAN_HI;NISCOPE;Dev1/ai3:1,2000,500000;;
+    RQ_04_CAN_LO;NISCOPE;Dev1/ai4:1,2000,500000;;
+    RQ_05_SNSPLY;NISCOPE;Dev1/ai5:1,2000,500000;;
+    RQ_06_SN_IN;NISCOPE;Dev1/ai6:1,2000,500000;;
+    RQ_11_BAT_CURR_1;NISCOPE;Dev1/ai11:1,2000,500000;;
+    RQ_12_BAT_CURR_2;NISCOPE;Dev1/ai12:1,2000,500000;;
+    RQ_13_PUMP_CURR;NISCOPE;Dev1/ai13:1,1000,655000;;
+    RQ_PUMP_DUTY_CURR;NISCOPE;Dev1/ai1,Dev1/ai10:2,1000,655000;;
+
+#RES_AD
+    ;;;;
+
+#RES_DI
+    ;;;;
+
+#RES_COMIN
+    ;;;;
+    -----CANDIAG----;;;;
+    DIAG_READ;CANDIAG;READHEX;;
+    DIAG_READSTR;CANDIAG;READSTR:3;;
+    -----READVALUE----;;;;
+    DIAG_READ_VALUE;CANDIAG;READ:4,0,16,M;;
+    DAIG_RD_DCDC5V;CANDIAG;READSTR:3,2;;
+    -----READ_ECU_ID----;;;;
+    DIAG_READSTR_MCU;CANDIAG;READSTR:3;;
+    DIAG_READSTR_DSP;CANDIAG;READSTR:3;;
+    DIAG_READSTR_SET;CANDIAG;READHEX:4,2;;
+    SW_Version;CANDIAG;READSTR:4;;
+
+#RES_VRIN
+    CAN_H_LEVEL;GRAPH;AVE=CH1;;
+    CAN_L_LEVEL;GRAPH;AVE=CH1;;
+    ---------------------------NIBORD;;sChannels:nChannelCount,numSampsPerChan,fSampling;;
+    ;;채널번호:채널갯수,데이터갯수,샘플링주기|READCMD=Channel;;
+    NISCOPE_HIGH;GRAPH;HIGH=CH1;;
+    NISCOPE_HIGH_2;GRAPH;HIGH=CH2;;
+    NISCOPE_MAX;GRAPH;MAX=CH1;;
+    NISCOPE_AVE;GRAPH;AVE=CH1;;
+    NISCOPE_AVE_2;GRAPH;AVE=CH2;;
+    NISCOPE_WIDTH;GRAPH;WIDTH=CH1;;
+    NISCOPE_WIDTH_2;GRAPH;WIDTH=CH2;;
+    NISCOPE_LOW;GRAPH;LOW=CH1;;
+    NISCOPE_HIWIDTH;GRAPH;HIWIDTH=CH1;;
+    NISCOPE_DUTY;GRAPH;DUTY=CH1;;
+    NISCOPE_DUTY_2;GRAPH;DUTY=CH2;;
+    NISCOPE_CHECKDUTY;GRAPH;CHECKDUTY=CH1;;
+
+#RES_CAN
+    CAN_CONNECT;CAN01_01;CONNECT:500;;
+    fpc_duty_actual;CAN01_01;SET:555=16,8:0.39,0.00;FPC_P;
+    fpc_p;CAN01_01;SET:555=0,8:1,0:M;FPC_P;
+    ------LM-------;;;;
+    EMS1_0x316_INIT;CAN1_01;SEND:316=00 00 00 00 00 00 00 00:10;;
+    EMS1_0x316;CAN1_01;SEND:316=00 00 A0 0F 00 00 00 00:10;;
+    CLU2_0x690;CAN1_01;SEND:690=00 00 00 00 00 00 00 00:100;;
+    CLU3_0x4F1;CAN1_01;SEND:4F1=00 00 00 00 00 00 00 00:100;;
+    VS_KPH;CAN1_01;SET:316=48,8:1,0:M;;
+    fpc_p;CAN1_01;SET:555=48,8:1,0:M;;
+
+#END

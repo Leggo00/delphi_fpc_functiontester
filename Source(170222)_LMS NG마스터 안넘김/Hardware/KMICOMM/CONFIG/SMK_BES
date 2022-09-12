@@ -1,0 +1,146 @@
+SMK_BES;
+47
+f1
+7f
+80 47 f1 01 81;
+80 F1 47 03 c1 ea 8f;
+80 47 f1 01 82;
+80 f1 47 01 c2;
+80 47 f1 01 3e;
+80 f1 47 01 7e;
+64
+10
+General reject;
+11
+Service not supported;
+12
+Sub-function not supported / Invalid format;
+21
+Busy - Repeat request;
+22
+Conditions not correct;
+31
+Request out of range;
+33
+Security access denied;
+36
+Exceed Number of Attempts;
+40
+Download not accepted;
+78
+Response pending;
+90
+Already taught key;
+91
+Invalid key;
+92
+Key communication failure;
+93
+Key programming failure;
+94
+Wrong pin code for SMK;
+95
+Anti-scan protection for SMK;
+96
+EEPROM failure;
+97
+Immo coil failure;
+98
+TP not present;
+99
+TP is present but no valid ISK;
+9A
+TP is present but no valid IDE;
+9B
+Reserved;
+A0
+Virgin or Neutralized failure;
+A1
+BCM Learning failed;
+A2
+BCM learnt with other secret key;
+A3
+BCM EEPROM failure;
+A4
+BCM Learning Failed;
+B0
+Anti-scan protection for PDM;
+B1
+PDM learning failed;
+B2
+PDM learnt with other secret key;
+B3
+PDM EEPROM failure;
+B5
+ESCL ECU learning failed;
+B6
+ESCL cryptology failure;
+B7
+No feedback from ESCL;
+B8
+ESCL secret key write failure;
+B9
+ESCL learnt with other secret key;
+BA
+Anti-scan protection for ESCL;
+BB
+IDS learning cryptology failure;
+BC
+IDS learning no feedback from PDM;
+BD
+IDS learning EEPROM failure;
+BE
+IDS learning bad action byte;
+BF
+IDS learning bad RKE feedback;
+C0
+IDS learning number learning;
+C1
+IDS learning lock failure;
+C4
+ECU secret key not over-writable;
+C5
+Neutralization In progress;
+C6
+Not Fob-In;
+C7
+ESCL Error;
+C8
+Learning sequence is not correct;
+C9
+Terminal Not OFF;
+CA
+SMK is Learning In Progress;
+CB
+SMK not virgin;
+CC
+PDM not virgin;
+CD
+ESCL not virgin;
+CE
+Fob not virgin;
+CF
+ESCL power on for LearningAntiscanning is in progress;
+D0
+LF Antenna check fail;
+D1
+Line to SRX open or no response from SRX;
+D2
+Short circuit in line to SRX;
+D3
+No response from ESCL;
+D4
+Short circuit in ESCL_COM;
+D5
+Out of operation battery voltage range;
+E0
+CAN BUS OFF;
+E1
+No response from PDM;
+1
+80 47 f1 06 31 01 00 00 00 00;
+80 f1 47 02 71 01;
+80 47 f1 06 31 02 00 00 00 00;
+80 f1 47 02 71 02;
+80 47 f1 06 31 03 00 00 00 00;
+80 f1 47 02 71 03;

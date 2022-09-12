@@ -1,0 +1,36 @@
+SMK Virgin;
+7
+31
+Record Local Identifier;
+3
+f0
+Device virginisation CODE;
+0
+4
+0
+ALL;
+1
+Power Distribution Module;
+2
+Electrical Steering Column Lock;
+3
+BCM;
+ESCL PIN code;
+2
+4
+2
+Record Local Identifier;
+5
+f0
+Routine Entry Option;
+6
+4
+0
+ALL;
+1
+Power Distribution Module;
+2
+Electrical Steering Column Lock;
+3
+BCM;
+

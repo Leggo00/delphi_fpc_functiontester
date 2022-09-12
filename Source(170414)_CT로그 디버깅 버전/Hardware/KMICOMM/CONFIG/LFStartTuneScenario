@@ -1,0 +1,52 @@
+LFStartTuneScenario;
+5
+A7
+Antenna area No;
+1
+Key ID No;
+1
+Cycle gap time;
+1
+Request Type: 1-Start service, 0-request next response;
+1
+10
+ID Key number;
+1
+SumHi;
+1
+SumLo;
+1
+XmeasHi;
+1
+XmeasLo;
+1
+YmeasHi;
+1
+YmeasLo;
+1
+ZmeasHi;
+1
+ZmeasLo;
+1
+PASE LL status;
+6
+9
+0
+PASE_LL_SRV_STATUS_IDLE;
+1
+PASE_LL_SRV_STATUS_RUNNING;
+2
+PASE_LL_SRV_STATUS_RUNNING_DATA_AVAILABLE;
+3
+PASE_LL_SRV_STATUS_SUCCESS;
+4
+PASE_LL_SRV_STATUS_NO_RF_ANSWER;
+5
+PASE_LL_SRV_STATUS_NORMAL_ABORT;
+6
+PASE_LL_SRV_STATUS_BUFFER_FULL;
+7
+PASE_LL_SRV_STATUS_TIMEOUT;
+8
+PASE_LL_SRV_STATUS_ERROR;
+

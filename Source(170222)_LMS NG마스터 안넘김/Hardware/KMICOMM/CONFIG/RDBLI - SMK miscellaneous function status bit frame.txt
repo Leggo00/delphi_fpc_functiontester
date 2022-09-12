@@ -1,0 +1,27 @@
+message name = RDBLI - SMK miscellaneous function status bit frame
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x09
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0x09
+#7 Reserved = 0x00
+#8 bit 
+  b0 : CAN Communication limp home mode status with any related node
+  b1 : P Position Signal Failure Status
+  b2 : LIN Communication Limp Home Mode Status(GH only)
+  b3 : EMS Communication Failure Status(GH/BK only)
+  b4 : NA_OPTION_STATUS
+  b5 : Vehicle speed inconsistency
+  b6 : Reserved
+  b7 : Reserved
+#9 Reserved = 0x00
+#10 Reserved = 0x00

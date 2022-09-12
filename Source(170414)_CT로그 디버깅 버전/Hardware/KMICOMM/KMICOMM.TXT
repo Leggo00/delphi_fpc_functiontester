@@ -1,0 +1,21 @@
+================================
+* KWP COMMAND
+10 : START COMMUNICATION
+11 : STOP COMMUNICATION
+12 : SEND COMMAND
+================================
+* CAN COMMAND
+30 : CAN Connect
+31 : CAN disconnect
+35 : CAN Clear
+32 : CAN Send
+33 : CAN Read
+34 : CAN ID List
+================================
+* LIN COMMAND
+40 : LIN Send
+41 : LIN Read
+43 : LIN CLEAR
+44 : LIN MASTER SET
+
+

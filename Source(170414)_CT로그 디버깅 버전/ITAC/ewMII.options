@@ -1,0 +1,13 @@
+# JVM option to initialize the JVM via JNI
+-Xcheck:jni
+#-verbose:jni
+
+# set JNI specific java properties
+-Djava.class.path=c:/ewMII/lib/api.common.6.10.jar;c:/ewMII/lib/utils.common.6.10.jar;c:/ewMII/lib/log4j-1.2.14.jar
+
+-Ditac.propsdir=c:/ewMII
+-Ditac.ewmii.service.name=EWApiServices
+-Ditac.ewmii.logfilepath=c:/ewMII/ewMIInative.log
+-Ditac.ewmii.lcffilepath=c:/ewMII/ewMII.lcf
+-Ditac.ewmii.debug=false
+		

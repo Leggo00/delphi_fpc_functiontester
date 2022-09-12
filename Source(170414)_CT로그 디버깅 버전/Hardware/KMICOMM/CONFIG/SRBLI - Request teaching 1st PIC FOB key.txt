@@ -1,0 +1,21 @@
+message name = SRBLI - Request teaching 1st PIC FOB key
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 31 
+#6 Record Local Identifier = 0x13
+#7 Teaching parameter = XX
+  0x01 : Yes
+  0x02 : No
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 0x71 
+#6 Record Local Identifier = 0x13
+#7 Teaching Status = XX
+  0x01 : Key's Teaching completed (Immo, PASE and RKE)
+  0xF0 : Teaching procedure cancelled (finished)

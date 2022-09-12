@@ -1,0 +1,18 @@
+message name = LFWriteStepConfiguration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x05 
+#5 Request Id = A1 
+#6 Scenario step index = XX
+#7 Telegram type = XX
+#8 Antenna area index = XX
+#9 Retry number = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 0xE1 
+#6 Reserved = 0xXX

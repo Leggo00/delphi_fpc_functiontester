@@ -1,0 +1,21 @@
+message name = SRBLI - START SMK TEACHING
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 31 
+#6 Routine Local Identifier = 0x11
+#7 Routine Entry option = XX
+  0x02 : After Market Mode
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x03 
+#5 Request Id = 0x71 
+#6 Record Local Identifier = 0x11
+#7 SMK status = XX
+  0x01 : Learnt
+  0x02 : Virgin
+  0x03 : Neutral

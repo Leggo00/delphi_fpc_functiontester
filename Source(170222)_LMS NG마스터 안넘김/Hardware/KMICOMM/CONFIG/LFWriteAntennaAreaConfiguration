@@ -1,0 +1,30 @@
+LFWriteAntennaAreaConfiguration;
+E
+A0
+Antenna Area Index;
+1
+Telegram index;
+1
+Output configuration;
+2
+2
+Data Power;
+1
+RSSI Power;
+1
+Destroy bit Power;
+1
+Data load state;
+1
+RSSI load state;
+1
+RSSI Key threshold;
+2
+2
+Antenna Area Type;
+1
+Antenna Area Index;
+1
+1
+Reserved;
+1

@@ -1,0 +1,39 @@
+message name = WDBLI - Write SMK's option configuration
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 3B 
+#6 Record Local Identifier = 0x03
+#7 Number of the bit to be modified = XX
+  0x01 : 3_INT_ANT_BIT
+  0x02 : 4_INT_ANT_BIT
+  0x03 : TAIL_BIT
+  0x04 : TAIL_LOCK_BIT
+  0x05 : Bi_FobHodelr_config
+  0x06 : Bi_CAPA_SENSOR
+  0x07 : Bi_TWO_STEP_UNLOCK
+  0x08 : Bi_DoorBrokenDetectionBySMK
+  0x09 : bi_PIC_option
+  0x0A : bi_ESCL_optoin
+  0x0B : bi_AT_option
+  0x0C : Bi_CalulKtr
+  0x0D : Bi_Diesel option
+  0x0E : Bi_BCM_Learning
+  0x0F : Bi_WEL_Enalbe
+  0x10 : Bi_Passive_Pre_Auth
+  0x11 : Bi_FS_Enable
+  0x12 : Bi_Auto_Config_ESCL_Option
+#8 Value to assign to this bit = XX
+  0x00 : 0
+  0x01 : 1
+#9 Not used = 0x00
+#10 Not used = 0x00
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 0x7B 
+#6 Local Identifier = 0x03

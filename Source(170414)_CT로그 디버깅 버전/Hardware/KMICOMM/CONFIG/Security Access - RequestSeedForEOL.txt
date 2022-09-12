@@ -1,0 +1,16 @@
+message name = Security Access - RequestSeedForEOL
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 27 
+#6 Access mode: Request seed for EOL = 0xFD
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x06 
+#5 Request Id = 0x67 
+#6 Access mode: Request seed for EOL = 0xFD
+#7 ~ #10 EOL Seed = 0xXX

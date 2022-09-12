@@ -1,0 +1,25 @@
+message name = RDBLl - Logic Output Status
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x02 
+#5 Request Id = 21 
+#6 Record Local Identifier = 0x07
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x04 
+#5 Request Id = 0x61 
+#6 Local Identifier = 0x07
+#7 bit1 
+  b0 : O_KEYOUT_IND
+  b1 : O_IMMO_IND
+  b2 : unused
+  b3 : O_EXT_BUZZER
+  b4 : O_ESCL_ENABLE
+  b5 : unused
+  b6 : unused
+  b7 : unused
+#8 bit2 = 0x00

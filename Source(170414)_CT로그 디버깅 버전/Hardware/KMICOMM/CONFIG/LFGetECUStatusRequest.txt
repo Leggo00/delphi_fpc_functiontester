@@ -1,0 +1,20 @@
+message name = LFGetECUStatusRequest
+Request Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x07 
+#5 Request Id = A8 
+#6 1 = XX
+#7 1 = XX
+#8 1 = XX
+#9 1 = XX
+#10 1 = XX
+#11 1 = XX
+Postive Response Message
+#1 Message length = 0x80
+#2 Target address = 0xXX
+#3 Source address = 0xXX
+#4 AdditionalLength = 0x07 
+#5 Request Id = 0xE8 
+#6 ~ #11 ECU status Byte = 0xXX

@@ -1,0 +1,32 @@
+LFReadAntennaArea;
+3
+A3
+Antenna area index;
+1
+Telegram index;
+1
+11
+Antenna Area index;
+1
+Telegram index;
+1
+Output configuration;
+2
+2
+Data power;
+1
+RSSI Power;
+1
+Destroy bit Power;
+1
+Data load state;
+1
+RSSI Load state;
+1
+RSSI key threshold;
+2
+2
+Antenna Area Type;
+1
+Antenna Area Index;
+1

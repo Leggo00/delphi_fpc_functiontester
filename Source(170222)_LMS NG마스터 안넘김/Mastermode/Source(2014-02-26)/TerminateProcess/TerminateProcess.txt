@@ -1,0 +1,11 @@
+uses
+   ShellAPI;
+
+procedure TFrmMain.TerminateApplication;
+var
+    sFileName: string;
+begin
+    sFileName := Format('%sTerminateApplication.exe', [ GetAppDir('') ]);
+    if FileExists(sFileName) then
+        ShellExecute(handle, 'open', PChar(sFileName), nil, nil, SW_NORMAL);
+end;

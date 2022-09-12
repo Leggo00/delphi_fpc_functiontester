@@ -1,0 +1,89 @@
+object FrmMMenu: TFrmMMenu
+  Left = 0
+  Top = 0
+  Width = 132
+  Height = 380
+  TabOrder = 0
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 132
+    Height = 380
+    Align = alClient
+    BevelInner = bvRaised
+    BevelOuter = bvNone
+    TabOrder = 0
+    object pnStatus: TPanel
+      Left = 1
+      Top = 100
+      Width = 130
+      Height = 279
+      Align = alClient
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      Caption = 'Result'
+      Color = 16763080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+    end
+    object pnBcd: TPanel
+      Left = 1
+      Top = 34
+      Width = 130
+      Height = 33
+      Align = alTop
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      Caption = 'Serial No'
+      Color = 16763080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+    end
+    object pnVariant: TPanel
+      Left = 1
+      Top = 1
+      Width = 130
+      Height = 33
+      Align = alTop
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      Caption = 'Variant'
+      Color = 16763080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+    end
+    object pnType: TPanel
+      Left = 1
+      Top = 67
+      Width = 130
+      Height = 33
+      Align = alTop
+      BevelInner = bvRaised
+      BevelOuter = bvNone
+      Caption = 'Master Type'
+      Color = 16763080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+    end
+  end
+end
